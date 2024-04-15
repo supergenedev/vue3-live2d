@@ -1,0 +1,31 @@
+{
+  "name": "vue3-live2d",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/aoi-l2d-lib.umd.cjs",
+  "module": "./dist/aoi-l2d-lib.js",
+  "exports": {
+    ".": {
+      "import": "./dist/aoi-l2d-lib.js",
+      "require": "./dist/aoi-l2d-lib.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build:lib": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vue-tsc": "^2.0.6"
+  }
+}
