@@ -10,7 +10,8 @@
     ".": {
       "import": "./dist/aoi-l2d-lib.js",
       "require": "./dist/aoi-l2d-lib.umd.cjs"
-    }
+    },
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",

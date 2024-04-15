@@ -27,14 +27,8 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<style scoped>
-.l2d-container {
-    width: 100%;
-    height: 100%;
-}
-</style>
-
 <style>
+.l2d-container,
 .l2d-canvas {
     width: 100%;
     height: 100%;
