@@ -10,26 +10,26 @@ import * as LAppDefine from './lappdefine';
 import { LAppGlManager } from './lappglmanager';
 
 let isLoad = document.readyState === 'complete';
-const initL2dResolver: (() => {})[] = []
+const initL2dResolver: (() => {})[] = [];
 
 window.addEventListener(
   'load',
   (): void => {
     isLoad = true;
 
-    while(initL2dResolver.length > 0) {
-      const fn = initL2dResolver.pop()
-      fn && fn()
+    while (initL2dResolver.length > 0) {
+      const fn = initL2dResolver.pop();
+      fn && fn();
     }
   },
-  { passive: true }
+  { passive: true },
 );
 
-export async function initL2d (container?: HTMLDivElement) {
+export async function initL2d(container?: HTMLDivElement) {
   if (!isLoad) {
     await new Promise((resolve) => {
-      initL2dResolver.push(() => resolve)
-    })
+      initL2dResolver.push(() => resolve);
+    });
   }
 
   if (
@@ -42,8 +42,8 @@ export async function initL2d (container?: HTMLDivElement) {
   LAppDelegate.getInstance().run();
 }
 
-export function releaseL2d () {
-  LAppDelegate.releaseInstance()
+export function releaseL2d() {
+  LAppDelegate.releaseInstance();
 }
 
 /**
@@ -56,5 +56,5 @@ window.addEventListener(
       LAppDelegate.getInstance().onResize();
     }
   },
-  { passive: true }
+  { passive: true },
 );
