@@ -1,16 +1,28 @@
 <template>
   <div class="vue-live2d-container">
-    <button @click="onTest">test</button>
-    <VueLive2d v-if="isShow" :resource-path="'./l2dSample/Resources/'" />
+    <button @click="onToggleVue3L2d">onToggleVue3L2d</button>
+    <button @click="onChangeL2dAsset">onChangeL2dAsset</button>
+    <VueLive2d
+      v-if="isShow"
+      :resource-path="'./l2d/'"
+      :model-name="modelName"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, ref } from 'vue';
+import { computed, defineAsyncComponent, ref } from 'vue';
 
 const isShow = ref(false);
-function onTest() {
+function onToggleVue3L2d() {
   isShow.value = !isShow.value;
+}
+
+const modelIndex = ref(0);
+const modelNames = ['Mei_2', 'Rinko'];
+const modelName = computed(() => modelNames[modelIndex.value]);
+function onChangeL2dAsset() {
+  modelIndex.value = (modelIndex.value + 1) % modelNames.length;
 }
 
 const VueLive2d = defineAsyncComponent({

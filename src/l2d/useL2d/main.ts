@@ -8,6 +8,7 @@
 import { LAppDelegate } from './lappdelegate';
 import * as LAppDefine from './lappdefine';
 import { LAppGlManager } from './lappglmanager';
+import { LAppLive2DManager } from './lapplive2dmanager';
 
 let isLoad = document.readyState === 'complete';
 const initL2dResolver: (() => {})[] = [];
@@ -46,15 +47,6 @@ export function releaseL2d() {
   LAppDelegate.releaseInstance();
 }
 
-/**
- * Process when changing screen size.
- */
-window.addEventListener(
-  'resize',
-  () => {
-    if (LAppDefine.CanvasSize === 'auto') {
-      LAppDelegate.getInstance().onResize();
-    }
-  },
-  { passive: true },
-);
+export function loadL2dAsset(ResourcesPath: string, ModelDir: string) {
+  LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir);
+}
