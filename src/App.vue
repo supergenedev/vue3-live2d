@@ -31,9 +31,9 @@ function onChangeL2dAsset() {
   modelIndex.value = (modelIndex.value + 1) % modelNames.length;
 }
 
-const zoom = ref(1.0)
+const zoom = ref(1.0);
 function changeZoom(zoomSize: number) {
-  zoom.value = zoomSize
+  zoom.value = zoomSize;
 }
 
 const VueLive2d = defineAsyncComponent({

@@ -30,8 +30,8 @@ watch([() => props.resourcePath, () => props.modelName], () => {
 });
 
 watch([()=> props.zoom], ([zoom]) => {
-  setZoom(zoom)
-})
+  setZoom(zoom);
+});
 
 onBeforeUnmount(() => {
   releaseL2d();
