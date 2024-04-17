@@ -153,7 +153,7 @@ export class LAppView {
   public onTouchesEnded(pointX: number, pointY: number): void {
     // タッチ終了
     const live2DManager: LAppLive2DManager = LAppLive2DManager.getInstance();
-    live2DManager.onDrag(0.0, 0.0);
+    // live2DManager.onDrag(0.0, 0.0);
 
     {
       // シングルタップ
