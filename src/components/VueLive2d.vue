@@ -6,11 +6,12 @@
 import { onBeforeUnmount, ref, watch } from 'vue';
 
 import '../l2d/Core/live2dcubismcore';
-import { initL2d, loadL2dAsset, releaseL2d } from '../l2d/useL2d/main';
+import { initL2d, loadL2dAsset, setZoom, releaseL2d } from '../l2d/useL2d/main';
 
 export interface VueLive2dProps {
   resourcePath: string;
   modelName: string;
+  zoom: number;
 }
 const props = defineProps<VueLive2dProps>();
 
@@ -26,6 +27,10 @@ watch(containerRef, (ref) => {
 
 watch([() => props.resourcePath, () => props.modelName], () => {
   loadL2dAsset(props.resourcePath, props.modelName);
+});
+
+watch([()=> props.zoom], ([zoom]) => {
+  setZoom(zoom);
 });
 
 onBeforeUnmount(() => {
