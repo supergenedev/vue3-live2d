@@ -2,10 +2,16 @@
   <div class="vue-live2d-container">
     <button @click="onToggleVue3L2d">onToggleVue3L2d</button>
     <button @click="onChangeL2dAsset">onChangeL2dAsset</button>
+    <div>
+      <button @click="changeZoom(0.5)">zoom * 0.5</button>
+      <button @click="changeZoom(1)">zoom * 1.0</button>
+      <button @click="changeZoom(2)">zoom * 2.0</button>
+    </div>
     <VueLive2d
       v-if="isShow"
       :resource-path="'./l2d/'"
       :model-name="modelName"
+      :zoom="zoom"
     />
   </div>
 </template>
@@ -23,6 +29,11 @@ const modelNames = ['Mei_2', 'Rinko'];
 const modelName = computed(() => modelNames[modelIndex.value]);
 function onChangeL2dAsset() {
   modelIndex.value = (modelIndex.value + 1) % modelNames.length;
+}
+
+const zoom = ref(1.0)
+function changeZoom(zoomSize: number) {
+  zoom.value = zoomSize
 }
 
 const VueLive2d = defineAsyncComponent({

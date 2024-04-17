@@ -50,3 +50,10 @@ export function releaseL2d() {
 export function loadL2dAsset(ResourcesPath: string, ModelDir: string) {
   LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir);
 }
+
+export function setZoom(zoomSize: number) {
+  LAppDelegate.getInstance()._view._viewMatrix.scale(
+    LAppDefine.ViewScale * zoomSize, 
+    LAppDefine.ViewScale * zoomSize
+  );
+}
