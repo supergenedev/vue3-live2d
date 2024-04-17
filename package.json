@@ -19,7 +19,8 @@
     "dev": "vite",
     "build": "vite build && npm run build:types",
     "build:types": "vue-tsc --project tsconfig.build-types.json",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update:submodule": "git submodule update --init --recursive -- src/l2d/Framework"
   },
   "dependencies": {
     "vue": "^3.4.21"
