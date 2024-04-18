@@ -25,14 +25,16 @@
       :resource-path="'./l2d/'"
       :model-name="modelName"
       :zoom="zoom"
-      :emotion="emotion"
-    />
+      ref="l2d"
+      />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent, ref } from 'vue';
+import { computed, defineAsyncComponent, ref, shallowRef } from 'vue';
 import { Emotion } from './l2d/useL2d/lapplive2dmanager';
+
+const l2d = shallowRef<InstanceType<typeof VueLive2d>>();
 
 const isShow = ref(false);
 function onToggleVue3L2d() {
@@ -51,9 +53,8 @@ function onChangeZoom(zoomSize: number) {
   zoom.value = zoomSize;
 }
 
-const emotion = ref<Emotion>();
 function onChangeEmotion(_emotion: Emotion) {
-  emotion.value = _emotion;
+  l2d.value?.setEmotion(_emotion)
 }
 
 const VueLive2d = defineAsyncComponent({

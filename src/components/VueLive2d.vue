@@ -7,13 +7,11 @@ import { onBeforeUnmount, ref, watch } from 'vue';
 
 import '../l2d/Core/live2dcubismcore';
 import { initL2d, loadL2dAsset, setZoom, setEmotion, releaseL2d } from '../l2d/useL2d/main';
-import { Emotion } from 'src/l2d/useL2d/lapplive2dmanager';
 
 export interface VueLive2dProps {
   resourcePath: string;
   modelName: string;
   zoom: number;
-  emotion?: Emotion;
 }
 const props = defineProps<VueLive2dProps>();
 
@@ -35,17 +33,14 @@ watch([()=> props.zoom], ([zoom]) => {
   setZoom(zoom);
 });
 
-watch([()=> props.emotion], ([emotion]) => {
-  if(emotion) {
-    setEmotion(emotion);
-    return;
-  }
-  setEmotion('Calm');
-});
-
 onBeforeUnmount(() => {
   releaseL2d();
 });
+
+defineExpose({
+  setEmotion
+});
+
 </script>
 
 <style>

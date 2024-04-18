@@ -16,7 +16,6 @@ import { LAppPal } from './lapppal';
 
 export let s_instance: LAppLive2DManager = null;
 
-
 const motions = ['Abashed', 'Angry', 'Annoyed', 'Flustered', 'Frustrated', 'Hate', 'Lovestruck', 'Panicking', 'Pleased', 'Sad'] as const;
 export type IdleEmotion = 'Calm';
 export type Emotion = typeof motions[number] | IdleEmotion;
