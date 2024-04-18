@@ -16,6 +16,10 @@ import { LAppPal } from './lapppal';
 
 export let s_instance: LAppLive2DManager = null;
 
+const motions = ['Abashed', 'Angry', 'Annoyed', 'Flustered', 'Frustrated', 'Hate', 'Lovestruck', 'Panicking', 'Pleased', 'Sad'] as const;
+export type IdleEmotion = 'Calm';
+export type Emotion = typeof motions[number] | IdleEmotion;
+
 /**
  * サンプルアプリケーションにおいてCubismModelを管理するクラス
  * モデル生成と破棄、タップイベントの処理、モデル切り替えを行う。
@@ -90,6 +94,8 @@ export class LAppLive2DManager {
     }
   }
 
+  
+  
   /**
    * 画面をタップした時の処理
    *
@@ -104,27 +110,31 @@ export class LAppLive2DManager {
     }
 
     for (let i = 0; i < this._models.getSize(); i++) {
-      if (this._models.at(i).hitTest(LAppDefine.HitAreaNameHead, x, y)) {
-        if (LAppDefine.DebugLogEnable) {
-          LAppPal.printMessage(
-            `[APP]hit area: [${LAppDefine.HitAreaNameHead}]`,
-          );
-        }
-        this._models.at(i).setRandomExpression();
-      } else if (this._models.at(i).hitTest(LAppDefine.HitAreaNameBody, x, y)) {
-        if (LAppDefine.DebugLogEnable) {
-          LAppPal.printMessage(
-            `[APP]hit area: [${LAppDefine.HitAreaNameBody}]`,
-          );
-        }
-        this._models
+      const randomIndex = Math.floor(Math.random() * motions.length);
+      const randomMotion = motions[randomIndex];
+      
+      this._models
           .at(i)
           .startRandomMotion(
-            LAppDefine.MotionGroupTapBody,
+            `${randomMotion}.motion3.json`,
             LAppDefine.PriorityNormal,
             this._finishedMotion,
           );
-      }
+    }
+  }
+
+  // onEmotion : 감정 변화 발생 시 (from web-socket) 해당 Motion 을 실행시킴
+  // 해당 emotion이 정의되지 않은 캐릭터의 경우, Idle (Calm) motion 이 실행될 수 있도록 예외처리(우선순위를 이용) 해줘야 한다.
+  // 라이브러리에서, 캐릭터에 정의되지 않은 emotion 발생할 경우 자동으로 Idle motion 상태이므로 해당 예외처리는 하지 않음.
+  public onEmotion(emotion: Emotion) {
+    for (let i = 0; i < this._models.getSize(); i++) {
+      this._models
+          .at(i)
+          .startRandomMotion(
+            `${emotion}.motion3.json`,
+            LAppDefine.PriorityNormal,
+            this._finishedMotion,
+          );
     }
   }
 

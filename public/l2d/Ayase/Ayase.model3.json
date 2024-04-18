@@ -1,0 +1,103 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Ayase.moc3",
+		"Textures": [
+			"Ayase.4096/texture_00.png"
+		],
+		"Physics": "Ayase.physics3.json",
+		"DisplayInfo": "Ayase.cdi3.json",
+		"Motions": {
+			"Abashed.motion3.json": [
+				{
+					"File": "Motion/Abashed.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Angry.motion3.json": [
+				{
+					"File": "Motion/Angry.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Annoyed.motion3.json": [
+				{
+					"File": "Motion/Annoyed.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Calm.motion3.json": [
+				{
+					"File": "Motion/Calm.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Flustered.motion3.json": [
+				{
+					"File": "Motion/Flustered.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Frustrated.motion3.json": [
+				{
+					"File": "Motion/Frustrated.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Hate.motion3.json": [
+				{
+					"File": "Motion/Hate.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Lovestruck.motion3.json": [
+				{
+					"File": "Motion/Lovestruck.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Panicking.motion3.json": [
+				{
+					"File": "Motion/Panicking.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Pleased.motion3.json": [
+				{
+					"File": "Motion/Pleased.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Sad.motion3.json": [
+				{
+					"File": "Motion/Sad.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			]
+		}
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		}
+	],
+	"HitAreas": []
+}
