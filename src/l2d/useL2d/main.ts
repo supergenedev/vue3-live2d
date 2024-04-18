@@ -8,7 +8,7 @@
 import { LAppDelegate } from './lappdelegate';
 import * as LAppDefine from './lappdefine';
 import { LAppGlManager } from './lappglmanager';
-import { LAppLive2DManager } from './lapplive2dmanager';
+import { Emotion, LAppLive2DManager } from './lapplive2dmanager';
 
 let isLoad = document.readyState === 'complete';
 const initL2dResolver: (() => {})[] = [];
@@ -57,3 +57,8 @@ export function setZoom(zoomSize: number) {
     LAppDefine.ViewScale * zoomSize
   );
 }
+
+export function setEmotion(emotion: Emotion) {
+  LAppLive2DManager.getInstance().onEmotion(emotion);
+}
+

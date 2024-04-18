@@ -1,23 +1,38 @@
 <template>
   <div class="vue-live2d-container">
-    <button @click="onToggleVue3L2d">onToggleVue3L2d</button>
-    <button @click="onChangeL2dAsset">onChangeL2dAsset</button>
     <div>
-      <button @click="changeZoom(0.5)">zoom * 0.5</button>
-      <button @click="changeZoom(1)">zoom * 1.0</button>
-      <button @click="changeZoom(2)">zoom * 2.0</button>
+      <p>Set Model</p>
+      <button @click="onToggleVue3L2d">onToggleVue3L2d</button>
+      <button @click="onChangeL2dAsset">onChangeL2dAsset</button>
     </div>
+    <div>
+      <p>Change Zoom</p>
+      <button @click="onChangeZoom(0.5)">zoom * 0.5</button>
+      <button @click="onChangeZoom(1)">zoom * 1.0</button>
+      <button @click="onChangeZoom(2)">zoom * 2.0</button>
+    </div>
+    <div>
+      <p>Change Emotion</p>
+      <button @click="onChangeEmotion('Abashed')">Abashed</button>
+      <button @click="onChangeEmotion('Hate')">Hate</button>
+      <button @click="onChangeEmotion('Lovestruck')">Lovestruck</button>
+      <button @click="onChangeEmotion('Pleased')">Pleased</button>
+      <button @click="onChangeEmotion('Sad')">Sad</button>
+    </div>
+    <div style="height: 20px;" />
     <VueLive2d
       v-if="isShow"
       :resource-path="'./l2d/'"
       :model-name="modelName"
       :zoom="zoom"
+      :emotion="emotion"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref } from 'vue';
+import { Emotion } from './l2d/useL2d/lapplive2dmanager';
 
 const isShow = ref(false);
 function onToggleVue3L2d() {
@@ -32,8 +47,13 @@ function onChangeL2dAsset() {
 }
 
 const zoom = ref(1.0);
-function changeZoom(zoomSize: number) {
+function onChangeZoom(zoomSize: number) {
   zoom.value = zoomSize;
+}
+
+const emotion = ref<Emotion>();
+function onChangeEmotion(_emotion: Emotion) {
+  emotion.value = _emotion;
 }
 
 const VueLive2d = defineAsyncComponent({
