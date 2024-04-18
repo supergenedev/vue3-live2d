@@ -1,0 +1,1707 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "각도 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "각도 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "각도 Z"
+		},
+		{
+			"Id": "ParamCheek",
+			"GroupId": "",
+			"Name": "수줍음"
+		},
+		{
+			"Id": "Param47",
+			"GroupId": "",
+			"Name": "얼굴음영"
+		},
+		{
+			"Id": "Param52",
+			"GroupId": "",
+			"Name": "얼굴뿌우"
+		},
+		{
+			"Id": "Paramroot_rot",
+			"GroupId": "",
+			"Name": "root_rot"
+		},
+		{
+			"Id": "Paramroot_rot2",
+			"GroupId": "",
+			"Name": "root_Y"
+		},
+		{
+			"Id": "Paramleg_R",
+			"GroupId": "",
+			"Name": "leg_R"
+		},
+		{
+			"Id": "Param68",
+			"GroupId": "",
+			"Name": "고양이눈변경"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "왼쪽 눈 깜빡임"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "오른쪽 눈 깜빡임"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "",
+			"Name": "왼쪽 눈 미소"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "",
+			"Name": "오른쪽 눈 미소"
+		},
+		{
+			"Id": "Param48",
+			"GroupId": "",
+			"Name": "웃는눈기울기"
+		},
+		{
+			"Id": "Param28",
+			"GroupId": "",
+			"Name": "왼쪽눈_흔들"
+		},
+		{
+			"Id": "Param30",
+			"GroupId": "",
+			"Name": "왼쪽눈_빛01_흔들"
+		},
+		{
+			"Id": "Param31",
+			"GroupId": "",
+			"Name": "왼쪽눈_빛02_흔들"
+		},
+		{
+			"Id": "Param32",
+			"GroupId": "",
+			"Name": "왼쪽눈_빛03_흔들"
+		},
+		{
+			"Id": "Param33",
+			"GroupId": "",
+			"Name": "왼쪽눈_빛04_흔들"
+		},
+		{
+			"Id": "Param34",
+			"GroupId": "",
+			"Name": "왼쪽눈_빛05_흔들"
+		},
+		{
+			"Id": "Param29",
+			"GroupId": "",
+			"Name": "오른쪽눈_흔들"
+		},
+		{
+			"Id": "Param35",
+			"GroupId": "",
+			"Name": "오른눈_빛01_흔들"
+		},
+		{
+			"Id": "Param36",
+			"GroupId": "",
+			"Name": "오른눈_빛02_흔들"
+		},
+		{
+			"Id": "Param37",
+			"GroupId": "",
+			"Name": "오른눈_빛03_흔들"
+		},
+		{
+			"Id": "Param38",
+			"GroupId": "",
+			"Name": "오른눈_빛04_흔들"
+		},
+		{
+			"Id": "Param39",
+			"GroupId": "",
+			"Name": "오른눈_빛05_흔들"
+		},
+		{
+			"Id": "Parameyespecial01",
+			"GroupId": "",
+			"Name": "특수눈"
+		},
+		{
+			"Id": "Parameyeeffect",
+			"GroupId": "",
+			"Name": "눈광원"
+		},
+		{
+			"Id": "Param51",
+			"GroupId": "",
+			"Name": "빨간눈"
+		},
+		{
+			"Id": "Param57",
+			"GroupId": "",
+			"Name": "눈물"
+		},
+		{
+			"Id": "Param58",
+			"GroupId": "",
+			"Name": "눈물_라인"
+		},
+		{
+			"Id": "Param60",
+			"GroupId": "",
+			"Name": "눈동자스핀온오프"
+		},
+		{
+			"Id": "Param59",
+			"GroupId": "",
+			"Name": "눈동자스핀"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "눈 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "눈 Y"
+		},
+		{
+			"Id": "ParamBrowLX",
+			"GroupId": "",
+			"Name": "왼쪽 눈썹 좌우로"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "왼쪽 눈썹 위아래로"
+		},
+		{
+			"Id": "ParamBrowRX",
+			"GroupId": "",
+			"Name": "오른쪽 눈썹 좌우로"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "오른쪽 눈썹 위아래로"
+		},
+		{
+			"Id": "ParamBrowLAngle",
+			"GroupId": "",
+			"Name": "왼쪽 눈썹 각도"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "",
+			"Name": "왼쪽 눈썹 변형"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "",
+			"Name": "오른쪽 눈썹 각도"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "",
+			"Name": "오른쪽 눈썹 변형"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "입 변형"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "입 여닫기"
+		},
+		{
+			"Id": "Param56",
+			"GroupId": "",
+			"Name": "슬픈입여닫기"
+		},
+		{
+			"Id": "ParamMouthspecial01",
+			"GroupId": "",
+			"Name": "특수입"
+		},
+		{
+			"Id": "Param53",
+			"GroupId": "",
+			"Name": "특수입2"
+		},
+		{
+			"Id": "Param41",
+			"GroupId": "",
+			"Name": "입크기"
+		},
+		{
+			"Id": "Paramtongue",
+			"GroupId": "",
+			"Name": "혀"
+		},
+		{
+			"Id": "Paramtonguemove",
+			"GroupId": "",
+			"Name": "혀move"
+		},
+		{
+			"Id": "Paramtonguemove2",
+			"GroupId": "",
+			"Name": "혀move02"
+		},
+		{
+			"Id": "Param27",
+			"GroupId": "",
+			"Name": "어깨"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "호흡"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "몸의 회전 X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "몸의 회전　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "몸의 회전 Z"
+		},
+		{
+			"Id": "Param69",
+			"GroupId": "",
+			"Name": "왼손변경"
+		},
+		{
+			"Id": "Paramupper_L",
+			"GroupId": "",
+			"Name": "왼팔_위"
+		},
+		{
+			"Id": "ParamarmsL_fore",
+			"GroupId": "",
+			"Name": "왼팔_아래"
+		},
+		{
+			"Id": "Param72",
+			"GroupId": "",
+			"Name": "왼팔_아래_펄럭"
+		},
+		{
+			"Id": "Param46",
+			"GroupId": "",
+			"Name": "왼팔아래_업다운"
+		},
+		{
+			"Id": "Param20",
+			"GroupId": "",
+			"Name": "왼선_플립"
+		},
+		{
+			"Id": "Param19",
+			"GroupId": "",
+			"Name": "마크뎁스_왼"
+		},
+		{
+			"Id": "Paramhand_L",
+			"GroupId": "",
+			"Name": "왼손"
+		},
+		{
+			"Id": "Paramfore_L_depth",
+			"GroupId": "",
+			"Name": "왼팔_아래_뎁스"
+		},
+		{
+			"Id": "Param54",
+			"GroupId": "",
+			"Name": "왼손인아웃"
+		},
+		{
+			"Id": "Param16",
+			"GroupId": "",
+			"Name": "왼손가락01"
+		},
+		{
+			"Id": "Param17",
+			"GroupId": "",
+			"Name": "왼손가락01_01"
+		},
+		{
+			"Id": "Param6",
+			"GroupId": "",
+			"Name": "왼손가락02"
+		},
+		{
+			"Id": "Param7",
+			"GroupId": "",
+			"Name": "왼손가락02_01"
+		},
+		{
+			"Id": "Param10",
+			"GroupId": "",
+			"Name": "왼손가락03"
+		},
+		{
+			"Id": "Param11",
+			"GroupId": "",
+			"Name": "왼손가락03_01"
+		},
+		{
+			"Id": "Param12",
+			"GroupId": "",
+			"Name": "왼손가락04"
+		},
+		{
+			"Id": "Param13",
+			"GroupId": "",
+			"Name": "왼손가락04_01"
+		},
+		{
+			"Id": "Param14",
+			"GroupId": "",
+			"Name": "왼손가락05"
+		},
+		{
+			"Id": "Param15",
+			"GroupId": "",
+			"Name": "왼손가락05_01"
+		},
+		{
+			"Id": "Param21",
+			"GroupId": "",
+			"Name": "왼손_캬옹1"
+		},
+		{
+			"Id": "Param22",
+			"GroupId": "",
+			"Name": "왼손_캬옹2"
+		},
+		{
+			"Id": "Param23",
+			"GroupId": "",
+			"Name": "왼손_캬옹3"
+		},
+		{
+			"Id": "Param24",
+			"GroupId": "",
+			"Name": "왼손_캬옹4"
+		},
+		{
+			"Id": "Param25",
+			"GroupId": "",
+			"Name": "왼손_캬옹5"
+		},
+		{
+			"Id": "Param26",
+			"GroupId": "",
+			"Name": "왼손_냥냥펀치"
+		},
+		{
+			"Id": "Param49",
+			"GroupId": "",
+			"Name": "왼손_냥냥인아웃"
+		},
+		{
+			"Id": "Param70",
+			"GroupId": "",
+			"Name": "오른손변경"
+		},
+		{
+			"Id": "Paramupper_R",
+			"GroupId": "",
+			"Name": "오른팔_위"
+		},
+		{
+			"Id": "Paramfore_R",
+			"GroupId": "",
+			"Name": "오른팔_아래"
+		},
+		{
+			"Id": "Param73",
+			"GroupId": "",
+			"Name": "오른팔아래펄럭"
+		},
+		{
+			"Id": "Param18",
+			"GroupId": "",
+			"Name": "마크뎁스"
+		},
+		{
+			"Id": "Param9",
+			"GroupId": "",
+			"Name": "오른팔_아래_뎁스"
+		},
+		{
+			"Id": "Param8",
+			"GroupId": "",
+			"Name": "오른손"
+		},
+		{
+			"Id": "Param55",
+			"GroupId": "",
+			"Name": "오른손인아웃"
+		},
+		{
+			"Id": "ParamfingerL_10",
+			"GroupId": "",
+			"Name": "오른손가락01"
+		},
+		{
+			"Id": "ParamfingerL_11",
+			"GroupId": "",
+			"Name": "오른손가락01_01"
+		},
+		{
+			"Id": "ParamfingerL_02",
+			"GroupId": "",
+			"Name": "오른손가락02"
+		},
+		{
+			"Id": "ParamfingerL_03",
+			"GroupId": "",
+			"Name": "오른손가락02_01"
+		},
+		{
+			"Id": "ParamfingerL_04",
+			"GroupId": "",
+			"Name": "오른손가락03"
+		},
+		{
+			"Id": "ParamfingerL_05",
+			"GroupId": "",
+			"Name": "오른손가락03_01"
+		},
+		{
+			"Id": "ParamfingerL_06",
+			"GroupId": "",
+			"Name": "오른손가락04"
+		},
+		{
+			"Id": "ParamfingerL_07",
+			"GroupId": "",
+			"Name": "오른손가락04_01"
+		},
+		{
+			"Id": "ParamfingerL_08",
+			"GroupId": "",
+			"Name": "오른손가락05"
+		},
+		{
+			"Id": "ParamfingerL_09",
+			"GroupId": "",
+			"Name": "오른손가락05_01"
+		},
+		{
+			"Id": "ParamfingerL_16",
+			"GroupId": "",
+			"Name": "오른손_캬옹1"
+		},
+		{
+			"Id": "ParamfingerL_15",
+			"GroupId": "",
+			"Name": "오른손_캬옹2"
+		},
+		{
+			"Id": "ParamfingerL_14",
+			"GroupId": "",
+			"Name": "오른손_캬옹3"
+		},
+		{
+			"Id": "ParamfingerL_13",
+			"GroupId": "",
+			"Name": "오른손_캬옹4"
+		},
+		{
+			"Id": "ParamfingerL_12",
+			"GroupId": "",
+			"Name": "오른손_캬옹5"
+		},
+		{
+			"Id": "Param40",
+			"GroupId": "",
+			"Name": "오른손_냥냥펀치"
+		},
+		{
+			"Id": "Param50",
+			"GroupId": "",
+			"Name": "오른손_냥냥인아웃"
+		},
+		{
+			"Id": "Param42",
+			"GroupId": "",
+			"Name": "땀방울 1"
+		},
+		{
+			"Id": "Param43",
+			"GroupId": "",
+			"Name": "땀방울2"
+		},
+		{
+			"Id": "Param44",
+			"GroupId": "",
+			"Name": "땀방울3"
+		},
+		{
+			"Id": "Param45",
+			"GroupId": "",
+			"Name": "땀방울4"
+		},
+		{
+			"Id": "Paramhair_f01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_f01"
+		},
+		{
+			"Id": "Param71",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backback"
+		},
+		{
+			"Id": "Paramhair_f01_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_f01_01"
+		},
+		{
+			"Id": "Paramhair_f02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_f02"
+		},
+		{
+			"Id": "Paramhair_f02_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_f02_01"
+		},
+		{
+			"Id": "Paramhair_f03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_f03"
+		},
+		{
+			"Id": "Paramhair_f03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_f03_01"
+		},
+		{
+			"Id": "Paramhair_f04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_f04"
+		},
+		{
+			"Id": "Paramhair_f04_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_f04_01"
+		},
+		{
+			"Id": "Paramhair_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_05"
+		},
+		{
+			"Id": "Paramhair_05_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_05_01"
+		},
+		{
+			"Id": "Paramhair_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_06"
+		},
+		{
+			"Id": "Paramhair_06_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_06_01"
+		},
+		{
+			"Id": "Param61",
+			"GroupId": "ParamGroup",
+			"Name": "hair_aho"
+		},
+		{
+			"Id": "Paramhair_aho",
+			"GroupId": "ParamGroup",
+			"Name": "hair_aho01"
+		},
+		{
+			"Id": "Paramhair_aho02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_aho02"
+		},
+		{
+			"Id": "Paramhair_sideR01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sideR01"
+		},
+		{
+			"Id": "Paramhair_sideR01_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sideR01_01"
+		},
+		{
+			"Id": "Paramhair_sidelong_R01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_R01"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_R01_01"
+		},
+		{
+			"Id": "Paramhair_sidelong_R02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_R02"
+		},
+		{
+			"Id": "Paramhair_sidelong_R02_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_R02_01"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_R02_02"
+		},
+		{
+			"Id": "Paramhair_sidelong_R03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_R03"
+		},
+		{
+			"Id": "Paramhair_sidelong_R03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_R03_01"
+		},
+		{
+			"Id": "Paramhair_sideL01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sideL01"
+		},
+		{
+			"Id": "Paramhair_sideL01_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sideL01_01"
+		},
+		{
+			"Id": "Paramhair_sidelong_L01_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L01_01"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L01_01_01"
+		},
+		{
+			"Id": "Paramhair_sidelong_L01_01_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L01_01_02"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L01_02"
+		},
+		{
+			"Id": "Paramhair_sidelong_L01_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L01_03"
+		},
+		{
+			"Id": "Paramhair_sideling_L01_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sideling_L01_04"
+		},
+		{
+			"Id": "Paramhair_sidelong_L01_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L01_05"
+		},
+		{
+			"Id": "Paramhair_sidelong_L02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L02"
+		},
+		{
+			"Id": "Paramhair_sidelong_L02_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L02_01"
+		},
+		{
+			"Id": "Paramhair_sidelong_L03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L03"
+		},
+		{
+			"Id": "Paramhair_sidelong_L03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L03_01"
+		},
+		{
+			"Id": "Paramhair_backL_01_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_01_01"
+		},
+		{
+			"Id": "Paramhair_backL_01_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_01_02"
+		},
+		{
+			"Id": "Paramhair_backL_01_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_01_03"
+		},
+		{
+			"Id": "Paramhair_backL_01_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_01_04"
+		},
+		{
+			"Id": "Paramhair_backL_01_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_01_05"
+		},
+		{
+			"Id": "Paramhair_backL_02_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_02_01"
+		},
+		{
+			"Id": "Paramhair_backL_02_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_02_02"
+		},
+		{
+			"Id": "Paramhair_backL_02_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_02_03"
+		},
+		{
+			"Id": "Paramhair_backL_02_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_02_04"
+		},
+		{
+			"Id": "Paramhair_backL_02_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_02_05"
+		},
+		{
+			"Id": "Paramhair_backL_02_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_02_06"
+		},
+		{
+			"Id": "Paramhair_backL_03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_01"
+		},
+		{
+			"Id": "Paramhair_backL_03_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_02"
+		},
+		{
+			"Id": "Paramhair_backL_03_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_03"
+		},
+		{
+			"Id": "Paramhair_backL_03_03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_03_01"
+		},
+		{
+			"Id": "Paramhair_backL_03_03_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_03_02"
+		},
+		{
+			"Id": "Paramhair_backL_03_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_04"
+		},
+		{
+			"Id": "Paramhair_backL_03_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_05"
+		},
+		{
+			"Id": "Paramhair_backL_03_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_06"
+		},
+		{
+			"Id": "Paramhair_backL_03_07",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_03_07"
+		},
+		{
+			"Id": "Paramhair_backL_04_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_01"
+		},
+		{
+			"Id": "Paramhair_backL_04_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_02"
+		},
+		{
+			"Id": "Paramhair_backL_04_02_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_02_01"
+		},
+		{
+			"Id": "Paramhair_backL_04_02_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_02_02"
+		},
+		{
+			"Id": "Paramhair_backL_04_02_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_02_03"
+		},
+		{
+			"Id": "Paramhair_backL_04_02_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_02_04"
+		},
+		{
+			"Id": "Paramhair_backL_04_02_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_02_05"
+		},
+		{
+			"Id": "Paramhair_backL_04_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_03"
+		},
+		{
+			"Id": "Paramhair_backL_04_03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_03_01"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_03_02"
+		},
+		{
+			"Id": "Paramhair_backL_04_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_04"
+		},
+		{
+			"Id": "Paramhair_backL_04_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_05"
+		},
+		{
+			"Id": "Paramhair_backL_04_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_04_06"
+		},
+		{
+			"Id": "Paramhair_backL_05_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_05_01"
+		},
+		{
+			"Id": "Paramhair_backL_05_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_05_02"
+		},
+		{
+			"Id": "ParamParamhair_backL_05_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_05_03"
+		},
+		{
+			"Id": "ParamParamhair_backL_05_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_05_04"
+		},
+		{
+			"Id": "Paramhair_backL_05_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_05_05"
+		},
+		{
+			"Id": "Paramhair_backL_05_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_05_06"
+		},
+		{
+			"Id": "Paramhair_backL_06_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_06_01"
+		},
+		{
+			"Id": "Paramhair_backL_06_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_06_02"
+		},
+		{
+			"Id": "Paramhair_backL_06_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_06_03"
+		},
+		{
+			"Id": "Paramhair_backL_06_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_06_04"
+		},
+		{
+			"Id": "Paramhair_backL_06_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_06_05"
+		},
+		{
+			"Id": "Paramhair_backL_06_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_06_06"
+		},
+		{
+			"Id": "Paramhair_backL_06_07",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backL_06_07"
+		},
+		{
+			"Id": "Paramhair_backC_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backC_01"
+		},
+		{
+			"Id": "Paramhair_backC_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backC_02"
+		},
+		{
+			"Id": "Paramhair_sidelong_L04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L04"
+		},
+		{
+			"Id": "Paramhair_sidelong_L04_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_sidelong_L04_01"
+		},
+		{
+			"Id": "Paramhair_backR_01_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_01_01"
+		},
+		{
+			"Id": "Paramhair_backR_01_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_01_02"
+		},
+		{
+			"Id": "Paramhair_backR_01_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_01_03"
+		},
+		{
+			"Id": "Paramhair_backR_01_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_01_04"
+		},
+		{
+			"Id": "Paramhair_backR_01_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_01_05"
+		},
+		{
+			"Id": "Paramhair_backR_02_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_02_01"
+		},
+		{
+			"Id": "Paramhair_backR_02_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_02_02"
+		},
+		{
+			"Id": "Paramhair_backR_02_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_02_03"
+		},
+		{
+			"Id": "Paramhair_backR_02_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_02_04"
+		},
+		{
+			"Id": "Paramhair_backR_02_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_02_05"
+		},
+		{
+			"Id": "Paramhair_backR_02_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_02_06"
+		},
+		{
+			"Id": "Paramhair_backR_03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_01"
+		},
+		{
+			"Id": "Paramhair_backR_03_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_02"
+		},
+		{
+			"Id": "Paramhair_backR_03_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_03"
+		},
+		{
+			"Id": "Paramhair_backR_03_03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_03_01"
+		},
+		{
+			"Id": "Paramhair_backR_03_03_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_03_02"
+		},
+		{
+			"Id": "Paramhair_backR_03_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_04"
+		},
+		{
+			"Id": "Paramhair_backR_03_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_05"
+		},
+		{
+			"Id": "Paramhair_backR_03_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_06"
+		},
+		{
+			"Id": "Paramhair_backR_03_07",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_03_07"
+		},
+		{
+			"Id": "Paramhair_backR_04_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_01"
+		},
+		{
+			"Id": "Paramhair_backR_04_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_02"
+		},
+		{
+			"Id": "Paramhair_backR_04_02_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_02_01"
+		},
+		{
+			"Id": "Paramhair_backR_04_02_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_02_02"
+		},
+		{
+			"Id": "Paramhair_backR_04_02_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_02_03"
+		},
+		{
+			"Id": "Paramhair_backR_04_02_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_02_04"
+		},
+		{
+			"Id": "Paramhair_backR_04_02_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_02_05"
+		},
+		{
+			"Id": "Paramhair_backR_04_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_03"
+		},
+		{
+			"Id": "Paramhair_backR_04_03_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_03_01"
+		},
+		{
+			"Id": "Paramhair_backR_04_03_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_03_02"
+		},
+		{
+			"Id": "Paramhair_backR_04_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_04"
+		},
+		{
+			"Id": "Paramhair_backR_04_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_05"
+		},
+		{
+			"Id": "Paramhair_backR_04_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_04_06"
+		},
+		{
+			"Id": "Paramhair_backR_05_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_05_01"
+		},
+		{
+			"Id": "Paramhair_backR_05_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_05_02"
+		},
+		{
+			"Id": "Paramhair_backR_05_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_05_03"
+		},
+		{
+			"Id": "Paramhair_backR_05_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_05_04"
+		},
+		{
+			"Id": "Paramhair_backR_05_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_05_05"
+		},
+		{
+			"Id": "Paramhair_backR_05_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_05_06"
+		},
+		{
+			"Id": "Paramhair_backR_06_01",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_06_01"
+		},
+		{
+			"Id": "Paramhair_backR_06_02",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_06_02"
+		},
+		{
+			"Id": "Paramhair_backR_06_03",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_06_03"
+		},
+		{
+			"Id": "Paramhair_backR_06_04",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_06_04"
+		},
+		{
+			"Id": "Paramhair_backR_06_05",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_06_05"
+		},
+		{
+			"Id": "Paramhair_backR_06_06",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_06_06"
+		},
+		{
+			"Id": "Paramhair_backR_06_07",
+			"GroupId": "ParamGroup",
+			"Name": "hair_backR_06_07"
+		},
+		{
+			"Id": "Param65",
+			"GroupId": "ParamGroup",
+			"Name": "test01"
+		},
+		{
+			"Id": "Paramcatear_rootL",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_rootL"
+		},
+		{
+			"Id": "Paramcatear_L",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_L"
+		},
+		{
+			"Id": "Paramcatear_L01",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_L01"
+		},
+		{
+			"Id": "Paramcatear_L_inner",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_L_inner"
+		},
+		{
+			"Id": "Param66",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_L_UD"
+		},
+		{
+			"Id": "Param62",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_rootR"
+		},
+		{
+			"Id": "Paramcatear_R",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_R"
+		},
+		{
+			"Id": "Paramcatear_R01",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_R01"
+		},
+		{
+			"Id": "Paramcatear_R_inner",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_R_inner"
+		},
+		{
+			"Id": "Param67",
+			"GroupId": "ParamGroup2",
+			"Name": "catear_R_UD"
+		},
+		{
+			"Id": "Paramneck_acc_01",
+			"GroupId": "ParamGroup2",
+			"Name": "목악세_01"
+		},
+		{
+			"Id": "Paramneck_acc_02",
+			"GroupId": "ParamGroup2",
+			"Name": "목악세_02"
+		},
+		{
+			"Id": "Paramhood_acc_01",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈01_01"
+		},
+		{
+			"Id": "Paramhood_acc_02",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈01_02"
+		},
+		{
+			"Id": "Paramhood_acc_03",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈01_03"
+		},
+		{
+			"Id": "Paramhood_acc_04",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈01_04"
+		},
+		{
+			"Id": "Paramhood_acc_05",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈01_05"
+		},
+		{
+			"Id": "Paramhood_acc_06",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈02_01"
+		},
+		{
+			"Id": "Paramhood_acc_07",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈02_02"
+		},
+		{
+			"Id": "Paramhood_acc_08",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈02_03"
+		},
+		{
+			"Id": "Paramhood_acc_09",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈02_04"
+		},
+		{
+			"Id": "Paramhood_acc_10",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈02_05"
+		},
+		{
+			"Id": "Paramhood_acc_11",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈03_01"
+		},
+		{
+			"Id": "Paramhood_acc_12",
+			"GroupId": "ParamGroup2",
+			"Name": "후드끈03_02"
+		},
+		{
+			"Id": "Param63",
+			"GroupId": "ParamGroup2",
+			"Name": "꼬리루트"
+		},
+		{
+			"Id": "Param64",
+			"GroupId": "ParamGroup2",
+			"Name": "꼬리크기"
+		},
+		{
+			"Id": "ParamTail01",
+			"GroupId": "ParamGroup2",
+			"Name": "꼬리01"
+		},
+		{
+			"Id": "ParamTail02",
+			"GroupId": "ParamGroup2",
+			"Name": "꼬리02"
+		},
+		{
+			"Id": "ParamTail03",
+			"GroupId": "ParamGroup2",
+			"Name": "꼬리03"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "hair"
+		},
+		{
+			"Id": "ParamGroup2",
+			"GroupId": "",
+			"Name": "ACC"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "ayase",
+			"Name": "ayase"
+		},
+		{
+			"Id": "hair_back_L",
+			"Name": "hair_back_L"
+		},
+		{
+			"Id": "hair_f",
+			"Name": "hair_f"
+		},
+		{
+			"Id": "Partcateye_L",
+			"Name": "cateye_L"
+		},
+		{
+			"Id": "Partcateye_R",
+			"Name": "cateye_R"
+		},
+		{
+			"Id": "eyeR",
+			"Name": "eyeR"
+		},
+		{
+			"Id": "Partwater",
+			"Name": "water"
+		},
+		{
+			"Id": "catear_R",
+			"Name": "catear_R"
+		},
+		{
+			"Id": "catear_L",
+			"Name": "catear_L"
+		},
+		{
+			"Id": "faceglow",
+			"Name": "faceglow"
+		},
+		{
+			"Id": "Part_tongue",
+			"Name": "tongue"
+		},
+		{
+			"Id": "hair_shadow08_Skinning",
+			"Name": "hair_shadow08(스키닝)"
+		},
+		{
+			"Id": "hand_L",
+			"Name": "hand_L"
+		},
+		{
+			"Id": "hand_L3",
+			"Name": "hand_L_flip"
+		},
+		{
+			"Id": "kyaong",
+			"Name": "kyaong_L"
+		},
+		{
+			"Id": "nyang_punch",
+			"Name": "nyang_punch_L"
+		},
+		{
+			"Id": "wear_U",
+			"Name": "wear_U"
+		},
+		{
+			"Id": "hand_R",
+			"Name": "hand_R"
+		},
+		{
+			"Id": "hand_R3",
+			"Name": "hand_R_flip"
+		},
+		{
+			"Id": "kyaong29",
+			"Name": "kyaong_R"
+		},
+		{
+			"Id": "nyang_punch7",
+			"Name": "nyang_punch_R"
+		},
+		{
+			"Id": "leg",
+			"Name": "leg"
+		},
+		{
+			"Id": "hair_back_L2",
+			"Name": "hair_back_L"
+		},
+		{
+			"Id": "hair_back_L01_Skinning",
+			"Name": "hair_back_L01(스키닝)"
+		},
+		{
+			"Id": "hair_back_L02_Skinning",
+			"Name": "hair_back_L02(스키닝)"
+		},
+		{
+			"Id": "hair_back_L04_Skinning",
+			"Name": "hair_back_L04(스키닝)"
+		},
+		{
+			"Id": "hair_back_L06_Skinning",
+			"Name": "hair_back_L06(스키닝)"
+		},
+		{
+			"Id": "hair_back_R06_Skinning",
+			"Name": "hair_back_R06(스키닝)"
+		},
+		{
+			"Id": "hair_back_L08_Skinning",
+			"Name": "hair_back_L08(스키닝)"
+		},
+		{
+			"Id": "hair_back_L09_Skinning",
+			"Name": "hair_back_L09(스키닝)"
+		},
+		{
+			"Id": "hair_f22_Skinning",
+			"Name": "hair_f22(스키닝)"
+		},
+		{
+			"Id": "eyeL",
+			"Name": "eyeL"
+		},
+		{
+			"Id": "finger_L01_Skinning",
+			"Name": "finger_L01(스키닝)"
+		},
+		{
+			"Id": "finger_L02_Skinning",
+			"Name": "finger_L02(스키닝)"
+		},
+		{
+			"Id": "finger_L03_Skinning",
+			"Name": "finger_L03(스키닝)"
+		},
+		{
+			"Id": "finger_L04_Skinning",
+			"Name": "finger_L04(스키닝)"
+		},
+		{
+			"Id": "finger_L05_Skinning",
+			"Name": "finger_L05(스키닝)"
+		},
+		{
+			"Id": "finger_L01_Skinning2",
+			"Name": "finger_L01(스키닝)"
+		},
+		{
+			"Id": "finger_L02_Skinning2",
+			"Name": "finger_L02(스키닝)"
+		},
+		{
+			"Id": "finger_L03_Skinning2",
+			"Name": "finger_L03(스키닝)"
+		},
+		{
+			"Id": "finger_L04_Skinning2",
+			"Name": "finger_L04(스키닝)"
+		},
+		{
+			"Id": "finger_L05_Skinning2",
+			"Name": "finger_L05(스키닝)"
+		},
+		{
+			"Id": "kyaong4_Skinning",
+			"Name": "kyaong4(스키닝)"
+		},
+		{
+			"Id": "kyaong5_Skinning",
+			"Name": "kyaong5(스키닝)"
+		},
+		{
+			"Id": "kyaong2_Skinning",
+			"Name": "kyaong2(스키닝)"
+		},
+		{
+			"Id": "kyaong1_Skinning",
+			"Name": "kyaong1(스키닝)"
+		},
+		{
+			"Id": "kyaong3_Skinning",
+			"Name": "kyaong3(스키닝)"
+		},
+		{
+			"Id": "hoodline_L_Skinning",
+			"Name": "hoodline_L(스키닝)"
+		},
+		{
+			"Id": "hoodline_R02_Skinning",
+			"Name": "hoodline_R02(스키닝)"
+		},
+		{
+			"Id": "hoodline_shadow_R02_Skinning",
+			"Name": "hoodline_shadow_R02(스키닝)"
+		},
+		{
+			"Id": "hoodline_shadow_L01_Skinning",
+			"Name": "hoodline_shadow_L01(스키닝)"
+		},
+		{
+			"Id": "finger_R01_Skinning",
+			"Name": "finger_R01(스키닝)"
+		},
+		{
+			"Id": "finger_R02_Skinning",
+			"Name": "finger_R02(스키닝)"
+		},
+		{
+			"Id": "finger_R03_Skinning",
+			"Name": "finger_R03(스키닝)"
+		},
+		{
+			"Id": "finger_R04_Skinning",
+			"Name": "finger_R04(스키닝)"
+		},
+		{
+			"Id": "finger_R05_Skinning",
+			"Name": "finger_R05(스키닝)"
+		},
+		{
+			"Id": "finger_R01_Skinning2",
+			"Name": "finger_R01(스키닝)"
+		},
+		{
+			"Id": "finger_R02_Skinning2",
+			"Name": "finger_R02(스키닝)"
+		},
+		{
+			"Id": "finger_R03_Skinning2",
+			"Name": "finger_R03(스키닝)"
+		},
+		{
+			"Id": "finger_R04_Skinning2",
+			"Name": "finger_R04(스키닝)"
+		},
+		{
+			"Id": "finger_R05_Skinning2",
+			"Name": "finger_R05(스키닝)"
+		},
+		{
+			"Id": "kyaong4_Skinning2",
+			"Name": "kyaong4(스키닝)"
+		},
+		{
+			"Id": "kyaong5_Skinning2",
+			"Name": "kyaong5(스키닝)"
+		},
+		{
+			"Id": "kyaong2_Skinning2",
+			"Name": "kyaong2(스키닝)"
+		},
+		{
+			"Id": "kyaong1_Skinning2",
+			"Name": "kyaong1(스키닝)"
+		},
+		{
+			"Id": "kyaong3_Skinning2",
+			"Name": "kyaong3(스키닝)"
+		},
+		{
+			"Id": "hair_back_L01_Skinning2",
+			"Name": "hair_back_L01(스키닝)"
+		},
+		{
+			"Id": "hair_back_L02_Skinning2",
+			"Name": "hair_back_L02(스키닝)"
+		},
+		{
+			"Id": "hair_back_L04_Skinning2",
+			"Name": "hair_back_L04(스키닝)"
+		},
+		{
+			"Id": "hair_back_L06_Skinning2",
+			"Name": "hair_back_L06(스키닝)"
+		},
+		{
+			"Id": "hair_back_R06_Skinning2",
+			"Name": "hair_back_R06(스키닝)"
+		},
+		{
+			"Id": "hair_back_L08_Skinning2",
+			"Name": "hair_back_L08(스키닝)"
+		},
+		{
+			"Id": "hair_back_L09_Skinning2",
+			"Name": "hair_back_L09(스키닝)"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamEyeBallX",
+			"ParamEyeBallY"
+		]
+	]
+}

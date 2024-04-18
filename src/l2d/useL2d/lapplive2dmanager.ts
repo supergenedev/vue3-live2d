@@ -104,27 +104,13 @@ export class LAppLive2DManager {
     }
 
     for (let i = 0; i < this._models.getSize(); i++) {
-      if (this._models.at(i).hitTest(LAppDefine.HitAreaNameHead, x, y)) {
-        if (LAppDefine.DebugLogEnable) {
-          LAppPal.printMessage(
-            `[APP]hit area: [${LAppDefine.HitAreaNameHead}]`,
-          );
-        }
-        this._models.at(i).setRandomExpression();
-      } else if (this._models.at(i).hitTest(LAppDefine.HitAreaNameBody, x, y)) {
-        if (LAppDefine.DebugLogEnable) {
-          LAppPal.printMessage(
-            `[APP]hit area: [${LAppDefine.HitAreaNameBody}]`,
-          );
-        }
-        this._models
+      this._models
           .at(i)
           .startRandomMotion(
-            LAppDefine.MotionGroupTapBody,
+            'Abashed.motion3.json',
             LAppDefine.PriorityNormal,
             this._finishedMotion,
           );
-      }
     }
   }
 
