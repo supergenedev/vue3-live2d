@@ -16,9 +16,20 @@ import { LAppPal } from './lapppal';
 
 export let s_instance: LAppLive2DManager = null;
 
-const motions = ['Abashed', 'Angry', 'Annoyed', 'Flustered', 'Frustrated', 'Hate', 'Lovestruck', 'Panicking', 'Pleased', 'Sad'] as const;
+const motions = [
+  'Abashed',
+  'Angry',
+  'Annoyed',
+  'Flustered',
+  'Frustrated',
+  'Hate',
+  'Lovestruck',
+  'Panicking',
+  'Pleased',
+  'Sad',
+] as const;
 export type IdleEmotion = 'Calm';
-export type Emotion = typeof motions[number] | IdleEmotion;
+export type Emotion = (typeof motions)[number] | IdleEmotion;
 
 /**
  * サンプルアプリケーションにおいてCubismModelを管理するクラス
@@ -94,8 +105,6 @@ export class LAppLive2DManager {
     }
   }
 
-  
-  
   /**
    * 画面をタップした時の処理
    *
@@ -112,14 +121,14 @@ export class LAppLive2DManager {
     for (let i = 0; i < this._models.getSize(); i++) {
       const randomIndex = Math.floor(Math.random() * motions.length);
       const randomMotion = motions[randomIndex];
-      
+
       this._models
-          .at(i)
-          .startRandomMotion(
-            `${randomMotion}.motion3.json`,
-            LAppDefine.PriorityNormal,
-            this._finishedMotion,
-          );
+        .at(i)
+        .startRandomMotion(
+          `${randomMotion}.motion3.json`,
+          LAppDefine.PriorityNormal,
+          this._finishedMotion,
+        );
     }
   }
 
@@ -129,12 +138,12 @@ export class LAppLive2DManager {
   public onEmotion(emotion: Emotion) {
     for (let i = 0; i < this._models.getSize(); i++) {
       this._models
-          .at(i)
-          .startRandomMotion(
-            `${emotion}.motion3.json`,
-            LAppDefine.PriorityNormal,
-            this._finishedMotion,
-          );
+        .at(i)
+        .startRandomMotion(
+          `${emotion}.motion3.json`,
+          LAppDefine.PriorityNormal,
+          this._finishedMotion,
+        );
     }
   }
 
@@ -187,7 +196,12 @@ export class LAppLive2DManager {
 
     this.releaseAllModel();
     this._models.pushBack(new LAppModel());
-    this._models.at(0).loadAssets(modelPath, modelJsonName);
+    if (ModelDir) {
+      this._models.at(0).loadAssets(modelPath, modelJsonName);
+    } else {
+      // model dir이 없으면 zip으로 asset을 로드
+      this._models.at(0).loadZipAssets(ResourcesPath);
+    }
   }
 
   public setViewMatrix(m: CubismMatrix44) {

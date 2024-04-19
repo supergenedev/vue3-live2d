@@ -19,14 +19,14 @@
       <button @click="onChangeEmotion('Pleased')">Pleased</button>
       <button @click="onChangeEmotion('Sad')">Sad</button>
     </div>
-    <div style="height: 20px;" />
+    <div style="height: 20px" />
     <VueLive2d
       v-if="isShow"
-      :resource-path="'./l2d/'"
-      :model-name="modelName"
-      :zoom="zoom"
       ref="l2d"
-      />
+      :resource-path="'./l2d/'"
+      :model-dir="modelName"
+      :zoom="zoom"
+    />
   </div>
 </template>
 
@@ -54,7 +54,7 @@ function onChangeZoom(zoomSize: number) {
 }
 
 function onChangeEmotion(_emotion: Emotion) {
-  l2d.value?.setEmotion(_emotion)
+  l2d.value?.setEmotion(_emotion);
 }
 
 const VueLive2d = defineAsyncComponent({
