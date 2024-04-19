@@ -18,11 +18,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && npm run build:types",
+    "build:dev": "vite build --sourcemap && npm run build:types",
     "build:types": "vue-tsc --project tsconfig.build-types.json",
     "preview": "vite preview",
     "update:submodule": "git submodule update --init --recursive -- src/l2d/Framework"
   },
   "dependencies": {
+    "jszip": "^3.10.1",
     "vue": "^3.4.21"
   },
   "devDependencies": {
