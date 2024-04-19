@@ -109,7 +109,6 @@ export class LAppModel extends CubismUserModel {
       .then((response) => response.blob())
       .then((blob) => JSZip.loadAsync(blob))
       .then((zipFile) => {
-        console.log(zipFile);
         this._zipFile = zipFile;
         const model3JsonName = Object.keys(zipFile.files).find((name) =>
           /.*\.model3\.json$/.test(name),
