@@ -1,4 +1,4 @@
-import { LAppDelegate } from './lappdelegate';
+import { LAppDelegate, LAppDelegateEventHandler } from './lappdelegate';
 
 export class LAppMain {
   // LAppGlManager의 생성자에서 하던 동작
@@ -28,7 +28,8 @@ export class LAppMain {
 
     this.canvas = glInfo.canvas;
     this.gl = glInfo.gl;
-    this._delegate = new LAppDelegate(this);
+
+    this._delegate = new LAppDelegateEventHandler(this);
     this._delegate.initialize(this.container);
   }
 
