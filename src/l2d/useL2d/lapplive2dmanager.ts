@@ -97,7 +97,7 @@ export class LAppLive2DManager {
     for (let i = 0; i < this._models.getSize(); i++) {
       const model: LAppModel = this.getModel(i);
 
-      if (model) {
+      if (model && model.isModelHitted(x, y)) {
         // drag 시 마우스 위치에 따라 모델이 이동함
         model.getModelMatrix().setPosition(x, y);
         // model.setDragging(x, y);
@@ -122,13 +122,15 @@ export class LAppLive2DManager {
       const randomIndex = Math.floor(Math.random() * motions.length);
       const randomMotion = motions[randomIndex];
 
-      this._models
-        .at(i)
-        .startRandomMotion(
-          `${randomMotion}.motion3.json`,
-          LAppDefine.PriorityNormal,
-          this._finishedMotion,
-        );
+      if(this._models.at(i).isModelHitted(x, y)) {
+        this._models
+          .at(i)
+          .startRandomMotion(
+            `${randomMotion}.motion3.json`,
+            LAppDefine.PriorityNormal,
+            this._finishedMotion,
+          );
+      }
     }
   }
 
