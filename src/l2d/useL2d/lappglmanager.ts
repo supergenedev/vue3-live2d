@@ -5,11 +5,15 @@
  * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
 
+/** @deprecated AppMain으로 이동 */
 export let canvas: HTMLCanvasElement = null;
+/** @deprecated AppMain으로 이동 */
 export let gl: WebGLRenderingContext = null;
+/** @deprecated AppMain으로 이동 */
 export let s_instance: LAppGlManager = null;
 
 /**
+ * @deprecated AppMain으로 이동
  * Cubism SDKのサンプルで使用するWebGLを管理するクラス
  */
 export class LAppGlManager {
