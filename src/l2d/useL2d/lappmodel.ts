@@ -841,6 +841,18 @@ export class LAppModel extends CubismUserModel {
     CubismLogInfo('{0} is fired on LAppModel!!', eventValue.s);
   }
 
+  public isModelHitted(x: number, y: number) {
+    const dCount = this.getModel().getDrawableCount();
+    for(let j = 0; j < dCount; j++) {
+      const dId = this.getModel().getDrawableId(j);
+      const hitted = this.isHit(dId, x, y);
+      if(hitted) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   /**
    * 当たり判定テスト
    * 指定ＩＤの頂点リストから矩形を計算し、座標をが矩形範囲内か判定する。
