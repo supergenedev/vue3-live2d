@@ -126,7 +126,7 @@ export class TouchManager {
       this._startX,
       this._startY,
       this._lastX,
-      this._lastY
+      this._lastY,
     );
   }
 
@@ -142,7 +142,7 @@ export class TouchManager {
     x1: number,
     y1: number,
     x2: number,
-    y2: number
+    y2: number,
   ): number {
     return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
   }

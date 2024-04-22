@@ -37,13 +37,14 @@ import {
 } from '@framework/utils/cubismdebug';
 
 import * as LAppDefine from './lappdefine';
-import { frameBuffer, LAppDelegate } from './lappdelegate';
+// import { frameBuffer, LAppDelegate } from './lappdelegate';
 import { canvas, gl } from './lappglmanager';
 import { LAppPal } from './lapppal';
 import { TextureInfo } from './lapptexturemanager';
 import { LAppWavFileHandler } from './lappwavfilehandler';
 import { CubismMoc } from '@framework/model/cubismmoc';
 import * as JSZip from 'jszip';
+import { LAppDelegate } from './lappdelegate';
 
 enum LoadStep {
   LoadAssets,
@@ -199,7 +200,7 @@ export class LAppModel extends CubismUserModel {
           }
         })
         .then((arrayBuffer) => {
-          this.loadModel(arrayBuffer, this._mocConsistency);
+          this.loadModel(arrayBuffer!, this._mocConsistency);
           this._state = LoadStep.LoadExpression;
 
           // callback
@@ -235,8 +236,8 @@ export class LAppModel extends CubismUserModel {
             })
             .then((arrayBuffer) => {
               const motion: ACubismMotion = this.loadExpression(
-                arrayBuffer,
-                arrayBuffer.byteLength,
+                arrayBuffer!,
+                arrayBuffer!.byteLength,
                 expressionName,
               );
 
@@ -244,7 +245,7 @@ export class LAppModel extends CubismUserModel {
                 ACubismMotion.delete(
                   this._expressions.getValue(expressionName),
                 );
-                this._expressions.setValue(expressionName, null);
+                this._expressions.setValue(expressionName, null!);
               }
 
               this._expressions.setValue(expressionName, motion);
@@ -285,7 +286,7 @@ export class LAppModel extends CubismUserModel {
             }
           })
           .then((arrayBuffer) => {
-            this.loadPhysics(arrayBuffer, arrayBuffer.byteLength);
+            this.loadPhysics(arrayBuffer!, arrayBuffer!.byteLength);
 
             this._state = LoadStep.LoadPose;
 
@@ -318,7 +319,7 @@ export class LAppModel extends CubismUserModel {
             }
           })
           .then((arrayBuffer) => {
-            this.loadPose(arrayBuffer, arrayBuffer.byteLength);
+            this.loadPose(arrayBuffer!, arrayBuffer!.byteLength);
 
             this._state = LoadStep.SetupEyeBlink;
 
@@ -404,7 +405,7 @@ export class LAppModel extends CubismUserModel {
             }
           })
           .then((arrayBuffer) => {
-            this.loadUserData(arrayBuffer, arrayBuffer.byteLength);
+            this.loadUserData(arrayBuffer!, arrayBuffer!.byteLength);
 
             this._state = LoadStep.SetupEyeBlinkIds;
 
@@ -550,19 +551,19 @@ export class LAppModel extends CubismUserModel {
             .then((response) => response.blob())
             .then((blob) => {
               this._zipTextureObjUrl = URL.createObjectURL(blob);
-              LAppDelegate.getInstance()
-                .getTextureManager()
-                .createTextureFromPngFile(
-                  this._zipTextureObjUrl,
-                  usePremultiply,
-                  onLoad,
-                );
+              this.AppDelegate.getTextureManager().createTextureFromPngFile(
+                this._zipTextureObjUrl,
+                usePremultiply,
+                onLoad,
+              );
             });
         } else {
           // 読み込み
-          LAppDelegate.getInstance()
-            .getTextureManager()
-            .createTextureFromPngFile(texturePath, usePremultiply, onLoad);
+          this.AppDelegate.getTextureManager().createTextureFromPngFile(
+            texturePath,
+            usePremultiply,
+            onLoad,
+          );
         }
         this.getRenderer().setIsPremultipliedAlpha(usePremultiply);
       }
@@ -718,9 +719,9 @@ export class LAppModel extends CubismUserModel {
         })
         .then((arrayBuffer) => {
           motion = this.loadMotion(
-            arrayBuffer,
-            arrayBuffer.byteLength,
-            null,
+            arrayBuffer!,
+            arrayBuffer!.byteLength,
+            null!,
             onFinishedMotionHandler,
           );
 
@@ -746,7 +747,7 @@ export class LAppModel extends CubismUserModel {
           autoDelete = true; // 終了時にメモリから削除
         });
     } else {
-      motion.setFinishedMotionHandler(onFinishedMotionHandler);
+      motion.setFinishedMotionHandler(onFinishedMotionHandler!);
     }
 
     //voice
@@ -898,8 +899,8 @@ export class LAppModel extends CubismUserModel {
         })
         .then((arrayBuffer) => {
           const tmpMotion: CubismMotion = this.loadMotion(
-            arrayBuffer,
-            arrayBuffer.byteLength,
+            arrayBuffer!,
+            arrayBuffer!.byteLength,
             name,
           );
 
@@ -969,7 +970,7 @@ export class LAppModel extends CubismUserModel {
     // キャンバスサイズを渡す
     const viewport: number[] = [0, 0, canvas.width, canvas.height];
 
-    this.getRenderer().setRenderState(frameBuffer, viewport);
+    this.getRenderer().setRenderState(this.AppDelegate?.frameBuffer!, viewport);
     this.getRenderer().drawModel();
   }
 
@@ -1020,6 +1021,9 @@ export class LAppModel extends CubismUserModel {
   public release() {
     super.release();
 
+    // @ts-ignore
+    this.AppDelegate = null;
+
     if (this._zipTextureObjUrl) {
       URL.revokeObjectURL(this._zipTextureObjUrl);
       this._zipTextureObjUrl = '';
@@ -1029,11 +1033,15 @@ export class LAppModel extends CubismUserModel {
   /**
    * コンストラクタ
    */
-  public constructor() {
+  public constructor(appDelegate: LAppDelegate) {
     super();
+
+    this.AppDelegate = appDelegate;
 
     this._zipFile = null;
     this._zipTextureObjUrl = '';
+
+    // @ts-ignore
     this._modelSetting = null;
     this._modelHomeDir = '';
     this._userTimeSeconds = 0.0;
@@ -1078,6 +1086,7 @@ export class LAppModel extends CubismUserModel {
     this._wavFileHandler = new LAppWavFileHandler();
     this._consistency = false;
   }
+  AppDelegate: LAppDelegate;
 
   _zipFile: JSZip | null;
   _zipTextureObjUrl: string;

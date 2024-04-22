@@ -13,8 +13,7 @@ import * as LAppDefine from './lappdefine';
 import { canvas } from './lappglmanager';
 import { LAppModel } from './lappmodel';
 import { LAppPal } from './lapppal';
-
-export let s_instance: LAppLive2DManager = null;
+import { LAppDelegate } from './lappdelegate';
 
 const motions = [
   'Abashed',
@@ -37,37 +36,12 @@ export type Emotion = (typeof motions)[number] | IdleEmotion;
  */
 export class LAppLive2DManager {
   /**
-   * クラスのインスタンス（シングルトン）を返す。
-   * インスタンスが生成されていない場合は内部でインスタンスを生成する。
-   *
-   * @return クラスのインスタンス
-   */
-  public static getInstance(): LAppLive2DManager {
-    if (s_instance == null) {
-      s_instance = new LAppLive2DManager();
-    }
-
-    return s_instance;
-  }
-
-  /**
-   * クラスのインスタンス（シングルトン）を解放する。
-   */
-  public static releaseInstance(): void {
-    if (s_instance != null) {
-      s_instance = void 0;
-    }
-
-    s_instance = null;
-  }
-
-  /**
    * 現在のシーンで保持しているモデルを返す。
    *
    * @param no モデルリストのインデックス値
    * @return モデルのインスタンスを返す。インデックス値が範囲外の場合はNULLを返す。
    */
-  public getModel(no: number): LAppModel {
+  public getModel(no: number): LAppModel | null {
     if (no < this._models.getSize()) {
       return this._models.at(no);
     }
@@ -81,6 +55,7 @@ export class LAppLive2DManager {
   public releaseAllModel(): void {
     for (let i = 0; i < this._models.getSize(); i++) {
       this._models.at(i).release();
+      // @ts-ignore
       this._models.set(i, null);
     }
 
@@ -95,7 +70,7 @@ export class LAppLive2DManager {
    */
   public onDrag(x: number, y: number): void {
     for (let i = 0; i < this._models.getSize(); i++) {
-      const model: LAppModel = this.getModel(i);
+      const model = this.getModel(i);
 
       if (model) {
         // drag 시 마우스 위치에 따라 모델이 이동함
@@ -158,9 +133,9 @@ export class LAppLive2DManager {
 
     for (let i = 0; i < modelCount; ++i) {
       const projection: CubismMatrix44 = new CubismMatrix44();
-      const model: LAppModel = this.getModel(i);
+      const model = this.getModel(i);
 
-      if (model.getModel()) {
+      if (model?.getModel()) {
         if (model.getModel().getCanvasWidth() > 1.0 && width < height) {
           // 横に長いモデルを縦長ウィンドウに表示する際モデルの横サイズでscaleを算出する
           model.getModelMatrix().setWidth(2.0);
@@ -175,8 +150,8 @@ export class LAppLive2DManager {
         }
       }
 
-      model.update();
-      model.draw(projection); // 参照渡しなのでprojectionは変質する。
+      model?.update();
+      model?.draw(projection); // 参照渡しなのでprojectionは変質する。
     }
   }
 
@@ -195,7 +170,7 @@ export class LAppLive2DManager {
     modelJsonName += '.model3.json';
 
     this.releaseAllModel();
-    this._models.pushBack(new LAppModel());
+    this._models.pushBack(new LAppModel(this.AppDelegate));
     if (ModelDir) {
       this._models.at(0).loadAssets(modelPath, modelJsonName);
     } else {
@@ -213,10 +188,14 @@ export class LAppLive2DManager {
   /**
    * コンストラクタ
    */
-  constructor() {
+  constructor(appDelegate: LAppDelegate) {
+    this.AppDelegate = appDelegate;
+
     this._viewMatrix = new CubismMatrix44();
     this._models = new csmVector<LAppModel>();
   }
+
+  AppDelegate: LAppDelegate;
 
   _viewMatrix: CubismMatrix44; // モデル描画に用いるview行列
   _models: csmVector<LAppModel>; // モデルインスタンスのコンテナ

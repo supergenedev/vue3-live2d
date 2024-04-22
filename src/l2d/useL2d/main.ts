@@ -5,10 +5,11 @@
  * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
 
-import { LAppDelegate } from './lappdelegate';
-import * as LAppDefine from './lappdefine';
-import { LAppGlManager } from './lappglmanager';
-import { Emotion, LAppLive2DManager } from './lapplive2dmanager';
+// import { LAppDelegate } from './lappdelegate';
+// import * as LAppDefine from './lappdefine';
+// import { LAppGlManager } from './lappglmanager';
+// import { Emotion, LAppLive2DManager } from './lapplive2dmanager';
+import { LAppMain } from './lappmain';
 
 let isLoad = document.readyState === 'complete';
 const initL2dResolver: (() => {})[] = [];
@@ -26,38 +27,50 @@ window.addEventListener(
   { passive: true },
 );
 
-export async function initL2d(container?: HTMLDivElement) {
+// TODO: 다시 맞춰야함
+
+// export async function initL2d(container?: HTMLDivElement) {
+//   if (!isLoad) {
+//     await new Promise((resolve) => {
+//       initL2dResolver.push(() => resolve);
+//     });
+//   }
+
+//   if (
+//     !LAppGlManager.getInstance() ||
+//     !LAppDelegate.getInstance().initialize(container)
+//   ) {
+//     return;
+//   }
+
+//   LAppDelegate.getInstance().run();
+// }
+
+// export function releaseL2d() {
+//   LAppDelegate.releaseInstance();
+// }
+
+// export function loadL2dAsset(ResourcesPath: string, ModelDir: string) {
+//   LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir);
+// }
+
+// export function setZoom(zoomSize: number) {
+//   LAppDelegate.getInstance()._view._viewMatrix.scale(
+//     LAppDefine.ViewScale * zoomSize,
+//     LAppDefine.ViewScale * zoomSize,
+//   );
+// }
+
+// export function setEmotion(emotion: Emotion) {
+//   LAppLive2DManager.getInstance().onEmotion(emotion);
+// }
+
+export async function createL2dApp(container: HTMLDivElement) {
   if (!isLoad) {
     await new Promise((resolve) => {
       initL2dResolver.push(() => resolve);
     });
   }
 
-  if (
-    !LAppGlManager.getInstance() ||
-    !LAppDelegate.getInstance().initialize(container)
-  ) {
-    return;
-  }
-
-  LAppDelegate.getInstance().run();
-}
-
-export function releaseL2d() {
-  LAppDelegate.releaseInstance();
-}
-
-export function loadL2dAsset(ResourcesPath: string, ModelDir: string) {
-  LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir);
-}
-
-export function setZoom(zoomSize: number) {
-  LAppDelegate.getInstance()._view._viewMatrix.scale(
-    LAppDefine.ViewScale * zoomSize,
-    LAppDefine.ViewScale * zoomSize,
-  );
-}
-
-export function setEmotion(emotion: Emotion) {
-  LAppLive2DManager.getInstance().onEmotion(emotion);
+  return new LAppMain(container);
 }

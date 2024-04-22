@@ -11,7 +11,6 @@ import { CubismViewMatrix } from '@framework/math/cubismviewmatrix';
 import * as LAppDefine from './lappdefine';
 import { LAppDelegate } from './lappdelegate';
 import { canvas, gl } from './lappglmanager';
-import { LAppLive2DManager } from './lapplive2dmanager';
 import { LAppPal } from './lapppal';
 import { LAppSprite } from './lappsprite';
 import { TextureInfo } from './lapptexturemanager';
@@ -24,7 +23,9 @@ export class LAppView {
   /**
    * コンストラクタ
    */
-  constructor() {
+  constructor(appDelegate: LAppDelegate) {
+    this.AppDelegate = appDelegate;
+
     this._programId = null;
 
     // タッチ関係のイベント管理
@@ -79,8 +80,11 @@ export class LAppView {
    * 解放する
    */
   public release(): void {
+    // @ts-ignore
     this._viewMatrix = null;
+    // @ts-ignore
     this._touchManager = null;
+    // @ts-ignore
     this._deviceToScreen = null;
 
     gl.deleteProgram(this._programId);
@@ -95,11 +99,11 @@ export class LAppView {
 
     gl.flush();
 
-    const live2DManager: LAppLive2DManager = LAppLive2DManager.getInstance();
+    const live2DManager = this.AppDelegate._live2DManager;
 
-    live2DManager.setViewMatrix(this._viewMatrix);
+    live2DManager?.setViewMatrix(this._viewMatrix);
 
-    live2DManager.onUpdate();
+    live2DManager?.onUpdate();
   }
 
   /**
@@ -108,7 +112,7 @@ export class LAppView {
   public initializeSprite(): void {
     // シェーダーを作成
     if (this._programId == null) {
-      this._programId = LAppDelegate.getInstance().createShader();
+      this._programId = this.AppDelegate.createShader();
     }
   }
 
@@ -140,8 +144,7 @@ export class LAppView {
       pointY * window.devicePixelRatio,
     );
 
-    const live2DManager: LAppLive2DManager = LAppLive2DManager.getInstance();
-    live2DManager.onDrag(viewX, viewY);
+    this.AppDelegate._live2DManager?.onDrag(viewX, viewY);
   }
 
   /**
@@ -151,24 +154,18 @@ export class LAppView {
    * @param pointY スクリーンY座標
    */
   public onTouchesEnded(pointX: number, pointY: number): void {
-    // タッチ終了
-    const live2DManager: LAppLive2DManager = LAppLive2DManager.getInstance();
-    // live2DManager.onDrag(0.0, 0.0);
+    // シングルタップ
+    const x: number = this._deviceToScreen.transformX(
+      this._touchManager.getX(),
+    ); // 論理座標変換した座標を取得。
+    const y: number = this._deviceToScreen.transformY(
+      this._touchManager.getY(),
+    ); // 論理座標変化した座標を取得。
 
-    {
-      // シングルタップ
-      const x: number = this._deviceToScreen.transformX(
-        this._touchManager.getX(),
-      ); // 論理座標変換した座標を取得。
-      const y: number = this._deviceToScreen.transformY(
-        this._touchManager.getY(),
-      ); // 論理座標変化した座標を取得。
-
-      if (LAppDefine.DebugTouchLogEnable) {
-        LAppPal.printMessage(`[APP]touchesEnded x: ${x} y: ${y}`);
-      }
-      live2DManager.onTap(x, y);
+    if (LAppDefine.DebugTouchLogEnable) {
+      LAppPal.printMessage(`[APP]touchesEnded x: ${x} y: ${y}`);
     }
+    this.AppDelegate._live2DManager?.onTap(x, y);
   }
 
   /**
@@ -208,10 +205,12 @@ export class LAppView {
     return this._deviceToScreen.transformY(deviceY);
   }
 
+  AppDelegate: LAppDelegate;
+
   _touchManager: TouchManager; // タッチマネージャー
   _deviceToScreen: CubismMatrix44; // デバイスからスクリーンへの行列
   _viewMatrix: CubismViewMatrix; // viewMatrix
-  _programId: WebGLProgram; // シェーダID
-  _changeModel: boolean; // モデル切り替えフラグ
-  _isClick: boolean; // クリック中
+  _programId: WebGLProgram | null; // シェーダID
+  _changeModel?: boolean; // モデル切り替えフラグ
+  _isClick?: boolean; // クリック中
 }

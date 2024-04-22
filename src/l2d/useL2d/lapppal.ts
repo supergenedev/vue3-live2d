@@ -23,11 +23,11 @@ export class LAppPal {
    */
   public static loadFileAsBytes(
     filePath: string,
-    callback: (arrayBuffer: ArrayBuffer, size: number) => void
+    callback: (arrayBuffer: ArrayBuffer, size: number) => void,
   ): void {
     fetch(filePath)
-      .then(response => response.arrayBuffer())
-      .then(arrayBuffer => callback(arrayBuffer, arrayBuffer.byteLength));
+      .then((response) => response.arrayBuffer())
+      .then((arrayBuffer) => callback(arrayBuffer, arrayBuffer.byteLength));
   }
 
   /**

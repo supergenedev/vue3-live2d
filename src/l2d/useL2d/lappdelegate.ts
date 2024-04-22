@@ -13,9 +13,10 @@ import { LAppPal } from './lapppal';
 import { LAppTextureManager } from './lapptexturemanager';
 import { LAppView } from './lappview';
 import { canvas, gl } from './lappglmanager';
+import { LAppMain } from './lappmain';
 
-export let s_instance: LAppDelegate = null;
-export let frameBuffer: WebGLFramebuffer = null;
+// @ts-ignore
+// export let frameBuffer: WebGLFramebuffer = null;
 
 /**
  * アプリケーションクラス。
@@ -23,35 +24,10 @@ export let frameBuffer: WebGLFramebuffer = null;
  */
 export class LAppDelegate {
   /**
-   * クラスのインスタンス（シングルトン）を返す。
-   * インスタンスが生成されていない場合は内部でインスタンスを生成する。
-   *
-   * @return クラスのインスタンス
-   */
-  public static getInstance(): LAppDelegate {
-    if (s_instance == null) {
-      s_instance = new LAppDelegate();
-    }
-
-    return s_instance;
-  }
-
-  /**
-   * クラスのインスタンス（シングルトン）を解放する。
-   */
-  public static releaseInstance(): void {
-    if (s_instance != null) {
-      s_instance.release();
-    }
-
-    s_instance = null;
-  }
-
-  /**
    * APPに必要な物を初期化する。
    */
-  public initialize(container?: HTMLDivElement): boolean {
-    const targetContainer =  container || document.body
+  public initialize(container: HTMLDivElement): boolean {
+    const targetContainer = container || document.body;
     // キャンバスを DOM に追加
     targetContainer.appendChild(canvas);
 
@@ -62,8 +38,8 @@ export class LAppDelegate {
       canvas.height = LAppDefine.CanvasSize.height;
     }
 
-    if (!frameBuffer) {
-      frameBuffer = gl.getParameter(gl.FRAMEBUFFER_BINDING);
+    if (!this.frameBuffer) {
+      this.frameBuffer = gl.getParameter(gl.FRAMEBUFFER_BINDING);
     }
 
     // 透過設定
@@ -72,18 +48,19 @@ export class LAppDelegate {
 
     const supportTouch: boolean = 'ontouchend' in canvas;
 
-    if (supportTouch) {
-      // タッチ関連コールバック関数登録
-      canvas.addEventListener('touchstart', onTouchBegan, { passive: true });
-      canvas.addEventListener('touchmove', onTouchMoved, { passive: true });
-      canvas.addEventListener('touchend', onTouchEnded, { passive: true });
-      canvas.addEventListener('touchcancel', onTouchCancel, { passive: true });
-    } else {
-      // マウス関連コールバック関数登録
-      canvas.addEventListener('mousedown', onClickBegan, { passive: true });
-      canvas.addEventListener('mousemove', onMouseMoved, { passive: true });
-      canvas.addEventListener('mouseup', onClickEnded, { passive: true });
-    }
+    // TODO: 클래스 내부로 함수 이동후 연결
+    // if (supportTouch) {
+    //   // タッチ関連コールバック関数登録
+    //   canvas.addEventListener('touchstart', onTouchBegan, { passive: true });
+    //   canvas.addEventListener('touchmove', onTouchMoved, { passive: true });
+    //   canvas.addEventListener('touchend', onTouchEnded, { passive: true });
+    //   canvas.addEventListener('touchcancel', onTouchCancel, { passive: true });
+    // } else {
+    //   // マウス関連コールバック関数登録
+    //   canvas.addEventListener('mousedown', onClickBegan, { passive: true });
+    //   canvas.addEventListener('mousemove', onMouseMoved, { passive: true });
+    //   canvas.addEventListener('mouseup', onClickEnded, { passive: true });
+    // }
 
     // AppViewの初期化
     this._view.initialize();
@@ -108,13 +85,15 @@ export class LAppDelegate {
    */
   public release(): void {
     this._textureManager.release();
+    // @ts-ignore
     this._textureManager = null;
 
     this._view.release();
+    // @ts-ignore
     this._view = null;
 
     // リソースを解放
-    LAppLive2DManager.releaseInstance();
+    this._live2DManager?.releaseAllModel();
 
     // Cubism SDKの解放
     CubismFramework.dispose();
@@ -126,11 +105,6 @@ export class LAppDelegate {
   public run(): void {
     // メインループ
     const loop = (): void => {
-      // インスタンスの有無の確認
-      if (s_instance == null) {
-        return;
-      }
-
       // 時間更新
       LAppPal.updateTime();
 
@@ -170,6 +144,7 @@ export class LAppDelegate {
 
     if (vertexShaderId == null) {
       LAppPal.printMessage('failed to create vertexShader');
+      // @ts-ignore
       return null;
     }
 
@@ -192,6 +167,7 @@ export class LAppDelegate {
 
     if (fragmentShaderId == null) {
       LAppPal.printMessage('failed to create fragmentShader');
+      // @ts-ignore
       return null;
     }
 
@@ -208,7 +184,7 @@ export class LAppDelegate {
     gl.compileShader(fragmentShaderId);
 
     // プログラムオブジェクトの作成
-    const programId = gl.createProgram();
+    const programId = gl.createProgram()!;
     gl.attachShader(programId, vertexShaderId);
     gl.attachShader(programId, fragmentShaderId);
 
@@ -237,14 +213,16 @@ export class LAppDelegate {
   /**
    * コンストラクタ
    */
-  constructor() {
+  constructor(appMain: LAppMain) {
+    this.AppMain = appMain;
+
     this._captured = false;
     this._mouseX = 0.0;
     this._mouseY = 0.0;
     this._isEnd = false;
 
     this._cubismOption = new Option();
-    this._view = new LAppView();
+    this._view = new LAppView(this);
     this._textureManager = new LAppTextureManager();
   }
 
@@ -261,7 +239,7 @@ export class LAppDelegate {
     CubismFramework.initialize();
 
     // load model
-    LAppLive2DManager.getInstance();
+    this._live2DManager = new LAppLive2DManager(this);
 
     LAppPal.updateTime();
 
@@ -277,6 +255,8 @@ export class LAppDelegate {
     gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
   }
 
+  AppMain: LAppMain;
+
   _cubismOption: Option; // Cubism SDK Option
   _view: LAppView; // View情報
   _captured: boolean; // クリックしているか
@@ -284,133 +264,137 @@ export class LAppDelegate {
   _mouseY: number; // マウスY座標
   _isEnd: boolean; // APP終了しているか
   _textureManager: LAppTextureManager; // テクスチャマネージャー
+  _live2DManager?: LAppLive2DManager;
+  frameBuffer?: WebGLFramebuffer;
 }
 
-/**
- * クリックしたときに呼ばれる。
- */
-function onClickBegan(e: MouseEvent): void {
-  if (!LAppDelegate.getInstance()._view) {
-    LAppPal.printMessage('view notfound');
-    return;
-  }
-  LAppDelegate.getInstance()._captured = true;
+// TODO: 클래스 내부로 이동
 
-  const posX: number = e.pageX;
-  const posY: number = e.pageY;
+// /**
+//  * クリックしたときに呼ばれる。
+//  */
+// function onClickBegan(e: MouseEvent): void {
+//   if (!LAppDelegate.getInstance()._view) {
+//     LAppPal.printMessage('view notfound');
+//     return;
+//   }
+//   LAppDelegate.getInstance()._captured = true;
 
-  LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
-}
+//   const posX: number = e.pageX;
+//   const posY: number = e.pageY;
 
-/**
- * マウスポインタが動いたら呼ばれる。
- */
-function onMouseMoved(e: MouseEvent): void {
-  if (!LAppDelegate.getInstance()._captured) {
-    return;
-  }
+//   LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
+// }
 
-  if (!LAppDelegate.getInstance()._view) {
-    LAppPal.printMessage('view notfound');
-    return;
-  }
+// /**
+//  * マウスポインタが動いたら呼ばれる。
+//  */
+// function onMouseMoved(e: MouseEvent): void {
+//   if (!LAppDelegate.getInstance()._captured) {
+//     return;
+//   }
 
-  const rect = (e.target as Element).getBoundingClientRect();
-  const posX: number = e.clientX - rect.left;
-  const posY: number = e.clientY - rect.top;
+//   if (!LAppDelegate.getInstance()._view) {
+//     LAppPal.printMessage('view notfound');
+//     return;
+//   }
 
-  LAppDelegate.getInstance()._view.onTouchesMoved(posX, posY);
-}
+//   const rect = (e.target as Element).getBoundingClientRect();
+//   const posX: number = e.clientX - rect.left;
+//   const posY: number = e.clientY - rect.top;
 
-/**
- * クリックが終了したら呼ばれる。
- */
-function onClickEnded(e: MouseEvent): void {
-  LAppDelegate.getInstance()._captured = false;
-  if (!LAppDelegate.getInstance()._view) {
-    LAppPal.printMessage('view notfound');
-    return;
-  }
+//   LAppDelegate.getInstance()._view.onTouchesMoved(posX, posY);
+// }
 
-  const rect = (e.target as Element).getBoundingClientRect();
-  const posX: number = e.clientX - rect.left;
-  const posY: number = e.clientY - rect.top;
+// /**
+//  * クリックが終了したら呼ばれる。
+//  */
+// function onClickEnded(e: MouseEvent): void {
+//   LAppDelegate.getInstance()._captured = false;
+//   if (!LAppDelegate.getInstance()._view) {
+//     LAppPal.printMessage('view notfound');
+//     return;
+//   }
 
-  LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
-}
+//   const rect = (e.target as Element).getBoundingClientRect();
+//   const posX: number = e.clientX - rect.left;
+//   const posY: number = e.clientY - rect.top;
 
-/**
- * タッチしたときに呼ばれる。
- */
-function onTouchBegan(e: TouchEvent): void {
-  if (!LAppDelegate.getInstance()._view) {
-    LAppPal.printMessage('view notfound');
-    return;
-  }
+//   LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
+// }
 
-  LAppDelegate.getInstance()._captured = true;
+// /**
+//  * タッチしたときに呼ばれる。
+//  */
+// function onTouchBegan(e: TouchEvent): void {
+//   if (!LAppDelegate.getInstance()._view) {
+//     LAppPal.printMessage('view notfound');
+//     return;
+//   }
 
-  const posX = e.changedTouches[0].pageX;
-  const posY = e.changedTouches[0].pageY;
+//   LAppDelegate.getInstance()._captured = true;
 
-  LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
-}
+//   const posX = e.changedTouches[0].pageX;
+//   const posY = e.changedTouches[0].pageY;
 
-/**
- * スワイプすると呼ばれる。
- */
-function onTouchMoved(e: TouchEvent): void {
-  if (!LAppDelegate.getInstance()._captured) {
-    return;
-  }
+//   LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
+// }
 
-  if (!LAppDelegate.getInstance()._view) {
-    LAppPal.printMessage('view notfound');
-    return;
-  }
+// /**
+//  * スワイプすると呼ばれる。
+//  */
+// function onTouchMoved(e: TouchEvent): void {
+//   if (!LAppDelegate.getInstance()._captured) {
+//     return;
+//   }
 
-  const rect = (e.target as Element).getBoundingClientRect();
+//   if (!LAppDelegate.getInstance()._view) {
+//     LAppPal.printMessage('view notfound');
+//     return;
+//   }
 
-  const posX = e.changedTouches[0].clientX - rect.left;
-  const posY = e.changedTouches[0].clientY - rect.top;
+//   const rect = (e.target as Element).getBoundingClientRect();
 
-  LAppDelegate.getInstance()._view.onTouchesMoved(posX, posY);
-}
+//   const posX = e.changedTouches[0].clientX - rect.left;
+//   const posY = e.changedTouches[0].clientY - rect.top;
 
-/**
- * タッチが終了したら呼ばれる。
- */
-function onTouchEnded(e: TouchEvent): void {
-  LAppDelegate.getInstance()._captured = false;
+//   LAppDelegate.getInstance()._view.onTouchesMoved(posX, posY);
+// }
 
-  if (!LAppDelegate.getInstance()._view) {
-    LAppPal.printMessage('view notfound');
-    return;
-  }
+// /**
+//  * タッチが終了したら呼ばれる。
+//  */
+// function onTouchEnded(e: TouchEvent): void {
+//   LAppDelegate.getInstance()._captured = false;
 
-  const rect = (e.target as Element).getBoundingClientRect();
+//   if (!LAppDelegate.getInstance()._view) {
+//     LAppPal.printMessage('view notfound');
+//     return;
+//   }
 
-  const posX = e.changedTouches[0].clientX - rect.left;
-  const posY = e.changedTouches[0].clientY - rect.top;
+//   const rect = (e.target as Element).getBoundingClientRect();
 
-  LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
-}
+//   const posX = e.changedTouches[0].clientX - rect.left;
+//   const posY = e.changedTouches[0].clientY - rect.top;
 
-/**
- * タッチがキャンセルされると呼ばれる。
- */
-function onTouchCancel(e: TouchEvent): void {
-  LAppDelegate.getInstance()._captured = false;
+//   LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
+// }
 
-  if (!LAppDelegate.getInstance()._view) {
-    LAppPal.printMessage('view notfound');
-    return;
-  }
+// /**
+//  * タッチがキャンセルされると呼ばれる。
+//  */
+// function onTouchCancel(e: TouchEvent): void {
+//   LAppDelegate.getInstance()._captured = false;
 
-  const rect = (e.target as Element).getBoundingClientRect();
+//   if (!LAppDelegate.getInstance()._view) {
+//     LAppPal.printMessage('view notfound');
+//     return;
+//   }
 
-  const posX = e.changedTouches[0].clientX - rect.left;
-  const posY = e.changedTouches[0].clientY - rect.top;
+//   const rect = (e.target as Element).getBoundingClientRect();
 
-  LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
-}
+//   const posX = e.changedTouches[0].clientX - rect.left;
+//   const posY = e.changedTouches[0].clientY - rect.top;
+
+//   LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
+// }

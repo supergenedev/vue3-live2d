@@ -6,13 +6,13 @@
 import { onBeforeUnmount, ref, watch } from 'vue';
 
 import '../l2d/Core/live2dcubismcore';
-import {
-  initL2d,
-  loadL2dAsset,
-  setZoom,
-  setEmotion,
-  releaseL2d,
-} from '../l2d/useL2d/main';
+// import {
+//   initL2d,
+//   loadL2dAsset,
+//   setZoom,
+//   setEmotion,
+//   releaseL2d,
+// } from '../l2d/useL2d/main';
 
 export interface VueLive2dProps {
   resourcePath: string;
@@ -28,26 +28,25 @@ const containerRef = ref<HTMLDivElement>();
 
 watch(containerRef, (ref) => {
   if (ref) {
-    initL2d(ref);
-
-    loadL2dAsset(props.resourcePath, props.modelDir);
+    // initL2d(ref);
+    // loadL2dAsset(props.resourcePath, props.modelDir);
   }
 });
 
 watch([() => props.resourcePath, () => props.modelDir], () => {
-  loadL2dAsset(props.resourcePath, props.modelDir);
+  // loadL2dAsset(props.resourcePath, props.modelDir);
 });
 
 watch([() => props.zoom], ([zoom]) => {
-  setZoom(zoom);
+  // setZoom(zoom);
 });
 
 onBeforeUnmount(() => {
-  releaseL2d();
+  // releaseL2d();
 });
 
 defineExpose({
-  setEmotion,
+  // setEmotion,
 });
 </script>
 
