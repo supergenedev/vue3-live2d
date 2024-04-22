@@ -196,13 +196,14 @@ export class LAppLive2DManager {
     let modelJsonName: string = ModelDir;
     modelJsonName += '.model3.json';
 
-    this.releaseAllModel();
+    // this.releaseAllModel();
     this._models.pushBack(new LAppModel());
+    const size = this._models.getSize();
     if (ModelDir) {
-      this._models.at(0).loadAssets(modelPath, modelJsonName);
+      this._models.at(size-1).loadAssets(modelPath, modelJsonName);
     } else {
       // model dir이 없으면 zip으로 asset을 로드
-      this._models.at(0).loadZipAssets(ResourcesPath);
+      this._models.at(size-1).loadZipAssets(ResourcesPath);
     }
   }
 
