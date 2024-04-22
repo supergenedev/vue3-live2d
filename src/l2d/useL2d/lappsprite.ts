@@ -26,7 +26,7 @@ export class LAppSprite {
     y: number,
     width: number,
     height: number,
-    textureId: WebGLTexture
+    textureId: WebGLTexture,
   ) {
     this._rect = new Rect();
     this._rect.left = x - width * 0.5;
@@ -104,7 +104,7 @@ export class LAppSprite {
       // uvバッファ、座標初期化
       {
         this._uvArray = new Float32Array([
-          1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0
+          1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
         ]);
 
         // uvバッファを作成
@@ -125,7 +125,7 @@ export class LAppSprite {
           (this._rect.left - maxWidth * 0.5) / (maxWidth * 0.5),
           (this._rect.down - maxHeight * 0.5) / (maxHeight * 0.5),
           (this._rect.right - maxWidth * 0.5) / (maxWidth * 0.5),
-          (this._rect.down - maxHeight * 0.5) / (maxHeight * 0.5)
+          (this._rect.down - maxHeight * 0.5) / (maxHeight * 0.5),
         ]);
 
         // 頂点バッファを作成
@@ -168,7 +168,7 @@ export class LAppSprite {
       gl.TRIANGLES,
       this._indexArray.length,
       gl.UNSIGNED_SHORT,
-      0
+      0,
     );
   }
 

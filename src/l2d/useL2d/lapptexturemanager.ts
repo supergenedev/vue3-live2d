@@ -7,7 +7,7 @@
 
 import { csmVector, iterator } from '@framework/type/csmvector';
 
-import { gl } from './lappglmanager';
+import { LAppDelegate } from './lappdelegate';
 
 /**
  * テクスチャ管理クラス
@@ -17,7 +17,8 @@ export class LAppTextureManager {
   /**
    * コンストラクタ
    */
-  constructor() {
+  constructor(appDelegate: LAppDelegate) {
+    this.AppDelegate = appDelegate;
     this._textures = new csmVector<TextureInfo>();
   }
 
@@ -30,8 +31,10 @@ export class LAppTextureManager {
       ite.notEqual(this._textures.end());
       ite.preIncrement()
     ) {
-      gl.deleteTexture(ite.ptr().id);
+      this.AppDelegate.AppMain.gl.deleteTexture(ite.ptr().id);
     }
+
+    // @ts-ignore
     this._textures = null;
   }
 
@@ -45,7 +48,7 @@ export class LAppTextureManager {
   public createTextureFromPngFile(
     fileName: string,
     usePremultiply: boolean,
-    callback: (textureInfo: TextureInfo) => void
+    callback: (textureInfo: TextureInfo) => void,
   ): void {
     // search loaded texture already
     for (
@@ -63,10 +66,10 @@ export class LAppTextureManager {
         ite.ptr().img = new Image();
         ite
           .ptr()
-          .img.addEventListener('load', (): void => callback(ite.ptr()), {
-            passive: true
+          .img!.addEventListener('load', (): void => callback(ite.ptr()), {
+            passive: true,
           });
-        ite.ptr().img.src = fileName;
+        ite.ptr().img!.src = fileName;
         return;
       }
     }
@@ -76,8 +79,10 @@ export class LAppTextureManager {
     img.addEventListener(
       'load',
       (): void => {
+        const { gl } = this.AppDelegate.AppMain;
+
         // テクスチャオブジェクトの作成
-        const tex: WebGLTexture = gl.createTexture();
+        const tex = gl.createTexture();
 
         // テクスチャを選択
         gl.bindTexture(gl.TEXTURE_2D, tex);
@@ -86,7 +91,7 @@ export class LAppTextureManager {
         gl.texParameteri(
           gl.TEXTURE_2D,
           gl.TEXTURE_MIN_FILTER,
-          gl.LINEAR_MIPMAP_LINEAR
+          gl.LINEAR_MIPMAP_LINEAR,
         );
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 
@@ -102,7 +107,7 @@ export class LAppTextureManager {
           gl.RGBA,
           gl.RGBA,
           gl.UNSIGNED_BYTE,
-          img
+          img,
         );
 
         // ミップマップを生成
@@ -116,7 +121,7 @@ export class LAppTextureManager {
           textureInfo.fileName = fileName;
           textureInfo.width = img.width;
           textureInfo.height = img.height;
-          textureInfo.id = tex;
+          textureInfo.id = tex!;
           textureInfo.img = img;
           textureInfo.usePremultply = usePremultiply;
           this._textures.pushBack(textureInfo);
@@ -124,7 +129,7 @@ export class LAppTextureManager {
 
         callback(textureInfo);
       },
-      { passive: true }
+      { passive: true },
     );
     img.src = fileName;
   }
@@ -136,7 +141,7 @@ export class LAppTextureManager {
    */
   public releaseTextures(): void {
     for (let i = 0; i < this._textures.getSize(); i++) {
-      this._textures.set(i, null);
+      this._textures.set(i, null!);
     }
 
     this._textures.clear();
@@ -154,7 +159,7 @@ export class LAppTextureManager {
         continue;
       }
 
-      this._textures.set(i, null);
+      this._textures.set(i, null!);
       this._textures.remove(i);
       break;
     }
@@ -169,12 +174,14 @@ export class LAppTextureManager {
   public releaseTextureByFilePath(fileName: string): void {
     for (let i = 0; i < this._textures.getSize(); i++) {
       if (this._textures.at(i).fileName == fileName) {
-        this._textures.set(i, null);
+        this._textures.set(i, null!);
         this._textures.remove(i);
         break;
       }
     }
   }
+
+  AppDelegate: LAppDelegate;
 
   _textures: csmVector<TextureInfo>;
 }
@@ -183,10 +190,10 @@ export class LAppTextureManager {
  * 画像情報構造体
  */
 export class TextureInfo {
-  img: HTMLImageElement; // 画像
-  id: WebGLTexture = null; // テクスチャ
+  img?: HTMLImageElement; // 画像
+  id: WebGLTexture | null = null; // テクスチャ
   width = 0; // 横幅
   height = 0; // 高さ
-  usePremultply: boolean; // Premult処理を有効にするか
-  fileName: string; // ファイル名
+  usePremultply?: boolean; // Premult処理を有効にするか
+  fileName?: string; // ファイル名
 }

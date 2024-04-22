@@ -37,8 +37,6 @@ import {
 } from '@framework/utils/cubismdebug';
 
 import * as LAppDefine from './lappdefine';
-// import { frameBuffer, LAppDelegate } from './lappdelegate';
-import { canvas, gl } from './lappglmanager';
 import { LAppPal } from './lapppal';
 import { TextureInfo } from './lapptexturemanager';
 import { LAppWavFileHandler } from './lappwavfilehandler';
@@ -502,7 +500,7 @@ export class LAppModel extends CubismUserModel {
 
         this.createRenderer();
         this.setupTextures();
-        this.getRenderer().startUp(gl);
+        this.getRenderer().startUp(this.AppDelegate.AppMain.gl);
       }
     };
   }
@@ -937,7 +935,7 @@ export class LAppModel extends CubismUserModel {
 
               this.createRenderer();
               this.setupTextures();
-              this.getRenderer().startUp(gl);
+              this.getRenderer().startUp(this.AppDelegate.AppMain.gl);
             }
           } else {
             // loadMotionできなかった場合はモーションの総数がずれるので1つ減らす
@@ -967,6 +965,7 @@ export class LAppModel extends CubismUserModel {
   public doDraw(): void {
     if (this._model == null) return;
 
+    const canvas = this.AppDelegate.AppMain.canvas;
     // キャンバスサイズを渡す
     const viewport: number[] = [0, 0, canvas.width, canvas.height];
 

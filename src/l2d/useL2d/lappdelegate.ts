@@ -12,7 +12,6 @@ import { LAppLive2DManager } from './lapplive2dmanager';
 import { LAppPal } from './lapppal';
 import { LAppTextureManager } from './lapptexturemanager';
 import { LAppView } from './lappview';
-import { canvas, gl } from './lappglmanager';
 import { LAppMain } from './lappmain';
 
 // @ts-ignore
@@ -28,6 +27,9 @@ export class LAppDelegate {
    */
   public initialize(container: HTMLDivElement): boolean {
     const targetContainer = container || document.body;
+
+    const { canvas, gl } = this.AppMain;
+
     // キャンバスを DOM に追加
     targetContainer.appendChild(canvas);
 
@@ -108,6 +110,8 @@ export class LAppDelegate {
       // 時間更新
       LAppPal.updateTime();
 
+      const { gl } = this.AppMain;
+
       // 画面の初期化
       gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
@@ -139,6 +143,8 @@ export class LAppDelegate {
    * シェーダーを登録する。
    */
   public createShader(): WebGLProgram {
+    const { gl } = this.AppMain;
+
     // バーテックスシェーダーのコンパイル
     const vertexShaderId = gl.createShader(gl.VERTEX_SHADER);
 
@@ -223,7 +229,7 @@ export class LAppDelegate {
 
     this._cubismOption = new Option();
     this._view = new LAppView(this);
-    this._textureManager = new LAppTextureManager();
+    this._textureManager = new LAppTextureManager(this);
   }
 
   /**
@@ -250,6 +256,8 @@ export class LAppDelegate {
    * Resize the canvas to fill the screen.
    */
   private _resizeCanvas(): void {
+    const { gl, canvas } = this.AppMain;
+
     canvas.width = canvas.clientWidth * window.devicePixelRatio;
     canvas.height = canvas.clientHeight * window.devicePixelRatio;
     gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);

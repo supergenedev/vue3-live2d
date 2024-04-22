@@ -10,7 +10,6 @@ import { ACubismMotion } from '@framework/motion/acubismmotion';
 import { csmVector } from '@framework/type/csmvector';
 
 import * as LAppDefine from './lappdefine';
-import { canvas } from './lappglmanager';
 import { LAppModel } from './lappmodel';
 import { LAppPal } from './lapppal';
 import { LAppDelegate } from './lappdelegate';
@@ -127,7 +126,7 @@ export class LAppLive2DManager {
    * モデルの更新処理及び描画処理を行う
    */
   public onUpdate(): void {
-    const { width, height } = canvas;
+    const { width, height } = this.AppDelegate.AppMain.canvas;
 
     const modelCount: number = this._models.getSize();
 

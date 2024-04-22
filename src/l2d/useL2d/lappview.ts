@@ -10,7 +10,6 @@ import { CubismViewMatrix } from '@framework/math/cubismviewmatrix';
 
 import * as LAppDefine from './lappdefine';
 import { LAppDelegate } from './lappdelegate';
-import { canvas, gl } from './lappglmanager';
 import { LAppPal } from './lapppal';
 import { LAppSprite } from './lappsprite';
 import { TextureInfo } from './lapptexturemanager';
@@ -42,7 +41,7 @@ export class LAppView {
    * 初期化する。
    */
   public initialize(): void {
-    const { width, height } = canvas;
+    const { width, height } = this.AppDelegate.AppMain.canvas;
 
     const ratio: number = width / height;
     const left: number = -ratio;
@@ -87,7 +86,7 @@ export class LAppView {
     // @ts-ignore
     this._deviceToScreen = null;
 
-    gl.deleteProgram(this._programId);
+    this.AppDelegate.AppMain.gl.deleteProgram(this._programId);
     this._programId = null;
   }
 
@@ -95,9 +94,9 @@ export class LAppView {
    * 描画する。
    */
   public render(): void {
-    gl.useProgram(this._programId);
+    this.AppDelegate.AppMain.gl.useProgram(this._programId);
 
-    gl.flush();
+    this.AppDelegate.AppMain.gl.flush();
 
     const live2DManager = this.AppDelegate._live2DManager;
 
