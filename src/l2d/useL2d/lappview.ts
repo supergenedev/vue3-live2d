@@ -171,11 +171,6 @@ export class LAppView {
       }
       live2DManager.onTap(x, y);
     }
-    (window as any).draggable = {
-      isDragging: false,
-      startX: undefined,
-      startY: undefined
-    };
   }
 
   /**

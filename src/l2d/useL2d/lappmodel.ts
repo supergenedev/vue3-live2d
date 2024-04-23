@@ -71,6 +71,17 @@ enum LoadStep {
   CompleteSetup,
 }
 
+interface Draggable {
+  _isDragging: boolean,
+  _startX: number | undefined,
+  _startY: number | undefined
+}
+
+const defaultDraggable = {
+  _isDragging: false,
+  _startX: undefined,
+  _startY: undefined
+}
 /**
  * ユーザーが実際に使用するモデルの実装クラス<br>
  * モデル生成、機能コンポーネント生成、更新処理とレンダリングの呼び出しを行う。
@@ -1026,6 +1037,28 @@ export class LAppModel extends CubismUserModel {
     }
   }
 
+  public getDragStartPosition() {
+    if(this._draggable._isDragging) {
+      return {
+        x: this._draggable._startX as number,
+        y: this._draggable._startY as number
+      }
+    }
+    throw new Error('This model is not dragging ')
+  }
+
+  public startDrag(startX: number, startY: number) {
+    this._draggable = {
+      _isDragging: true,
+      _startX: startX,
+      _startY: startY
+    }
+  }
+
+  public endDrag() {
+    this._draggable = defaultDraggable;
+  }
+
   /**
    * コンストラクタ
    */
@@ -1077,6 +1110,8 @@ export class LAppModel extends CubismUserModel {
     this._allMotionCount = 0;
     this._wavFileHandler = new LAppWavFileHandler();
     this._consistency = false;
+
+    this._draggable = defaultDraggable;
   }
 
   _zipFile: JSZip | null;
@@ -1108,4 +1143,6 @@ export class LAppModel extends CubismUserModel {
   _allMotionCount: number; // モーション総数
   _wavFileHandler: LAppWavFileHandler; //wavファイルハンドラ
   _consistency: boolean; // MOC3一貫性チェック管理用
+
+  _draggable: Draggable;
 }

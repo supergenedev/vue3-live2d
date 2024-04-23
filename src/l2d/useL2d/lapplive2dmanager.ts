@@ -16,12 +16,6 @@ import { LAppPal } from './lapppal';
 
 export let s_instance: LAppLive2DManager = null;
 
-(window as any).draggable = {
-  isDragging: false,
-  startX: undefined,
-  startY: undefined
-};
-
 const motions = [
   'Abashed',
   'Angry',
@@ -114,18 +108,11 @@ export class LAppLive2DManager {
   public onDrag(hitPointX: number, hitPointY: number, x: number, y: number): void {
     for (let i = 0; i < this._models.getSize(); i++) {
       const model: LAppModel = this.getModel(i);
-
       if (model && this.isModelHitted(i, hitPointX, hitPointY)) {
-        if(!(window as any).draggable.isDragging) {
-          (window as any).draggable = {
-            isDragging: true,
-            startX: model.getModelMatrix().getTranslateX(),
-            startY: model.getModelMatrix().getTranslateY()
-          }
+        if(!model._draggable._isDragging) {
+          model.startDrag(model.getModelMatrix().getTranslateX(), model.getModelMatrix().getTranslateY());
         }
-        const originX = (window as any).draggable.startX // model.getModelMatrix().getTranslateX()
-        const originY = (window as any).draggable.startY // model.getModelMatrix().getTranslateY()
-        debugger
+        const {x: originX, y: originY} = model.getDragStartPosition()
         // drag 시 마우스 위치에 따라 모델이 이동함
         model.getModelMatrix().setPosition(originX + x, originY + y);
         // model.setDragging(x, y);
@@ -149,6 +136,8 @@ export class LAppLive2DManager {
     for (let i = 0; i < this._models.getSize(); i++) {
       const randomIndex = Math.floor(Math.random() * motions.length);
       const randomMotion = motions[randomIndex];
+
+      this._models.at(i).endDrag();
 
       if(this.isModelHitted(i, x, y)) {
         this._models
