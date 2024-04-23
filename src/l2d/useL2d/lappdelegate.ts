@@ -405,25 +405,29 @@ export class LAppDelegateEventHandler extends LAppDelegate {
 
     if (supportTouch) {
       // タッチ関連コールバック関数登録
-      canvas.addEventListener('touchstart', this.onTouchBegan, {
+      canvas.addEventListener('touchstart', this.onTouchBegan.bind(this), {
         passive: true,
       });
-      canvas.addEventListener('touchmove', this.onTouchMoved, {
+      canvas.addEventListener('touchmove', this.onTouchMoved.bind(this), {
         passive: true,
       });
-      canvas.addEventListener('touchend', this.onTouchEnded, { passive: true });
-      canvas.addEventListener('touchcancel', this.onTouchCancel, {
+      canvas.addEventListener('touchend', this.onTouchEnded.bind(this), {
+        passive: true,
+      });
+      canvas.addEventListener('touchcancel', this.onTouchCancel.bind(this), {
         passive: true,
       });
     } else {
       // マウス関連コールバック関数登録
-      canvas.addEventListener('mousedown', this.onClickBegan, {
+      canvas.addEventListener('mousedown', this.onClickBegan.bind(this), {
         passive: true,
       });
-      canvas.addEventListener('mousemove', this.onMouseMoved, {
+      canvas.addEventListener('mousemove', this.onMouseMoved.bind(this), {
         passive: true,
       });
-      canvas.addEventListener('mouseup', this.onClickEnded, { passive: true });
+      canvas.addEventListener('mouseup', this.onClickEnded.bind(this), {
+        passive: true,
+      });
     }
     return super.initialize(container);
   }
