@@ -67,6 +67,9 @@ export class LAppDelegate {
    * 解放する。
    */
   public release(): void {
+    this._animationLoopHandle &&
+      cancelAnimationFrame(this._animationLoopHandle);
+
     this._textureManager.release();
     // @ts-ignore
     this._textureManager = null;
@@ -115,8 +118,11 @@ export class LAppDelegate {
       this._view.render();
 
       // ループのために再帰呼び出し
-      requestAnimationFrame(loop);
+      this._animationLoopHandle = requestAnimationFrame(loop);
     };
+    this._animationLoopHandle &&
+      cancelAnimationFrame(this._animationLoopHandle);
+
     loop();
   }
 
@@ -254,6 +260,8 @@ export class LAppDelegate {
   _isEnd: boolean; // APP終了しているか
   _textureManager: LAppTextureManager; // テクスチャマネージャー
   _live2DManager?: LAppLive2DManager;
+
+  _animationLoopHandle?: number;
   frameBuffer?: WebGLFramebuffer;
 }
 

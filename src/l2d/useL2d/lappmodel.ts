@@ -529,7 +529,7 @@ export class LAppModel extends CubismUserModel {
 
         // ロード完了時に呼び出すコールバック関数
         const onLoad = (textureInfo: TextureInfo): void => {
-          this.getRenderer().bindTexture(modelTextureNumber, textureInfo.id);
+          this.getRenderer().bindTexture(modelTextureNumber, textureInfo.id!);
 
           this._textureCount++;
 

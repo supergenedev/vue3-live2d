@@ -1,4 +1,6 @@
 import { LAppDelegate, LAppDelegateEventHandler } from './lappdelegate';
+import * as LAppDefine from './lappdefine';
+import { Emotion } from './lapplive2dmanager';
 
 export class LAppMain {
   // LAppGlManager의 생성자에서 하던 동작
@@ -22,6 +24,25 @@ export class LAppMain {
     };
   }
 
+  public loadL2dAsset(ResourcesPath: string, ModelDir: string) {
+    this._delegate._live2DManager?.changeScene(ResourcesPath, ModelDir);
+  }
+
+  public setZoom(zoomSize: number) {
+    this._delegate._view._viewMatrix.scale(
+      LAppDefine.ViewScale * zoomSize,
+      LAppDefine.ViewScale * zoomSize,
+    );
+  }
+
+  public setEmotion(emotion: Emotion) {
+    this._delegate._live2DManager?.onEmotion(emotion);
+  }
+
+  public release() {
+    this._delegate.release();
+  }
+
   constructor(container: HTMLDivElement) {
     this.container = container;
     const glInfo = this.initGl();
@@ -31,6 +52,8 @@ export class LAppMain {
 
     this._delegate = new LAppDelegateEventHandler(this);
     this._delegate.initialize(this.container);
+
+    this._delegate.run();
   }
 
   _delegate: LAppDelegate;

@@ -5,14 +5,13 @@
  * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
 
-// import { LAppDelegate } from './lappdelegate';
-// import * as LAppDefine from './lappdefine';
-// import { LAppGlManager } from './lappglmanager';
-// import { Emotion, LAppLive2DManager } from './lapplive2dmanager';
+import { Emotion } from './lapplive2dmanager';
 import { LAppMain } from './lappmain';
 
 let isLoad = document.readyState === 'complete';
 const initL2dResolver: (() => {})[] = [];
+const l2dAppMap = new Map<number, LAppMain>();
+let l2dAppId: number = 1;
 
 window.addEventListener(
   'load',
@@ -27,50 +26,67 @@ window.addEventListener(
   { passive: true },
 );
 
-// TODO: 다시 맞춰야함
-
-// export async function initL2d(container?: HTMLDivElement) {
-//   if (!isLoad) {
-//     await new Promise((resolve) => {
-//       initL2dResolver.push(() => resolve);
-//     });
-//   }
-
-//   if (
-//     !LAppGlManager.getInstance() ||
-//     !LAppDelegate.getInstance().initialize(container)
-//   ) {
-//     return;
-//   }
-
-//   LAppDelegate.getInstance().run();
-// }
-
-// export function releaseL2d() {
-//   LAppDelegate.releaseInstance();
-// }
-
-// export function loadL2dAsset(ResourcesPath: string, ModelDir: string) {
-//   LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir);
-// }
-
-// export function setZoom(zoomSize: number) {
-//   LAppDelegate.getInstance()._view._viewMatrix.scale(
-//     LAppDefine.ViewScale * zoomSize,
-//     LAppDefine.ViewScale * zoomSize,
-//   );
-// }
-
-// export function setEmotion(emotion: Emotion) {
-//   LAppLive2DManager.getInstance().onEmotion(emotion);
-// }
-
 export async function createL2dApp(container: HTMLDivElement) {
+  const newL2dApp = new LAppMain(container);
+
+  l2dAppId += 1;
+  l2dAppMap.set(l2dAppId, newL2dApp);
+
+  return l2dAppId;
+}
+
+export async function initL2d(container: HTMLDivElement) {
   if (!isLoad) {
     await new Promise((resolve) => {
       initL2dResolver.push(() => resolve);
     });
   }
 
-  return new LAppMain(container);
+  const newL2dAppId = createL2dApp(container);
+  return newL2dAppId;
+}
+
+export function releaseL2d(appId: number) {
+  const targetApp = l2dAppMap.get(appId);
+
+  if (!targetApp) {
+    return;
+  }
+
+  targetApp.release();
+  l2dAppMap.delete(appId);
+}
+
+export function loadL2dAsset(
+  appId: number,
+  ResourcesPath: string,
+  ModelDir: string,
+) {
+  const targetApp = l2dAppMap.get(appId);
+
+  if (!targetApp) {
+    return;
+  }
+
+  targetApp.loadL2dAsset(ResourcesPath, ModelDir);
+}
+
+export function setZoom(appId: number, zoomSize: number) {
+  const targetApp = l2dAppMap.get(appId);
+
+  if (!targetApp) {
+    return;
+  }
+
+  targetApp.setZoom(zoomSize);
+}
+
+export function setEmotion(appId: number, emotion: Emotion) {
+  const targetApp = l2dAppMap.get(appId);
+
+  if (!targetApp) {
+    return;
+  }
+
+  targetApp.setEmotion(emotion);
 }

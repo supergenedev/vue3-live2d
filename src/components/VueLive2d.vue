@@ -6,13 +6,13 @@
 import { onBeforeUnmount, ref, watch } from 'vue';
 
 import '../l2d/Core/live2dcubismcore';
-// import {
-//   initL2d,
-//   loadL2dAsset,
-//   setZoom,
-//   setEmotion,
-//   releaseL2d,
-// } from '../l2d/useL2d/main';
+import {
+  initL2d,
+  loadL2dAsset,
+  setZoom,
+  setEmotion,
+  releaseL2d,
+} from '../l2d/useL2d/main';
 
 export interface VueLive2dProps {
   resourcePath: string;
@@ -25,28 +25,37 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
 });
 
 const containerRef = ref<HTMLDivElement>();
+const l2dAppId = ref<number>(-1);
 
 watch(containerRef, (ref) => {
   if (ref) {
-    // initL2d(ref);
-    // loadL2dAsset(props.resourcePath, props.modelDir);
+    initL2d(ref).then((appId) => {
+      l2dAppId.value = appId;
+      loadL2dAsset(l2dAppId.value, props.resourcePath, props.modelDir);
+    });
+  } else {
+    releaseL2d(l2dAppId.value);
   }
 });
 
 watch([() => props.resourcePath, () => props.modelDir], () => {
-  // loadL2dAsset(props.resourcePath, props.modelDir);
+  loadL2dAsset(l2dAppId.value, props.resourcePath, props.modelDir);
 });
 
 watch([() => props.zoom], ([zoom]) => {
-  // setZoom(zoom);
+  setZoom(l2dAppId.value, zoom);
 });
 
 onBeforeUnmount(() => {
-  // releaseL2d();
+  releaseL2d(l2dAppId.value);
 });
 
+function l2dSetEmotion(emotion: Parameters<typeof setEmotion>[1]) {
+  setEmotion(l2dAppId.value, emotion);
+}
+
 defineExpose({
-  // setEmotion,
+  setEmotion: l2dSetEmotion,
 });
 </script>
 
