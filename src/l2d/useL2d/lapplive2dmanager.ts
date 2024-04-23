@@ -87,18 +87,6 @@ export class LAppLive2DManager {
     this._models.clear();
   }
 
-  private isModelHitted(index: number, x: number, y: number) {
-    const dCount = this._models.at(index).getModel().getDrawableCount();
-    for(let j = 0; j < dCount; j++) {
-      const dId = this._models.at(index).getModel().getDrawableId(j);
-      const hitted = this._models.at(index).isHit(dId, x, y);
-      if(hitted) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   /**
    * 画面をドラッグした時の処理
    *
@@ -108,7 +96,7 @@ export class LAppLive2DManager {
   public onDrag(hitPointX: number, hitPointY: number, x: number, y: number): void {
     for (let i = 0; i < this._models.getSize(); i++) {
       const model: LAppModel = this.getModel(i);
-      if (model && this.isModelHitted(i, hitPointX, hitPointY)) {
+      if (model && model.isModelHitted(hitPointX, hitPointY)) {
         if(!model._draggable._isDragging) {
           model.startDrag(model.getModelMatrix().getTranslateX(), model.getModelMatrix().getTranslateY());
         }
@@ -137,12 +125,11 @@ export class LAppLive2DManager {
       const randomIndex = Math.floor(Math.random() * motions.length);
       const randomMotion = motions[randomIndex];
 
-      this._models.at(i).endDrag();
+      const model = this._models.at(i);
+      model.endDrag();
 
-      if(this.isModelHitted(i, x, y)) {
-        this._models
-          .at(i)
-          .startRandomMotion(
+      if(model.isModelHitted(x, y)) {
+        model.startRandomMotion(
             `${randomMotion}.motion3.json`,
             LAppDefine.PriorityNormal,
             this._finishedMotion,
