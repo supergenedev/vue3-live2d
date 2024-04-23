@@ -1,5 +1,13 @@
 <template>
   <div class="vue-live2d-container">
+    <!-- 해당 컴포넌트가 아랫쪽에 있으면 좌표값이 이상하게 들어감 -->
+    <VueLive2d
+      v-if="isShow"
+      ref="l2d"
+      :resource-path="'./l2d/'"
+      :model-dir="modelName"
+      :zoom="zoom"
+    />
     <div>
       <p>Set Model</p>
       <button @click="onToggleVue3L2d">onToggleVue3L2d</button>
@@ -20,13 +28,7 @@
       <button @click="onChangeEmotion('Sad')">Sad</button>
     </div>
     <div style="height: 20px" />
-    <VueLive2d
-      v-if="isShow"
-      ref="l2d"
-      :resource-path="'./l2d/'"
-      :model-dir="modelName"
-      :zoom="zoom"
-    />
+
   </div>
 </template>
 
