@@ -16,6 +16,12 @@ import { LAppPal } from './lapppal';
 
 export let s_instance: LAppLive2DManager = null;
 
+(window as any).draggable = {
+  isDragging: false,
+  startX: undefined,
+  startY: undefined
+};
+
 const motions = [
   'Abashed',
   'Angry',
@@ -105,13 +111,23 @@ export class LAppLive2DManager {
    * @param x 画面のX座標
    * @param y 画面のY座標
    */
-  public onDrag(x: number, y: number): void {
+  public onDrag(hitPointX: number, hitPointY: number, x: number, y: number): void {
     for (let i = 0; i < this._models.getSize(); i++) {
       const model: LAppModel = this.getModel(i);
 
-      if (model && this.isModelHitted(i, x, y)) {
+      if (model && this.isModelHitted(i, hitPointX, hitPointY)) {
+        if(!(window as any).draggable.isDragging) {
+          (window as any).draggable = {
+            isDragging: true,
+            startX: model.getModelMatrix().getTranslateX(),
+            startY: model.getModelMatrix().getTranslateY()
+          }
+        }
+        const originX = (window as any).draggable.startX // model.getModelMatrix().getTranslateX()
+        const originY = (window as any).draggable.startY // model.getModelMatrix().getTranslateY()
+        debugger
         // drag 시 마우스 위치에 따라 모델이 이동함
-        model.getModelMatrix().setPosition(x, y);
+        model.getModelMatrix().setPosition(originX + x, originY + y);
         // model.setDragging(x, y);
       }
     }

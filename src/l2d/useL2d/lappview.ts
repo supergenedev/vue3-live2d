@@ -136,12 +136,14 @@ export class LAppView {
       pointX * window.devicePixelRatio,
       pointY * window.devicePixelRatio,
     );
+    const offsetX = this.transformViewX(this._touchManager.getX()) - this.transformViewX(this._touchManager._startX);
+    const offsetY = this.transformViewY(this._touchManager.getY()) - this.transformViewY(this._touchManager._startY);
 
     const viewX: number = this.transformViewX(this._touchManager.getX());
     const viewY: number = this.transformViewY(this._touchManager.getY());
 
     const live2DManager: LAppLive2DManager = LAppLive2DManager.getInstance();
-    live2DManager.onDrag(viewX, viewY);
+    live2DManager.onDrag(viewX, viewY, offsetX, offsetY);
   }
 
   /**
@@ -169,6 +171,11 @@ export class LAppView {
       }
       live2DManager.onTap(x, y);
     }
+    (window as any).draggable = {
+      isDragging: false,
+      startX: undefined,
+      startY: undefined
+    };
   }
 
   /**
