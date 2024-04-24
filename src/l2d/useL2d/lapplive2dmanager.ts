@@ -93,13 +93,16 @@ export class LAppLive2DManager {
    * @param x 画面のX座標
    * @param y 画面のY座標
    */
-  public onDrag(x: number, y: number): void {
+  public onDrag(hitPointX: number, hitPointY: number, x: number, y: number): void {
     for (let i = 0; i < this._models.getSize(); i++) {
       const model: LAppModel = this.getModel(i);
-
-      if (model && model.isModelHitted(x, y)) {
+      if (model && model.isModelHitted(hitPointX, hitPointY)) {
+        if(!model._draggable) {
+          model.startDrag(model.getModelMatrix().getTranslateX(), model.getModelMatrix().getTranslateY());
+        }
+        const {x: originX, y: originY} = model.getDragStartPosition()
         // drag 시 마우스 위치에 따라 모델이 이동함
-        model.getModelMatrix().setPosition(x, y);
+        model.getModelMatrix().setPosition(originX + x, originY + y);
         // model.setDragging(x, y);
       }
     }
@@ -122,10 +125,11 @@ export class LAppLive2DManager {
       const randomIndex = Math.floor(Math.random() * motions.length);
       const randomMotion = motions[randomIndex];
 
-      if(this._models.at(i).isModelHitted(x, y)) {
-        this._models
-          .at(i)
-          .startRandomMotion(
+      const model = this._models.at(i);
+      model.endDrag();
+
+      if(model.isModelHitted(x, y)) {
+        model.startRandomMotion(
             `${randomMotion}.motion3.json`,
             LAppDefine.PriorityNormal,
             this._finishedMotion,

@@ -1,5 +1,6 @@
 <template>
   <div class="vue-live2d-container">
+
     <div>
       <p>Set Model</p>
       <button @click="onToggleVue3L2d">onToggleVue3L2d</button>

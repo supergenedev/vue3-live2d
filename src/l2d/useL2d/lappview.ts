@@ -132,16 +132,18 @@ export class LAppView {
    * @param pointY スクリーンY座標
    */
   public onTouchesMoved(pointX: number, pointY: number): void {
-    const viewX: number = this.transformViewX(this._touchManager.getX());
-    const viewY: number = this.transformViewY(this._touchManager.getY());
-
     this._touchManager.touchesMoved(
       pointX * window.devicePixelRatio,
       pointY * window.devicePixelRatio,
     );
+    const offsetX = this.transformViewX(this._touchManager.getX()) - this.transformViewX(this._touchManager._startX);
+    const offsetY = this.transformViewY(this._touchManager.getY()) - this.transformViewY(this._touchManager._startY);
+
+    const viewX: number = this.transformViewX(this._touchManager.getX());
+    const viewY: number = this.transformViewY(this._touchManager.getY());
 
     const live2DManager: LAppLive2DManager = LAppLive2DManager.getInstance();
-    live2DManager.onDrag(viewX, viewY);
+    live2DManager.onDrag(viewX, viewY, offsetX, offsetY);
   }
 
   /**

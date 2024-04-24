@@ -71,6 +71,11 @@ enum LoadStep {
   CompleteSetup,
 }
 
+interface Draggable {
+  _startX: number,
+  _startY: number
+}
+
 /**
  * ユーザーが実際に使用するモデルの実装クラス<br>
  * モデル生成、機能コンポーネント生成、更新処理とレンダリングの呼び出しを行う。
@@ -1038,6 +1043,27 @@ export class LAppModel extends CubismUserModel {
     }
   }
 
+  public getDragStartPosition() {
+    if(this._draggable) {
+      return {
+        x: this._draggable._startX,
+        y: this._draggable._startY
+      }
+    }
+    throw new Error('This model is not dragging ')
+  }
+
+  public startDrag(startX: number, startY: number) {
+    this._draggable = {
+      _startX: startX,
+      _startY: startY
+    }
+  }
+
+  public endDrag() {
+    this._draggable = null;
+  }
+
   /**
    * コンストラクタ
    */
@@ -1089,6 +1115,8 @@ export class LAppModel extends CubismUserModel {
     this._allMotionCount = 0;
     this._wavFileHandler = new LAppWavFileHandler();
     this._consistency = false;
+
+    this._draggable = null;
   }
 
   _zipFile: JSZip | null;
@@ -1120,4 +1148,6 @@ export class LAppModel extends CubismUserModel {
   _allMotionCount: number; // モーション総数
   _wavFileHandler: LAppWavFileHandler; //wavファイルハンドラ
   _consistency: boolean; // MOC3一貫性チェック管理用
+
+  _draggable: Draggable | null;
 }
