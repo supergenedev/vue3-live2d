@@ -97,7 +97,7 @@ export class LAppLive2DManager {
     for (let i = 0; i < this._models.getSize(); i++) {
       const model: LAppModel = this.getModel(i);
       if (model && model.isModelHitted(hitPointX, hitPointY)) {
-        if(!model._draggable._isDragging) {
+        if(!model._draggable) {
           model.startDrag(model.getModelMatrix().getTranslateX(), model.getModelMatrix().getTranslateY());
         }
         const {x: originX, y: originY} = model.getDragStartPosition()
