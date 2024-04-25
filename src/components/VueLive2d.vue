@@ -31,10 +31,10 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
 
 const containerRef = ref<HTMLDivElement>();
 
-watch(containerRef, (ref) => {
+watch([() => containerRef.value, () => props.isOuterBackground, () => props.backgroundImage], ([ref, isOuterBackground, backgroundImage]) => {
   if (ref) {
-    if(!props.isOuterBackground) {
-      initL2d(ref, props.backgroundImage);
+    if(!isOuterBackground) {
+      initL2d(ref, backgroundImage);
     } else {
       initL2d(ref);
     }
