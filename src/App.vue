@@ -27,6 +27,7 @@
       :resource-path="'./l2d/'"
       :model-dir="modelName"
       :zoom="zoom"
+      :is-outer-background="false"
       background-image="https://media-prod.al-pha.ai/jhpbv4jwi39f7km6pzhm066152nk"
     />
   </div>

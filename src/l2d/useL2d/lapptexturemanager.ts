@@ -73,6 +73,8 @@ export class LAppTextureManager {
 
     // データのオンロードをトリガーにする
     const img = new Image();
+    img.crossOrigin = "anonymous"; // cross-origin 이미지에 대한 익명 요청 허용
+
     img.addEventListener(
       'load',
       (): void => {
@@ -94,7 +96,6 @@ export class LAppTextureManager {
         if (usePremultiply) {
           gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
         }
-
         // テクスチャにピクセルを書き込む
         gl.texImage2D(
           gl.TEXTURE_2D,

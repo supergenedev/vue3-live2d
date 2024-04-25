@@ -26,6 +26,7 @@ export class LAppView {
    */
   constructor() {
     this._programId = null;
+    this._back = null;
 
     // タッチ関係のイベント管理
     this._touchManager = new TouchManager();
@@ -83,6 +84,9 @@ export class LAppView {
     this._touchManager = null;
     this._deviceToScreen = null;
 
+    this._back?.release();
+    this._back = null;
+
     gl.deleteProgram(this._programId);
     this._programId = null;
   }
@@ -93,6 +97,9 @@ export class LAppView {
   public render(): void {
     gl.useProgram(this._programId);
 
+    if (this._back) {
+      this._back.render(this._programId);
+    }
     gl.flush();
 
     const live2DManager: LAppLive2DManager = LAppLive2DManager.getInstance();
@@ -105,11 +112,38 @@ export class LAppView {
   /**
    * 画像の初期化を行う。
    */
-  public initializeSprite(): void {
+  public initializeSprite(backgroundImage?: string): void {
     // シェーダーを作成
     if (this._programId == null) {
       this._programId = LAppDelegate.getInstance().createShader();
     }
+    if(backgroundImage) {
+      this.setBackgroundImage(backgroundImage);
+    }
+  }
+
+
+  public setBackgroundImage(imageUrl: string) {
+    if(!imageUrl) {
+      return;
+    }
+    const { width, height } = canvas;
+    const textureManager = LAppDelegate.getInstance().getTextureManager();
+
+    const initBackGroundTexture = (textureInfo: TextureInfo): void => {
+      const x: number = width * 0.5;
+      const y: number = height * 0.5;
+
+      const fwidth = textureInfo.width * 2.0;
+      const fheight = height * 0.95;
+      this._back = new LAppSprite(x, y, fwidth, fheight, textureInfo.id);
+    };
+
+    textureManager.createTextureFromPngFile(
+      imageUrl,
+      false,
+      initBackGroundTexture
+    );
   }
 
   /**
@@ -214,6 +248,7 @@ export class LAppView {
   _deviceToScreen: CubismMatrix44; // デバイスからスクリーンへの行列
   _viewMatrix: CubismViewMatrix; // viewMatrix
   _programId: WebGLProgram; // シェーダID
+  _back: LAppSprite | null; // 背景画像
   _changeModel: boolean; // モデル切り替えフラグ
   _isClick: boolean; // クリック中
 }
