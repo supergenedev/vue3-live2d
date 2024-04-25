@@ -27,6 +27,7 @@
       :resource-path="'./l2d/'"
       :model-dir="modelName"
       :zoom="zoom"
+      background-image="https://media-prod.al-pha.ai/jhpbv4jwi39f7km6pzhm066152nk"
     />
   </div>
 </template>
@@ -84,7 +85,7 @@ const VueLive2d = defineAsyncComponent({
 
 <style scoped>
 .vue-live2d-container {
-  width: 500px;
-  height: 500px;
+  width: 300px;
+  height: 800px;
 }
 </style>

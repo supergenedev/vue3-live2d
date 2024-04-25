@@ -1,5 +1,5 @@
 <template>
-  <div ref="containerRef" class="l2d-container"></div>
+  <div ref="containerRef" class="l2d-container" :style="`background-image: url(${backgroundImage})`"></div>
 </template>
 
 <script setup lang="ts">
@@ -18,10 +18,14 @@ export interface VueLive2dProps {
   resourcePath: string;
   modelDir?: string;
   zoom?: number;
+  // isOuterBackground?: boolean;
+  backgroundImage?: string;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
   zoom: 1,
+  // isOuterBackground: true,
+  backgroundImage: '',
 });
 
 const containerRef = ref<HTMLDivElement>();
