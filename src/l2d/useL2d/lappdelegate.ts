@@ -50,7 +50,7 @@ export class LAppDelegate {
   /**
    * APPに必要な物を初期化する。
    */
-  public initialize(container?: HTMLDivElement, backgroundImage?: string): boolean {
+  public initialize(container?: HTMLDivElement): boolean {
     const targetContainer =  container || document.body
     // キャンバスを DOM に追加
     targetContainer.appendChild(canvas);
@@ -89,19 +89,17 @@ export class LAppDelegate {
     this._view.initialize();
 
     // Cubism SDKの初期化
-    this.initializeCubism(backgroundImage);
+    this.initializeCubism();
 
     return true;
   }
 
-  // 현재 미사용 중임
   /**
    * Resize canvas and re-initialize view.
    */
   public onResize(): void {
     this._resizeCanvas();
     this._view.initialize();
-    // onResize or background image 가 변경될 따마다 이거 호출하게 해야 하나?
     this._view.initializeSprite();
   }
 
@@ -253,7 +251,7 @@ export class LAppDelegate {
   /**
    * Cubism SDKの初期化
    */
-  public initializeCubism(backgroundImage?: string): void {
+  public initializeCubism(): void {
     // setup cubism
     this._cubismOption.logFunction = LAppPal.printMessage;
     this._cubismOption.loggingLevel = LAppDefine.CubismLoggingLevel;
@@ -267,7 +265,7 @@ export class LAppDelegate {
 
     LAppPal.updateTime();
 
-    this._view.initializeSprite(backgroundImage);
+    this._view.initializeSprite();
   }
 
   /**

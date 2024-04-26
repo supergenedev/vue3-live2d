@@ -1,6 +1,5 @@
 <template>
-  <div v-if="isOuterBackground" ref="containerRef" class="l2d-container" :style="`background-image: url(${backgroundImage})`"></div>
-  <div v-else ref="containerRef" class="l2d-container"></div>
+  <div ref="containerRef" class="l2d-container" :style="`background-image: url(${backgroundImage})`"></div>
 </template>
 
 <script setup lang="ts">
@@ -19,13 +18,13 @@ export interface VueLive2dProps {
   resourcePath: string;
   modelDir?: string;
   zoom?: number;
-  isOuterBackground?: boolean;
+  // isOuterBackground?: boolean;
   backgroundImage?: string;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
   zoom: 1,
-  isOuterBackground: true,
+  // isOuterBackground: true,
   backgroundImage: '',
 });
 
@@ -33,11 +32,7 @@ const containerRef = ref<HTMLDivElement>();
 
 watch(containerRef, (ref) => {
   if (ref) {
-    if(!props.isOuterBackground) {
-      initL2d(ref, props.backgroundImage);
-    } else {
-      initL2d(ref);
-    }
+    initL2d(ref);
 
     loadL2dAsset(props.resourcePath, props.modelDir);
   }

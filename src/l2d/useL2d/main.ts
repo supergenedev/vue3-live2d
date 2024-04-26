@@ -26,7 +26,7 @@ window.addEventListener(
   { passive: true },
 );
 
-export async function initL2d(container?: HTMLDivElement, backgroundImage?: string) {
+export async function initL2d(container?: HTMLDivElement) {
   if (!isLoad) {
     await new Promise((resolve) => {
       initL2dResolver.push(() => resolve);
@@ -35,7 +35,7 @@ export async function initL2d(container?: HTMLDivElement, backgroundImage?: stri
 
   if (
     !LAppGlManager.getInstance() ||
-    !LAppDelegate.getInstance().initialize(container, backgroundImage)
+    !LAppDelegate.getInstance().initialize(container)
   ) {
     return;
   }
