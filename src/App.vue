@@ -20,6 +20,10 @@
       <button @click="onChangeEmotion('Pleased')">Pleased</button>
       <button @click="onChangeEmotion('Sad')">Sad</button>
     </div>
+    <div>
+      <p>Change Background Image Index</p>
+      <button @click="backgroundImageIndex = (backgroundImageIndex+1) % backgroundImages.length">Current Index : {{ backgroundImageIndex }}</button>
+    </div>
     <div style="height: 20px" />
     <VueLive2d
       v-if="isShow"
@@ -27,6 +31,7 @@
       :resource-path="'./l2d/'"
       :model-dir="modelName"
       :zoom="zoom"
+      :background-image="backgroundImages[backgroundImageIndex]"
     />
   </div>
 </template>
@@ -58,6 +63,13 @@ function onChangeEmotion(_emotion: Emotion) {
   l2d.value?.setEmotion(_emotion);
 }
 
+const backgroundImageIndex = ref(0);
+const backgroundImages = [
+  'https://media-prod.al-pha.ai/4k80c21x216oulokbkgsy5oxrk0v', 
+  'https://media-prod.al-pha.ai/jhpbv4jwi39f7km6pzhm066152nk', 
+  'https://media-prod.al-pha.ai/o6hww867vgp57lyt6zh0oe6nihnv'
+];
+
 const VueLive2d = defineAsyncComponent({
   // 로더 함수
   loader: async () => {
@@ -84,7 +96,7 @@ const VueLive2d = defineAsyncComponent({
 
 <style scoped>
 .vue-live2d-container {
-  width: 500px;
-  height: 500px;
+  width: 300px;
+  height: 800px;
 }
 </style>
