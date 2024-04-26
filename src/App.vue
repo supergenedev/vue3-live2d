@@ -102,7 +102,7 @@ const VueLive2d = defineAsyncComponent({
 
 <style scoped>
 .vue-live2d-container {
-  width: 300px;
-  height: 800px;
+  width: 500px;
+  height: 500px;
 }
 </style>

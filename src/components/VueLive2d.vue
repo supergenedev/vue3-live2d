@@ -26,19 +26,14 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
   zoom: 1,
   isOuterBackground: true,
-  backgroundImage: '',
+  backgroundImage: undefined,
 });
 
 const containerRef = ref<HTMLDivElement>();
 
 watch([() => containerRef.value, () => props.isOuterBackground, () => props.backgroundImage], ([ref, isOuterBackground, backgroundImage]) => {
   if (ref) {
-    if(!isOuterBackground) {
-      initL2d(ref, backgroundImage);
-    } else {
-      initL2d(ref);
-    }
-
+    initL2d(ref, isOuterBackground ? undefined : backgroundImage);
     loadL2dAsset(props.resourcePath, props.modelDir);
   }
 });
