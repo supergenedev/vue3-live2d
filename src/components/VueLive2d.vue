@@ -80,6 +80,7 @@ defineExpose({
   z-index: -1;
   width: 100%;
   height: 100%;
+  background-size: cover;
   background-image: v-bind(backgroundImage);
   transform: v-bind(backgroundScale);
   -webkit-transform: v-bind(backgroundScale);
