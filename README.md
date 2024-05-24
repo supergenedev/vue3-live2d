@@ -22,3 +22,10 @@ import 'vue3-live2d/style.css';
 </script>
 
 ```
+
+## git submodule 로 사용 시, 커밋 최신화 방법
+```
+cd [vue3-live2d 경로]
+git pull origin main
+npm run build
+```
