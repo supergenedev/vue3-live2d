@@ -13,6 +13,12 @@
       <button @click="onChangeZoom(2)">zoom * 2.0</button>
     </div>
     <div>
+      <p>Change BG image Scale</p>
+      <button @click="onBGScale(0.5)">zoom * 0.5</button>
+      <button @click="onBGScale(1)">zoom * 1.0</button>
+      <button @click="onBGScale(2)">zoom * 2.0</button>
+    </div>
+    <div>
       <p>Change Emotion</p>
       <button @click="onChangeEmotion('Abashed')">Abashed</button>
       <button @click="onChangeEmotion('Hate')">Hate</button>
@@ -31,6 +37,7 @@
       :resource-path="'./l2d/'"
       :model-dir="modelName"
       :zoom="zoom"
+      :background-scale="scale"
       :background-image="backgroundImages[backgroundImageIndex]"
     />
   </div>
@@ -57,6 +64,10 @@ function onChangeL2dAsset() {
 const zoom = ref(1.0);
 function onChangeZoom(zoomSize: number) {
   zoom.value = zoomSize;
+}
+const scale = ref(1);
+function onBGScale(scaleSize: number) {
+  scale.value = scaleSize;
 }
 
 function onChangeEmotion(_emotion: Emotion) {

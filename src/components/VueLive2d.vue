@@ -1,9 +1,11 @@
 <template>
-  <div ref="containerRef" class="l2d-container" :style="`background-image: url(${backgroundImage})`"></div>
+  <div ref="containerRef" class="l2d-container">
+    <div class="l2d-background"/>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, ref, watch } from 'vue';
+import { computed, onBeforeUnmount, ref, watch } from 'vue';
 
 import '../l2d/Core/live2dcubismcore';
 import {
@@ -19,12 +21,22 @@ export interface VueLive2dProps {
   modelDir?: string;
   zoom?: number;
   backgroundImage?: string;
+  backgroundScale?: number;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
   zoom: 1,
   backgroundImage: '',
+  backgroundScale: 1
 });
+
+const backgroundImage = computed(()=>{
+  return `url(${props.backgroundImage})` 
+})
+
+const backgroundScale = computed(()=>{
+  return `scale(${props.backgroundScale})`
+})
 
 const containerRef = ref<HTMLDivElement>();
 
@@ -58,5 +70,20 @@ defineExpose({
 .l2d-canvas {
   width: 100%;
   height: 100%;
+}
+.l2d-container {
+  position: relative;
+  overflow: hidden;
+}
+.l2d-background {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: v-bind(backgroundImage);
+  transform: v-bind(backgroundScale);
+  -webkit-transform: v-bind(backgroundScale);
+  -moz-transform: v-bind(backgroundScale);
+  -o-transform: v-bind(backgroundScale);
 }
 </style>
