@@ -146,6 +146,7 @@ export class LAppLive2DManager {
   // 라이브러리에서, 캐릭터에 정의되지 않은 emotion 발생할 경우 자동으로 Idle motion 상태이므로 해당 예외처리는 하지 않음.
   public onEmotion(emotion: Emotion) {
     const isDischarge = emotion === 'Discharge';
+    console.log(`isDischarge: ${isDischarge}, emotion: ${emotion}`);
     for (let i = 0; i < this._models.getSize(); i++) {
       this._models
         .at(i)
