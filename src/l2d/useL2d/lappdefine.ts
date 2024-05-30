@@ -35,7 +35,13 @@ export const PowerImageName = 'CloseNormal.png';
 
 // 外部定義ファイル（json）と合わせる
 export let MotionGroupIdle = 'Calm.motion3.json'; // アイドリング
-export const setMotionGroupIdle = (idleName: IdleEmotion) => MotionGroupIdle = `${idleName}.motion3.json`
+(window as any).MotionGroupIdle = MotionGroupIdle;
+export const setMotionGroupIdle = (idleName: IdleEmotion) => {
+    MotionGroupIdle = `${idleName}.motion3.json`;
+    console.log(`change setMotionGroupIdle : ${MotionGroupIdle}`);
+    (window as any).MotionGroupIdle = MotionGroupIdle;
+}
+
 export const MotionGroupTapBody = 'TapBody'; // 体をタップしたとき
 
 // 外部定義ファイル（json）と合わせる
