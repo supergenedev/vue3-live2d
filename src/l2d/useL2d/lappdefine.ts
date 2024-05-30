@@ -6,6 +6,7 @@
  */
 
 import { LogLevel } from '@framework/live2dcubismframework';
+import { IdleEmotion } from './lapplive2dmanager';
 
 /**
  * Sample Appで使用する定数
@@ -33,7 +34,8 @@ export const ViewLogicalMaxTop = 2.0;
 export const PowerImageName = 'CloseNormal.png';
 
 // 外部定義ファイル（json）と合わせる
-export const MotionGroupIdle = 'Calm.motion3.json'; // アイドリング
+export let MotionGroupIdle = 'Calm.motion3.json'; // アイドリング
+export const setMotionGroupIdle = (idleName: IdleEmotion) => MotionGroupIdle = `${idleName}.motion3.json`
 export const MotionGroupTapBody = 'TapBody'; // 体をタップしたとき
 
 // 外部定義ファイル（json）と合わせる

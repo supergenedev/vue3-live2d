@@ -28,9 +28,9 @@ const motions = [
   'Pleased',
   'Sad',
   'Recharge',
-  'Discharge_idle'
+  'Discharge'
 ] as const;
-export type IdleEmotion = 'Calm';
+export type IdleEmotion = 'Calm' | 'Discharge_idle';
 export type Emotion = (typeof motions)[number] | IdleEmotion;
 
 /**
@@ -110,6 +110,7 @@ export class LAppLive2DManager {
     }
   }
 
+  private _motions = motions.filter(motion => motion !== 'Recharge' && motion !== 'Discharge')
   /**
    * 画面をタップした時の処理
    *
@@ -124,8 +125,8 @@ export class LAppLive2DManager {
     }
 
     for (let i = 0; i < this._models.getSize(); i++) {
-      const randomIndex = Math.floor(Math.random() * motions.length);
-      const randomMotion = motions[randomIndex];
+      const randomIndex = Math.floor(Math.random() * this._motions.length);
+      const randomMotion = this._motions[randomIndex];
 
       const model = this._models.at(i);
       model.endDrag();
@@ -144,13 +145,14 @@ export class LAppLive2DManager {
   // 해당 emotion이 정의되지 않은 캐릭터의 경우, Idle (Calm) motion 이 실행될 수 있도록 예외처리(우선순위를 이용) 해줘야 한다.
   // 라이브러리에서, 캐릭터에 정의되지 않은 emotion 발생할 경우 자동으로 Idle motion 상태이므로 해당 예외처리는 하지 않음.
   public onEmotion(emotion: Emotion) {
+    const isDischarge = emotion === 'Discharge';
     for (let i = 0; i < this._models.getSize(); i++) {
       this._models
         .at(i)
         .startRandomMotion(
           `${emotion}.motion3.json`,
           LAppDefine.PriorityNormal,
-          this._finishedMotion,
+          (self: ACubismMotion) => {this._finishedMotion(self, isDischarge)}
         );
     }
   }
@@ -229,8 +231,13 @@ export class LAppLive2DManager {
   _viewMatrix: CubismMatrix44; // モデル描画に用いるview行列
   _models: csmVector<LAppModel>; // モデルインスタンスのコンテナ
   // モーション再生終了のコールバック関数
-  _finishedMotion = (self: ACubismMotion): void => {
+  _finishedMotion = (self: ACubismMotion, isDischarge?: boolean): void => {
     LAppPal.printMessage('Motion Finished:');
     console.log(self);
+    if(isDischarge) {
+      LAppDefine.setMotionGroupIdle('Discharge_idle');
+      return;
+    }
+    LAppDefine.setMotionGroupIdle('Calm');
   };
 }

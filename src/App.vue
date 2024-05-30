@@ -26,9 +26,7 @@
       <button @click="onChangeEmotion('Pleased')">Pleased</button>
       <button @click="onChangeEmotion('Sad')">Sad</button>
       <button @click="onChangeEmotion('Recharge')">Recharge</button>
-      <button @click="onChangeEmotion('Discharge_idle')">Discharge_idle</button>
-      
-      
+      <button @click="onChangeEmotion('Discharge')">Discharge</button>
     </div>
     <div>
       <p>Change Background Image Index</p>
