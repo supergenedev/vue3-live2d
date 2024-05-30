@@ -25,6 +25,10 @@
       <button @click="onChangeEmotion('Lovestruck')">Lovestruck</button>
       <button @click="onChangeEmotion('Pleased')">Pleased</button>
       <button @click="onChangeEmotion('Sad')">Sad</button>
+      <button @click="onChangeEmotion('Recharge')">Recharge</button>
+      <button @click="onChangeEmotion('Discharge_idle')">Discharge_idle</button>
+      
+      
     </div>
     <div>
       <p>Change Background Image Index</p>
@@ -55,7 +59,7 @@ function onToggleVue3L2d() {
 }
 
 const modelIndex = ref(0);
-const modelNames = ['Mei_2', 'Rinko', 'Ayase'];
+const modelNames = ['Mei', 'Rinko', 'Ayase'];
 const modelName = computed(() => modelNames[modelIndex.value]);
 function onChangeL2dAsset() {
   modelIndex.value = (modelIndex.value + 1) % modelNames.length;

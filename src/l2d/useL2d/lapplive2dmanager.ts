@@ -27,6 +27,8 @@ const motions = [
   'Panicking',
   'Pleased',
   'Sad',
+  'Recharge',
+  'Discharge_idle'
 ] as const;
 export type IdleEmotion = 'Calm';
 export type Emotion = (typeof motions)[number] | IdleEmotion;
