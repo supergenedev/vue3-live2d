@@ -83,6 +83,27 @@
 					"FadeInTime": 0,
 					"FadeOutTime": 0
 				}
+			],
+			"Discharge.motion3.json": [
+				{
+					"File": "Motion/Discharge.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Recharge.motion3.json": [
+				{
+					"File": "Motion/Recharge.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Discharge_idle.motion3.json": [
+				{
+					"File": "Motion/Discharge_idle.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
 			]
 		}
 	},

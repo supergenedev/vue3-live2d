@@ -7,7 +7,7 @@
 		"AreBeziersRestricted": false,
 		"CurveCount": 352,
 		"TotalSegmentCount": 8871,
-		"TotalPointCount": 9225,
+		"TotalPointCount": 9223,
 		"UserDataCount": 0,
 		"TotalUserDataSize": 0
 	},
@@ -18,11 +18,7 @@
 			"Segments": [
 				0,
 				1,
-				1,
-				2.42,
-				1,
-				4.84,
-				1,
+				0,
 				7.27,
 				1
 			]
