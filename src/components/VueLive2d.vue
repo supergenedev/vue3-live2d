@@ -22,12 +22,16 @@ export interface VueLive2dProps {
   zoom?: number;
   backgroundImage?: string;
   backgroundScale?: number;
+  centerX?: number;
+  centerY?: number;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
   zoom: 1,
   backgroundImage: '',
-  backgroundScale: 1
+  backgroundScale: 1,
+  centerX: 0.53,
+  centerY: 0.5
 });
 
 const backgroundImage = computed(()=>{
@@ -52,8 +56,8 @@ watch([() => props.resourcePath, () => props.modelDir], () => {
   loadL2dAsset(props.resourcePath, props.modelDir);
 });
 
-watch([() => props.zoom], ([zoom]) => {
-  setZoom(zoom);
+watch([props.zoom, props.centerX, props.centerY], ([zoom, x, y]) => {
+  setZoom(zoom, x, y);
 });
 
 onBeforeUnmount(() => {

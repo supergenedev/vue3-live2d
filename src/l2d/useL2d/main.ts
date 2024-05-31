@@ -51,11 +51,12 @@ export function loadL2dAsset(ResourcesPath: string, ModelDir: string) {
   LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir);
 }
 
-export function setZoom(zoomSize: number) {
+export function setZoom(zoomSize: number, x: number, y: number) {
   LAppDelegate.getInstance()._view._viewMatrix.scale(
     LAppDefine.ViewScale * zoomSize,
     LAppDefine.ViewScale * zoomSize,
   );
+  LAppLive2DManager.getInstance().makeModelCenter(x, y);
 }
 
 export function setEmotion(emotion: Emotion) {

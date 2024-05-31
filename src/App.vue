@@ -11,6 +11,8 @@
       <button @click="onChangeZoom(0.5)">zoom * 0.5</button>
       <button @click="onChangeZoom(1)">zoom * 1.0</button>
       <button @click="onChangeZoom(2)">zoom * 2.0</button>
+      <button @click="onChangeZoom(2.5)">zoom * 2.5</button>
+      <button @click="onChangeZoom(3.5)">zoom * 3.5</button>
     </div>
     <div>
       <p>Change BG image Scale</p>

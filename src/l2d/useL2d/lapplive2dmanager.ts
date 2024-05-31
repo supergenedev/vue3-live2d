@@ -141,6 +141,12 @@ export class LAppLive2DManager {
     }
   }
 
+  public makeModelCenter(x: number, y: number){
+    for (let i = 0; i < this._models.getSize(); i++) {
+      const matrix = this._models.at(i)?.getModelMatrix();
+      matrix?.setCenterPosition(x, y)
+    }
+  }
   // onEmotion : 감정 변화 발생 시 (from web-socket) 해당 Motion 을 실행시킴
   // 해당 emotion이 정의되지 않은 캐릭터의 경우, Idle (Calm) motion 이 실행될 수 있도록 예외처리(우선순위를 이용) 해줘야 한다.
   // 라이브러리에서, 캐릭터에 정의되지 않은 emotion 발생할 경우 자동으로 Idle motion 상태이므로 해당 예외처리는 하지 않음.
