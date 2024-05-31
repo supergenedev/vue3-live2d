@@ -31,6 +31,11 @@
       <button @click="onChangeEmotion('Discharge')">Discharge</button>
     </div>
     <div>
+      <p>Change Battery</p>
+      <button @click="onChangeBattery(0)">Battery 0</button>
+      <button @click="onChangeBattery(1)">Battery 1</button>
+    </div>
+    <div>
       <p>Change Background Image Index</p>
       <button @click="backgroundImageIndex = (backgroundImageIndex+1) % backgroundImages.length">Current Index : {{ backgroundImageIndex }}</button>
     </div>
@@ -43,6 +48,7 @@
       :zoom="zoom"
       :background-scale="scale"
       :background-image="backgroundImages[backgroundImageIndex]"
+      :battery="battery"
     />
   </div>
 </template>
@@ -78,6 +84,10 @@ function onChangeEmotion(_emotion: Emotion) {
   l2d.value?.setEmotion(_emotion);
 }
 
+const battery = ref(0);
+function onChangeBattery(_battery: number) {
+  battery.value = _battery;
+}
 const backgroundImageIndex = ref(0);
 const backgroundImages = [
   'https://media-prod.al-pha.ai/4k80c21x216oulokbkgsy5oxrk0v', 
