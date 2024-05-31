@@ -200,7 +200,7 @@ export class LAppLive2DManager {
    * シーンを切り替える
    * サンプルアプリケーションではモデルセットの切り替えを行う。
    */
-  public changeScene(ResourcesPath: string, ModelDir: string): void {
+  public changeScene(ResourcesPath: string, ModelDir: string, center?: {x: number, y: number}): void {
     if (LAppDefine.DebugLogEnable) {
       LAppPal.printMessage(`[APP]model change: ${ResourcesPath}/${ModelDir}`);
     }
@@ -211,7 +211,7 @@ export class LAppLive2DManager {
     modelJsonName += '.model3.json';
 
     this.releaseAllModel();
-    this._models.pushBack(new LAppModel());
+    this._models.pushBack(new LAppModel(center));
     if (ModelDir) {
       this._models.at(0).loadAssets(modelPath, modelJsonName);
     } else {

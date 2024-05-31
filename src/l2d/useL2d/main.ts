@@ -47,8 +47,8 @@ export function releaseL2d() {
   LAppDelegate.releaseInstance();
 }
 
-export function loadL2dAsset(ResourcesPath: string, ModelDir: string) {
-  LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir);
+export function loadL2dAsset(ResourcesPath: string, ModelDir: string, center?: {x: number, y: number}) {
+  LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir, {x: 0.53, y: 0.5});
 }
 
 export function setZoom(zoomSize: number, x: number, y: number) {

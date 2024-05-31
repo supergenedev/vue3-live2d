@@ -205,6 +205,11 @@ export class LAppModel extends CubismUserModel {
         })
         .then((arrayBuffer) => {
           this.loadModel(arrayBuffer, this._mocConsistency);
+          if(this._center) {
+            const {x, y} = this._center
+            this._modelMatrix.setCenterPosition(x, y);
+          }
+
           this._state = LoadStep.LoadExpression;
 
           // callback
@@ -1067,7 +1072,7 @@ export class LAppModel extends CubismUserModel {
   /**
    * コンストラクタ
    */
-  public constructor() {
+  public constructor(center?: {x: number, y: number}) {
     super();
 
     this._zipFile = null;
@@ -1117,6 +1122,7 @@ export class LAppModel extends CubismUserModel {
     this._consistency = false;
 
     this._draggable = null;
+    this._center = center;
   }
 
   _zipFile: JSZip | null;
@@ -1150,4 +1156,6 @@ export class LAppModel extends CubismUserModel {
   _consistency: boolean; // MOC3一貫性チェック管理用
 
   _draggable: Draggable | null;
+
+  _center?: {x: number, y: number};
 }

@@ -48,12 +48,12 @@ watch(containerRef, (ref) => {
   if (ref) {
     initL2d(ref);
 
-    loadL2dAsset(props.resourcePath, props.modelDir);
+    loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY});
   }
 });
 
 watch([() => props.resourcePath, () => props.modelDir], () => {
-  loadL2dAsset(props.resourcePath, props.modelDir);
+  loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY});
 });
 
 watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
