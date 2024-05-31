@@ -144,7 +144,7 @@ export class LAppLive2DManager {
   public makeModelCenter(x: number, y: number){
     for (let i = 0; i < this._models.getSize(); i++) {
       const matrix = this._models.at(i)?.getModelMatrix();
-      matrix?.setCenterPosition(x, y)
+      matrix?.setCenterPosition(x, y);
     }
   }
   // onEmotion : 감정 변화 발생 시 (from web-socket) 해당 Motion 을 실행시킴

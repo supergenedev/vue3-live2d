@@ -56,7 +56,7 @@ watch([() => props.resourcePath, () => props.modelDir], () => {
   loadL2dAsset(props.resourcePath, props.modelDir);
 });
 
-watch([props.zoom, props.centerX, props.centerY], ([zoom, x, y]) => {
+watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
   setZoom(zoom, x, y);
 });
 
