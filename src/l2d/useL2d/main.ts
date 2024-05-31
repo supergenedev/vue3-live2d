@@ -62,7 +62,3 @@ export function setZoom(zoomSize: number, x: number, y: number) {
 export function setEmotion(emotion: Emotion) {
   LAppLive2DManager.getInstance().onEmotion(emotion);
 }
-
-export function setMotionGroupIdle(idleEmotion: IdleEmotion) {
-  LAppDefine.setMotionGroupIdle(idleEmotion);
-}
