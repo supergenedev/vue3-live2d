@@ -653,6 +653,10 @@
 			"Name": "face_change"
 		},
 		{
+			"Id": "PartSketch0",
+			"Name": "[ 밑그림 ]"
+		},
+		{
 			"Id": "Part2",
 			"Name": "arm_R"
 		},

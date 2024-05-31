@@ -8,7 +8,7 @@
 import { LAppDelegate } from './lappdelegate';
 import * as LAppDefine from './lappdefine';
 import { LAppGlManager } from './lappglmanager';
-import { Emotion, LAppLive2DManager } from './lapplive2dmanager';
+import { Emotion, IdleEmotion, LAppLive2DManager } from './lapplive2dmanager';
 
 let isLoad = document.readyState === 'complete';
 const initL2dResolver: (() => {})[] = [];
@@ -47,15 +47,16 @@ export function releaseL2d() {
   LAppDelegate.releaseInstance();
 }
 
-export function loadL2dAsset(ResourcesPath: string, ModelDir: string) {
-  LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir);
+export function loadL2dAsset(ResourcesPath: string, ModelDir: string, center?: {x: number, y: number}) {
+  LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir, center);
 }
 
-export function setZoom(zoomSize: number) {
+export function setZoom(zoomSize: number, x: number, y: number) {
   LAppDelegate.getInstance()._view._viewMatrix.scale(
     LAppDefine.ViewScale * zoomSize,
     LAppDefine.ViewScale * zoomSize,
   );
+  LAppLive2DManager.getInstance().makeModelCenter(x, y);
 }
 
 export function setEmotion(emotion: Emotion) {
