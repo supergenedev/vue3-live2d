@@ -700,12 +700,7 @@ export class LAppModel extends CubismUserModel {
   ): CubismMotionQueueEntryHandle {
     if (priority == LAppDefine.PriorityForce) {
       this._motionManager.setReservePriority(priority);
-    } else if (!this._motionManager.reserveMotion(priority)) {
-      if (this._debugMode) {
-        LAppPal.printMessage("[APP]can't start motion.");
-      }
-      return InvalidMotionQueueEntryHandleValue;
-    }
+    } 
 
     const motionFileName = this._modelSetting.getMotionFileName(group, no);
 
