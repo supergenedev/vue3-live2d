@@ -48,6 +48,7 @@
       :zoom="zoom"
       :background-scale="scale"
       :background-image="backgroundImages[backgroundImageIndex]"
+      :idle="idle"
     />
   </div>
 </template>
@@ -82,9 +83,9 @@ function onBGScale(scaleSize: number) {
 function onChangeEmotion(_emotion: Emotion) {
   l2d.value?.setEmotion(_emotion);
 }
-
+const idle = ref<IdleEmotion>('Calm');
 function onChangeIdle(_idle: IdleEmotion) {
-  l2d.value?.setMotionGroupIdle(_idle);
+  idle.value = _idle;
 }
 const backgroundImageIndex = ref(0);
 const backgroundImages = [
