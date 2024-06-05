@@ -25,7 +25,6 @@ export interface VueLive2dProps {
   backgroundScale?: number;
   centerX?: number;
   centerY?: number;
-  battery?: number;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
@@ -34,7 +33,6 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   backgroundScale: 1,
   centerX: 0.53,
   centerY: 0.5,
-  battery: 0
 });
 
 const backgroundImage = computed(()=>{
@@ -69,15 +67,8 @@ onBeforeUnmount(() => {
 
 defineExpose({
   setEmotion,
+  setMotionGroupIdle
 });
-
-watch([()=>props.battery], ([battery]) => {
-  if(battery === 0) {
-    setMotionGroupIdle('Discharge_idle')
-    return;
-  }
-  setMotionGroupIdle('Calm')
-}, {immediate: true})
 </script>
 
 <style>

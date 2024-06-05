@@ -31,9 +31,9 @@
       <button @click="onChangeEmotion('Discharge')">Discharge</button>
     </div>
     <div>
-      <p>Change Battery</p>
-      <button @click="onChangeBattery(0)">Battery 0</button>
-      <button @click="onChangeBattery(1)">Battery 1</button>
+      <p>Change Idle</p>
+      <button @click="onChangeIdle('Discharge_idle')">Discharge_idle</button>
+      <button @click="onChangeIdle('Calm')">Calm</button>
     </div>
     <div>
       <p>Change Background Image Index</p>
@@ -48,14 +48,13 @@
       :zoom="zoom"
       :background-scale="scale"
       :background-image="backgroundImages[backgroundImageIndex]"
-      :battery="battery"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref, shallowRef } from 'vue';
-import { Emotion } from './l2d/useL2d/lapplive2dmanager';
+import { Emotion, IdleEmotion } from './l2d/useL2d/lapplive2dmanager';
 
 const l2d = shallowRef<InstanceType<typeof VueLive2d>>();
 
@@ -84,9 +83,8 @@ function onChangeEmotion(_emotion: Emotion) {
   l2d.value?.setEmotion(_emotion);
 }
 
-const battery = ref(0);
-function onChangeBattery(_battery: number) {
-  battery.value = _battery;
+function onChangeIdle(_idle: IdleEmotion) {
+  l2d.value?.setMotionGroupIdle(_idle);
 }
 const backgroundImageIndex = ref(0);
 const backgroundImages = [
