@@ -14,7 +14,9 @@ import {
   setZoom,
   setEmotion,
   releaseL2d,
+setMotionGroupIdle,
 } from '../l2d/useL2d/main';
+import { IdleEmotion } from 'src/l2d/useL2d/lapplive2dmanager';
 
 export interface VueLive2dProps {
   resourcePath: string;
@@ -24,6 +26,7 @@ export interface VueLive2dProps {
   backgroundScale?: number;
   centerX?: number;
   centerY?: number;
+  idle?: IdleEmotion;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
@@ -31,7 +34,8 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   backgroundImage: '',
   backgroundScale: 1,
   centerX: 0.53,
-  centerY: 0.5
+  centerY: 0.5,
+  idle: 'Calm',
 });
 
 const backgroundImage = computed(()=>{
@@ -60,6 +64,9 @@ watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y
   setZoom(zoom, x, y);
 });
 
+watch([()=>props.idle], ([idle]) => {
+  setMotionGroupIdle(idle);
+})
 onBeforeUnmount(() => {
   releaseL2d();
 });

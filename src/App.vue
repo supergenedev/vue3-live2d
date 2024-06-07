@@ -31,6 +31,11 @@
       <button @click="onChangeEmotion('Discharge')">Discharge</button>
     </div>
     <div>
+      <p>Change Idle</p>
+      <button @click="onChangeIdle('Discharge_idle')">Discharge_idle</button>
+      <button @click="onChangeIdle('Calm')">Calm</button>
+    </div>
+    <div>
       <p>Change Background Image Index</p>
       <button @click="backgroundImageIndex = (backgroundImageIndex+1) % backgroundImages.length">Current Index : {{ backgroundImageIndex }}</button>
     </div>
@@ -43,13 +48,14 @@
       :zoom="zoom"
       :background-scale="scale"
       :background-image="backgroundImages[backgroundImageIndex]"
+      :idle="idle"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref, shallowRef } from 'vue';
-import { Emotion } from './l2d/useL2d/lapplive2dmanager';
+import { Emotion, IdleEmotion } from './l2d/useL2d/lapplive2dmanager';
 
 const l2d = shallowRef<InstanceType<typeof VueLive2d>>();
 
@@ -77,7 +83,10 @@ function onBGScale(scaleSize: number) {
 function onChangeEmotion(_emotion: Emotion) {
   l2d.value?.setEmotion(_emotion);
 }
-
+const idle = ref<IdleEmotion>('Calm');
+function onChangeIdle(_idle: IdleEmotion) {
+  idle.value = _idle;
+}
 const backgroundImageIndex = ref(0);
 const backgroundImages = [
   'https://media-prod.al-pha.ai/4k80c21x216oulokbkgsy5oxrk0v', 
