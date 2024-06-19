@@ -141,6 +141,8 @@ export class LAppModel extends CubismUserModel {
 
         // 結果を保存
         this.setupModel(setting);
+
+        window.parent.postMessage({type: 'l2dModelReady'}, window.location.origin);
       })
       .catch((error) => {
         // model3.json読み込みでエラーが発生した時点で描画は不可能なので、setupせずエラーをcatchして何もしない
