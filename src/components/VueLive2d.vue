@@ -14,7 +14,7 @@ import {
   setZoom,
   setEmotion,
   releaseL2d,
-setMotionGroupIdle,
+  setMotionGroupIdle,
 } from '../l2d/useL2d/main';
 import { IdleEmotion } from 'src/l2d/useL2d/lapplive2dmanager';
 
@@ -27,6 +27,7 @@ export interface VueLive2dProps {
   centerX?: number;
   centerY?: number;
   idle?: IdleEmotion;
+  offDefaultMove?: boolean;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
@@ -36,6 +37,7 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   centerX: 0.53,
   centerY: 0.5,
   idle: 'Calm',
+  offDefaultMove: false
 });
 
 const backgroundImage = computed(()=>{
@@ -52,12 +54,12 @@ watch(containerRef, (ref) => {
   if (ref) {
     initL2d(ref);
 
-    loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY});
+    loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY}, props.offDefaultMove);
   }
 });
 
 watch([() => props.resourcePath, () => props.modelDir], () => {
-  loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY});
+  loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY}, props.offDefaultMove);
 });
 
 watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
