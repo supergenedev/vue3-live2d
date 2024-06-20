@@ -49,6 +49,7 @@
       :background-scale="scale"
       :background-image="backgroundImages[backgroundImageIndex]"
       :idle="idle"
+      :off-default-move="true"
     />
   </div>
 </template>

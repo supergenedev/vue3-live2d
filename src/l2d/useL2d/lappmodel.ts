@@ -627,7 +627,7 @@ export class LAppModel extends CubismUserModel {
 
     // まばたき
     if (!motionUpdated) {
-      if (this._eyeBlink != null) {
+      if (!this._offDefaultMove && this._eyeBlink != null) {
         // メインモーションの更新がないとき
         this._eyeBlink.updateParameters(this._model, deltaTimeSeconds); // 目パチ
       }
@@ -657,7 +657,7 @@ export class LAppModel extends CubismUserModel {
     this._model.addParameterValueById(this._idParamEyeBallY, this._dragY);
 
     // 呼吸など
-    if (this._breath != null) {
+    if (!this._offDefaultMove && this._breath != null) {
       this._breath.updateParameters(this._model, deltaTimeSeconds);
     }
 
@@ -1069,7 +1069,7 @@ export class LAppModel extends CubismUserModel {
   /**
    * コンストラクタ
    */
-  public constructor(center?: {x: number, y: number}) {
+  public constructor(center?: {x: number, y: number}, offDefaultMove?: boolean) {
     super();
 
     this._zipFile = null;
@@ -1120,6 +1120,8 @@ export class LAppModel extends CubismUserModel {
 
     this._draggable = null;
     this._center = center;
+
+    this._offDefaultMove = offDefaultMove;
   }
 
   _zipFile: JSZip | null;
@@ -1155,4 +1157,5 @@ export class LAppModel extends CubismUserModel {
   _draggable: Draggable | null;
 
   _center?: {x: number, y: number};
+  _offDefaultMove?: boolean;
 }
