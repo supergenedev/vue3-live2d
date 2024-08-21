@@ -48,6 +48,7 @@ export function releaseL2d() {
 }
 
 export function loadL2dAsset(ResourcesPath: string, ModelDir: string, center?: {x: number, y: number}, offDefaultMove?: boolean) {
+  console.log('로드로드 이꾸요!!')
   LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir, center, offDefaultMove);
 }
 
