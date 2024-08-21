@@ -63,6 +63,7 @@ watch([() => props.resourcePath, () => props.modelDir], () => {
 });
 
 watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
+  console.log(`zoom: ${zoom} x: ${x} y: ${y}`)
   setZoom(zoom, x, y);
 });
 

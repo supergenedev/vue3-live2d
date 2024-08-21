@@ -36,6 +36,11 @@
       <button @click="onChangeIdle('Calm')">Calm</button>
     </div>
     <div>
+      <p>Change CenterY</p>
+      <button @click="onChangeCenterY(0.2)">Y: 0.2</button>
+      <button @click="onChangeCenterY(0.7)">Y: 0.7</button>
+    </div>
+    <div>
       <p>Change Background Image Index</p>
       <button @click="backgroundImageIndex = (backgroundImageIndex+1) % backgroundImages.length">Current Index : {{ backgroundImageIndex }}</button>
     </div>
@@ -50,12 +55,13 @@
       :background-image="backgroundImages[backgroundImageIndex]"
       :idle="idle"
       :off-default-move="true"
+      :center-y="centerY"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent, ref, shallowRef } from 'vue';
+import { computed, defineAsyncComponent, onMounted, ref, shallowRef } from 'vue';
 import { Emotion, IdleEmotion } from './l2d/useL2d/lapplive2dmanager';
 
 const l2d = shallowRef<InstanceType<typeof VueLive2d>>();
@@ -117,6 +123,14 @@ const VueLive2d = defineAsyncComponent({
   // 시간 초과 시, 에러 컴포넌트가 표시됩니다. 기본값: 무한대
   timeout: 3000,
 });
+
+const centerY = ref(0.5)
+function onChangeCenterY(y:number) {
+  centerY.value=y;
+}
+onMounted(()=>{
+  // onChangeCenterY(0.2)
+})
 </script>
 
 <style scoped>
