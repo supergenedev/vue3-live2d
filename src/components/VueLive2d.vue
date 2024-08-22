@@ -59,12 +59,12 @@ watch(containerRef, (ref) => {
   if (ref) {
     initL2d(ref);
 
-    loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY}, props.offDefaultMove);
+    loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY, zoom: props.zoom}, props.offDefaultMove);
   }
 });
 
 watch([() => props.resourcePath, () => props.modelDir], () => {
-  loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY}, props.offDefaultMove);
+  loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY, zoom: props.zoom}, props.offDefaultMove);
 });
 
 watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
@@ -72,13 +72,13 @@ watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y
   setZoom(zoom, x, y);
 });
 
-watch([() => props.positionScale], ([positionScale]) => {
-  console.log('헤헷1')
-  if(!positionScale) return;
-  console.log('헤헷2')
-  console.log(positionScale)
-  setZoom(positionScale.scale, positionScale.centerX, positionScale.centerY);
-}, {immediate:true, deep:true});
+// watch([() => props.positionScale], ([positionScale]) => {
+//   console.log('헤헷1')
+//   if(!positionScale) return;
+//   console.log('헤헷2')
+//   console.log(positionScale)
+//   setZoom(positionScale.scale, positionScale.centerX, positionScale.centerY);
+// }, {immediate:true, deep:true});
 watch([()=>props.idle], ([idle]) => {
   setMotionGroupIdle(idle);
 })
