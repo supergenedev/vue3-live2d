@@ -76,6 +76,7 @@ watch([() => props.positionScale], ([positionScale]) => {
   console.log('헤헷1')
   if(!positionScale) return;
   console.log('헤헷2')
+  console.log(positionScale)
   setZoom(positionScale.scale, positionScale.centerX, positionScale.centerY);
 }, {immediate:true, deep:true});
 watch([()=>props.idle], ([idle]) => {
