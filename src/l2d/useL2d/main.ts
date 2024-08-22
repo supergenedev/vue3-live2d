@@ -47,8 +47,19 @@ export function releaseL2d() {
   LAppDelegate.releaseInstance();
 }
 
-export function loadL2dAsset(ResourcesPath: string, ModelDir: string, center?: {x: number, y: number}, offDefaultMove?: boolean) {
+export function loadL2dAsset(ResourcesPath: string, ModelDir: string, loadData?: {x: number, y: number, zoom: number}, offDefaultMove?: boolean) {
+  const center = loadData && {
+    x: loadData.x,
+    y: loadData.y
+  };
+
   LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir, center, offDefaultMove);
+  if(loadData) {
+    LAppDelegate.getInstance()._view._viewMatrix.scale(
+      LAppDefine.ViewScale * loadData.zoom,
+      LAppDefine.ViewScale * loadData.zoom,
+    );
+  }
 }
 
 export function setZoom(zoomSize: number, x: number, y: number) {
