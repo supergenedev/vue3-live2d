@@ -77,7 +77,7 @@ watch([() => props.positionScale], ([positionScale]) => {
   if(!positionScale) return;
   console.log('헤헷2')
   setZoom(positionScale.scale, positionScale.centerX, positionScale.centerY);
-}, {deep:true});
+}, {immediate:true, deep:true});
 watch([()=>props.idle], ([idle]) => {
   setMotionGroupIdle(idle);
 })
