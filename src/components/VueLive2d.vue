@@ -28,6 +28,11 @@ export interface VueLive2dProps {
   centerY?: number;
   idle?: IdleEmotion;
   offDefaultMove?: boolean;
+  positionScale?: {
+    scale: number;
+    centerX: number;
+    centerY: number;
+  }
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
@@ -62,11 +67,15 @@ watch([() => props.resourcePath, () => props.modelDir], () => {
   loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY}, props.offDefaultMove);
 });
 
-watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
-  console.log(`zoom: ${zoom} x: ${x} y: ${y}`)
-  setZoom(zoom, x, y);
-});
+// watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
+//   console.log(`zoom: ${zoom} x: ${x} y: ${y}`)
+//   setZoom(zoom, x, y);
+// });
 
+watch([() => props.positionScale], ([positionScale]) => {
+  if(!positionScale) return;
+  setZoom(positionScale.scale, positionScale.centerX, positionScale.centerY);
+}, {deep:true});
 watch([()=>props.idle], ([idle]) => {
   setMotionGroupIdle(idle);
 })

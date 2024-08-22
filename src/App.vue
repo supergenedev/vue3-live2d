@@ -56,6 +56,11 @@
       :idle="idle"
       :off-default-move="true"
       :center-y="centerY"
+      :position-scale="{
+        scale:zoom,
+        centerX: 0.2,
+        centerY
+      }"
     />
   </div>
 </template>
