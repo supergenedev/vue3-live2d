@@ -73,7 +73,9 @@ watch([() => props.resourcePath, () => props.modelDir], () => {
 // });
 
 watch([() => props.positionScale], ([positionScale]) => {
+  console.log('헤헷1')
   if(!positionScale) return;
+  console.log('헤헷2')
   setZoom(positionScale.scale, positionScale.centerX, positionScale.centerY);
 }, {deep:true});
 watch([()=>props.idle], ([idle]) => {
