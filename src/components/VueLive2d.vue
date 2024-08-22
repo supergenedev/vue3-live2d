@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   centerX: 0.53,
   centerY: 0.5,
   idle: 'Calm',
-  offDefaultMove: false
+  offDefaultMove: false,
 });
 
 const backgroundImage = computed(()=>{
@@ -67,10 +67,10 @@ watch([() => props.resourcePath, () => props.modelDir], () => {
   loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY}, props.offDefaultMove);
 });
 
-// watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
-//   console.log(`zoom: ${zoom} x: ${x} y: ${y}`)
-//   setZoom(zoom, x, y);
-// });
+watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
+  console.log(`zoom: ${zoom} x: ${x} y: ${y}`)
+  setZoom(zoom, x, y);
+});
 
 watch([() => props.positionScale], ([positionScale]) => {
   console.log('헤헷1')
