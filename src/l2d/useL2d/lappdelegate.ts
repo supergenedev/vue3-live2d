@@ -50,7 +50,7 @@ export class LAppDelegate {
   /**
    * APPに必要な物を初期化する。
    */
-  public initialize(container?: HTMLDivElement): boolean {
+  public initialize(container?: HTMLDivElement, draggable?: boolean): boolean {
     const targetContainer =  container || document.body
     // キャンバスを DOM に追加
     targetContainer.appendChild(canvas);
@@ -75,13 +75,17 @@ export class LAppDelegate {
     if (supportTouch) {
       // タッチ関連コールバック関数登録
       canvas.addEventListener('touchstart', onTouchBegan, { passive: true });
-      canvas.addEventListener('touchmove', onTouchMoved, { passive: true });
+      if(draggable) {
+        canvas.addEventListener('touchmove', onTouchMoved, { passive: true });
+      }
       canvas.addEventListener('touchend', onTouchEnded, { passive: true });
       canvas.addEventListener('touchcancel', onTouchCancel, { passive: true });
     } else {
       // マウス関連コールバック関数登録
       canvas.addEventListener('mousedown', onClickBegan, { passive: true });
-      canvas.addEventListener('mousemove', onMouseMoved, { passive: true });
+      if(draggable) {
+        canvas.addEventListener('mousemove', onMouseMoved, { passive: true });
+      }
       canvas.addEventListener('mouseup', onClickEnded, { passive: true });
     }
 

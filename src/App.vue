@@ -50,6 +50,7 @@
       :background-image="backgroundImages[backgroundImageIndex]"
       :idle="idle"
       :off-default-move="true"
+      :draggable="false"
     />
   </div>
 </template>
