@@ -12,6 +12,7 @@ import {
   initL2d,
   loadL2dAsset,
   setZoom,
+  setCenter,
   setEmotion,
   releaseL2d,
   setMotionGroupIdle,
@@ -65,7 +66,8 @@ watch([() => props.resourcePath, () => props.modelDir], () => {
 });
 
 watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
-  setZoom(zoom, x, y);
+  setZoom(zoom);
+  setCenter(x, y);
 });
 
 watch([()=>props.idle], ([idle]) => {

@@ -55,18 +55,18 @@ export function loadL2dAsset(ResourcesPath: string, ModelDir: string, loadData?:
 
   LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir, center, offDefaultMove);
   if(loadData) {
-    LAppDelegate.getInstance()._view._viewMatrix.scale(
-      LAppDefine.ViewScale * loadData.zoom,
-      LAppDefine.ViewScale * loadData.zoom,
-    );
+    setZoom(loadData.zoom);
   }
 }
 
-export function setZoom(zoomSize: number, x: number, y: number) {
+export function setZoom(zoomSize: number) {
   LAppDelegate.getInstance()._view._viewMatrix.scale(
     LAppDefine.ViewScale * zoomSize,
     LAppDefine.ViewScale * zoomSize,
   );
+}
+
+export function setCenter(x: number, y: number) {
   LAppLive2DManager.getInstance().makeModelCenter(x, y);
 }
 
