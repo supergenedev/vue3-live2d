@@ -26,7 +26,7 @@ window.addEventListener(
   { passive: true },
 );
 
-export async function initL2d(container?: HTMLDivElement) {
+export async function initL2d(container?: HTMLDivElement, draggable?: boolean) {
   if (!isLoad) {
     await new Promise((resolve) => {
       initL2dResolver.push(() => resolve);
@@ -35,7 +35,7 @@ export async function initL2d(container?: HTMLDivElement) {
 
   if (
     !LAppGlManager.getInstance() ||
-    !LAppDelegate.getInstance().initialize(container)
+    !LAppDelegate.getInstance().initialize(container, draggable)
   ) {
     return;
   }
@@ -47,15 +47,26 @@ export function releaseL2d() {
   LAppDelegate.releaseInstance();
 }
 
-export function loadL2dAsset(ResourcesPath: string, ModelDir: string, center?: {x: number, y: number}, offDefaultMove?: boolean) {
+export function loadL2dAsset(ResourcesPath: string, ModelDir: string, loadData?: {x: number, y: number, zoom: number}, offDefaultMove?: boolean) {
+  const center = loadData && {
+    x: loadData.x,
+    y: loadData.y
+  };
+
   LAppLive2DManager.getInstance().changeScene(ResourcesPath, ModelDir, center, offDefaultMove);
+  if(loadData) {
+    setZoom(loadData.zoom);
+  }
 }
 
-export function setZoom(zoomSize: number, x: number, y: number) {
+export function setZoom(zoomSize: number) {
   LAppDelegate.getInstance()._view._viewMatrix.scale(
     LAppDefine.ViewScale * zoomSize,
     LAppDefine.ViewScale * zoomSize,
   );
+}
+
+export function setCenter(x: number, y: number) {
   LAppLive2DManager.getInstance().makeModelCenter(x, y);
 }
 

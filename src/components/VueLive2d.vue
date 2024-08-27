@@ -12,6 +12,7 @@ import {
   initL2d,
   loadL2dAsset,
   setZoom,
+  setCenter,
   setEmotion,
   releaseL2d,
   setMotionGroupIdle,
@@ -28,6 +29,7 @@ export interface VueLive2dProps {
   centerY?: number;
   idle?: IdleEmotion;
   offDefaultMove?: boolean;
+  draggable?: boolean;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
@@ -37,7 +39,8 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   centerX: 0.53,
   centerY: 0.5,
   idle: 'Calm',
-  offDefaultMove: false
+  offDefaultMove: false,
+  draggable: true
 });
 
 const backgroundImage = computed(()=>{
@@ -52,18 +55,19 @@ const containerRef = ref<HTMLDivElement>();
 
 watch(containerRef, (ref) => {
   if (ref) {
-    initL2d(ref);
+    initL2d(ref, props.draggable);
 
-    loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY}, props.offDefaultMove);
+    loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY, zoom: props.zoom}, props.offDefaultMove);
   }
 });
 
 watch([() => props.resourcePath, () => props.modelDir], () => {
-  loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY}, props.offDefaultMove);
+  loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY, zoom: props.zoom}, props.offDefaultMove);
 });
 
 watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
-  setZoom(zoom, x, y);
+  setZoom(zoom);
+  setCenter(x, y);
 });
 
 watch([()=>props.idle], ([idle]) => {
