@@ -81,6 +81,11 @@ interface Draggable {
  * モデル生成、機能コンポーネント生成、更新処理とレンダリングの呼び出しを行う。
  */
 export class LAppModel extends CubismUserModel {
+  private _mouthTimeSeconds = 0;
+  private _isMouthMovementEnable = false;
+  public toggleLipSync(state: boolean) {
+    this._isMouthMovementEnable = state;
+  }
   private getFetch() {
     if (this._zipFile) {
       return this.fetchZipFile.bind(this);
@@ -185,6 +190,7 @@ export class LAppModel extends CubismUserModel {
    * @param setting ICubismModelSettingのインスタンス
    */
   private setupModel(setting: ICubismModelSetting): void {
+    this._mouthTimeSeconds = 0;
     this._updating = true;
     this._initialized = false;
 
@@ -667,13 +673,19 @@ export class LAppModel extends CubismUserModel {
     }
 
     // リップシンクの設定
-    if (this._lipsync) {
-      let value = 0.0; // リアルタイムでリップシンクを行う場合、システムから音量を取得して、0~1の範囲で値を入力します。
-
-      this._wavFileHandler.update(deltaTimeSeconds);
-      value = this._wavFileHandler.getRms();
-
-      for (let i = 0; i < this._lipSyncIds.getSize(); ++i) {
+    if (this._lipsync && this._isMouthMovementEnable) {      
+      const deltaTimeSeconds = LAppPal.getDeltaTime();
+      this._mouthTimeSeconds += deltaTimeSeconds;//_mouthTimeSecondsを更新
+      let value: number;
+      const cycleTime = ((this._mouthTimeSeconds % 0.3) + 0.3) % 0.3;;
+      
+      if (cycleTime < 0.15) {
+        value = cycleTime / 0.15;
+      }else{
+        value = (0.3 - cycleTime) / 0.15;
+      }
+      value = Math.round(value * 10) / 10.0;
+      for (let i = 0; i < this._lipSyncIds.getSize(); ++i){
         this._model.addParameterValueById(this._lipSyncIds.at(i), value, 0.8);
       }
     }

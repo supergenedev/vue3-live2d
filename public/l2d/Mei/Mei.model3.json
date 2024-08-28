@@ -3,7 +3,7 @@
 	"FileReferences": {
 		"Moc": "Mei.moc3",
 		"Textures": [
-			"Mei.4096/texture_00.png"
+			"Mei.2048/texture_00.png"
 		],
 		"Physics": "Mei.physics3.json",
 		"DisplayInfo": "Mei.cdi3.json",
@@ -32,6 +32,20 @@
 			"Calm.motion3.json": [
 				{
 					"File": "Motion/Calm.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Discharge.motion3.json": [
+				{
+					"File": "Motion/Discharge.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Discharge_idle.motion3.json": [
+				{
+					"File": "Motion/Discharge_idle.motion3.json",
 					"FadeInTime": 0,
 					"FadeOutTime": 0
 				}
@@ -78,20 +92,6 @@
 					"FadeOutTime": 0
 				}
 			],
-			"Sad.motion3.json": [
-				{
-					"File": "Motion/Sad.motion3.json",
-					"FadeInTime": 0,
-					"FadeOutTime": 0
-				}
-			],
-			"Discharge.motion3.json": [
-				{
-					"File": "Motion/Discharge.motion3.json",
-					"FadeInTime": 0,
-					"FadeOutTime": 0
-				}
-			],
 			"Recharge.motion3.json": [
 				{
 					"File": "Motion/Recharge.motion3.json",
@@ -99,9 +99,16 @@
 					"FadeOutTime": 0
 				}
 			],
-			"Discharge_idle.motion3.json": [
+			"Sad.motion3.json": [
 				{
-					"File": "Motion/Discharge_idle.motion3.json",
+					"File": "Motion/Sad.motion3.json",
+					"FadeInTime": 0,
+					"FadeOutTime": 0
+				}
+			],
+			"Surprised.motion3.json": [
+				{
+					"File": "Motion/Surprised.motion3.json",
 					"FadeInTime": 0,
 					"FadeOutTime": 0
 				}
@@ -120,17 +127,10 @@
 		{
 			"Target": "Parameter",
 			"Name": "LipSync",
-			"Ids": []
+			"Ids": [
+				"ParamMouthOpenY"
+			]
 		}
 	],
-	"HitAreas": [
-		{
-			"Id": "HitArea_Head",
-			"Name": ""
-		},
-		{
-			"Id": "HitArea_Body",
-			"Name": ""
-		}
-	]
+	"HitAreas": []
 }
