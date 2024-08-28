@@ -42,7 +42,7 @@
     <div>
       <p>Toggle Lip Sync</p>
       <button @click="toggleLipSync">
-        {{ lipSync ? 'Start LipSync' : 'Stop LipSync' }}
+        {{ lipSync ? 'Stop LipSync' : 'Start LipSync' }}
       </button>
     </div>
     <div style="height: 20px" />
