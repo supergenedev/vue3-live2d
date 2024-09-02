@@ -147,7 +147,7 @@ export class LAppModel extends CubismUserModel {
         // 結果を保存
         this.setupModel(setting);
 
-        window.parent.postMessage({ type: 'l2dModelReady' }, window.location.origin);
+        window.parent.postMessage({type: 'l2dModelReady'}, window.location.origin);
       })
       .catch((error) => {
         // model3.json読み込みでエラーが発生した時点で描画は不可能なので、setupせずエラーをcatchして何もしない
@@ -213,8 +213,8 @@ export class LAppModel extends CubismUserModel {
         })
         .then((arrayBuffer) => {
           this.loadModel(arrayBuffer, this._mocConsistency);
-          if (this._center) {
-            const { x, y } = this._center
+          if(this._center) {
+            const {x, y} = this._center
             this._modelMatrix.setCenterPosition(x, y);
           }
 
@@ -673,31 +673,19 @@ export class LAppModel extends CubismUserModel {
     }
 
     // リップシンクの設定
-    // AS-IS
-    // if (this._lipsync) {
-    //   let value = 0.0; // リアルタイムでリップシンクを行う場合、システムから音量を取得して、0~1の範囲で値を入力します。
-
-    //   this._wavFileHandler.update(deltaTimeSeconds);
-    //   value = this._wavFileHandler.getRms();
-
-    //   for (let i = 0; i < this._lipSyncIds.getSize(); ++i) {
-    //     this._model.addParameterValueById(this._lipSyncIds.at(i), value, 0.8);
-    //   }
-    // }
-    // AOi 캐릭터의 입모양과 실제 TTS 음성을 비교해 가며 맞춘 립싱크 속도 값 계산 로직
-    if (this._lipsync && this._isMouthMovementEnable) {
+    if (this._lipsync && this._isMouthMovementEnable) {      
       const deltaTimeSeconds = LAppPal.getDeltaTime();
       this._mouthTimeSeconds += deltaTimeSeconds;//_mouthTimeSecondsを更新
       let value: number;
       const cycleTime = ((this._mouthTimeSeconds % 0.3) + 0.3) % 0.3;;
-
+      
       if (cycleTime < 0.15) {
         value = cycleTime / 0.15;
-      } else {
+      }else{
         value = (0.3 - cycleTime) / 0.15;
       }
       value = Math.round(value * 10) / 10.0;
-      for (let i = 0; i < this._lipSyncIds.getSize(); ++i) {
+      for (let i = 0; i < this._lipSyncIds.getSize(); ++i){
         this._model.addParameterValueById(this._lipSyncIds.at(i), value, 0.8);
       }
     }
@@ -726,7 +714,7 @@ export class LAppModel extends CubismUserModel {
   ): CubismMotionQueueEntryHandle {
     if (priority == LAppDefine.PriorityForce) {
       this._motionManager.setReservePriority(priority);
-    }
+    } 
 
     const motionFileName = this._modelSetting.getMotionFileName(group, no);
 
@@ -874,10 +862,10 @@ export class LAppModel extends CubismUserModel {
 
   public isModelHitted(x: number, y: number) {
     const dCount = this.getModel().getDrawableCount();
-    for (let j = 0; j < dCount; j++) {
+    for(let j = 0; j < dCount; j++) {
       const dId = this.getModel().getDrawableId(j);
       const hitted = this.isHit(dId, x, y);
-      if (hitted) {
+      if(hitted) {
         return true;
       }
     }
@@ -1070,7 +1058,7 @@ export class LAppModel extends CubismUserModel {
   }
 
   public getDragStartPosition() {
-    if (this._draggable) {
+    if(this._draggable) {
       return {
         x: this._draggable._startX,
         y: this._draggable._startY
@@ -1093,7 +1081,7 @@ export class LAppModel extends CubismUserModel {
   /**
    * コンストラクタ
    */
-  public constructor(center?: { x: number, y: number }, offDefaultMove?: boolean) {
+  public constructor(center?: {x: number, y: number}, offDefaultMove?: boolean) {
     super();
 
     this._zipFile = null;
@@ -1180,6 +1168,6 @@ export class LAppModel extends CubismUserModel {
 
   _draggable: Draggable | null;
 
-  _center?: { x: number, y: number };
+  _center?: {x: number, y: number};
   _offDefaultMove?: boolean;
 }
