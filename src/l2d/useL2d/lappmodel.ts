@@ -673,6 +673,18 @@ export class LAppModel extends CubismUserModel {
     }
 
     // リップシンクの設定
+    // AS-IS
+    // if (this._lipsync) {
+    //   let value = 0.0; // リアルタイムでリップシンクを行う場合、システムから音量を取得して、0~1の範囲で値を入力します。
+
+    //   this._wavFileHandler.update(deltaTimeSeconds);
+    //   value = this._wavFileHandler.getRms();
+
+    //   for (let i = 0; i < this._lipSyncIds.getSize(); ++i) {
+    //     this._model.addParameterValueById(this._lipSyncIds.at(i), value, 0.8);
+    //   }
+    // }
+    // AOi 캐릭터의 입모양과 실제 TTS 음성을 비교해 가며 맞춘 립싱크 속도 값 계산 로직
     if (this._lipsync && this._isMouthMovementEnable) {      
       const deltaTimeSeconds = LAppPal.getDeltaTime();
       this._mouthTimeSeconds += deltaTimeSeconds;//_mouthTimeSecondsを更新
