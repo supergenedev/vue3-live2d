@@ -74,7 +74,7 @@ function onToggleVue3L2d() {
 }
 
 const modelIndex = ref(0);
-const modelNames = ['Mei', 'Rinko', 'Ayase'];
+const modelNames = ['Mei', 'Rinko', 'Ayase', 'Gumi'];
 const modelName = computed(() => modelNames[modelIndex.value]);
 function onChangeL2dAsset() {
   modelIndex.value = (modelIndex.value + 1) % modelNames.length;

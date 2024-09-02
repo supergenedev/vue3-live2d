@@ -5,9 +5,9 @@
 		"Fps": 30.0,
 		"Loop": true,
 		"AreBeziersRestricted": false,
-		"CurveCount": 117,
-		"TotalSegmentCount": 606,
-		"TotalPointCount": 1935,
+		"CurveCount": 118,
+		"TotalSegmentCount": 607,
+		"TotalPointCount": 1937,
 		"UserDataCount": 0,
 		"TotalUserDataSize": 0
 	},
@@ -2352,6 +2352,17 @@
 				-60,
 				5.867,
 				-60
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamMouthOpenY",
+			"Segments": [
+				0,
+				0,
+				0,
+				5.867,
+				0
 			]
 		},
 		{
