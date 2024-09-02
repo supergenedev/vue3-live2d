@@ -1,0 +1,1237 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "각도 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "각도 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "각도 Z"
+		},
+		{
+			"Id": "Paramdark",
+			"GroupId": "",
+			"Name": "어둠"
+		},
+		{
+			"Id": "Paramfaceglow",
+			"GroupId": "",
+			"Name": "홍조"
+		},
+		{
+			"Id": "Paramenjoytouch",
+			"GroupId": "",
+			"Name": "장난끼볼터치"
+		},
+		{
+			"Id": "Paramfacebuu",
+			"GroupId": "",
+			"Name": "얼굴뿌우"
+		},
+		{
+			"Id": "Parammetalout",
+			"GroupId": "",
+			"Name": "멘탈아웃"
+		},
+		{
+			"Id": "Paramstarnec",
+			"GroupId": "",
+			"Name": "별목걸이"
+		},
+		{
+			"Id": "Parameyecrys",
+			"GroupId": "",
+			"Name": "눈물R"
+		},
+		{
+			"Id": "ParameyecryR",
+			"GroupId": "",
+			"Name": "눈물_눈R"
+		},
+		{
+			"Id": "ParameyebubbleR1",
+			"GroupId": "",
+			"Name": "눈물_눈물덩이R1"
+		},
+		{
+			"Id": "ParameyebubbleR_move1",
+			"GroupId": "",
+			"Name": "눈물_눈물덩이R_move1"
+		},
+		{
+			"Id": "Parameyecry_line1",
+			"GroupId": "",
+			"Name": "눈물_01_line1"
+		},
+		{
+			"Id": "ParameyebubbleR2",
+			"GroupId": "",
+			"Name": "눈물_눈물덩이R2"
+		},
+		{
+			"Id": "ParameyebubbleR_move2",
+			"GroupId": "",
+			"Name": "눈물_눈물덩이R_move2"
+		},
+		{
+			"Id": "Parameyecry_line2",
+			"GroupId": "",
+			"Name": "눈물_01_line2"
+		},
+		{
+			"Id": "ParameyebubbleR3",
+			"GroupId": "",
+			"Name": "눈물_눈물덩이R3"
+		},
+		{
+			"Id": "ParameyebubbleR_move3",
+			"GroupId": "",
+			"Name": "눈물_눈물덩이R_move3"
+		},
+		{
+			"Id": "Parameyecry_line3",
+			"GroupId": "",
+			"Name": "눈물_01_line3"
+		},
+		{
+			"Id": "Parameyecrygroup",
+			"GroupId": "",
+			"Name": "눈물_집단"
+		},
+		{
+			"Id": "Paramring_X",
+			"GroupId": "",
+			"Name": "링_X"
+		},
+		{
+			"Id": "Paramring_Y",
+			"GroupId": "",
+			"Name": "링_Y"
+		},
+		{
+			"Id": "Paramringangle",
+			"GroupId": "",
+			"Name": "링_각도"
+		},
+		{
+			"Id": "Paramringsize",
+			"GroupId": "",
+			"Name": "링_크기"
+		},
+		{
+			"Id": "Paramringrot",
+			"GroupId": "",
+			"Name": "링_회전"
+		},
+		{
+			"Id": "Paramringalpha",
+			"GroupId": "",
+			"Name": "링_알파"
+		},
+		{
+			"Id": "Paramringcolor_red",
+			"GroupId": "",
+			"Name": "링컬러_레드"
+		},
+		{
+			"Id": "Paramringcolor_blue",
+			"GroupId": "",
+			"Name": "링컬러_블루"
+		},
+		{
+			"Id": "Paramringcolor_blue2",
+			"GroupId": "",
+			"Name": "링컬러_퍼플"
+		},
+		{
+			"Id": "Paramringcolor_pink",
+			"GroupId": "",
+			"Name": "링컬러_핑크"
+		},
+		{
+			"Id": "Paramringcolor_colorful",
+			"GroupId": "",
+			"Name": "링컬러_컬러풀"
+		},
+		{
+			"Id": "Paramchanering",
+			"GroupId": "",
+			"Name": "링변환"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "왼쪽 눈 깜빡임"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "",
+			"Name": "왼쪽 눈 미소"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "오른쪽 눈 깜빡임"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "",
+			"Name": "오른쪽 눈 미소"
+		},
+		{
+			"Id": "Paramsmilegum_eyechange",
+			"GroupId": "",
+			"Name": "스마일군_눈변형"
+		},
+		{
+			"Id": "Paramsmilegun_mouth_change",
+			"GroupId": "",
+			"Name": "스마일군_입변형"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "눈 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "눈 Y"
+		},
+		{
+			"Id": "Parameyesize",
+			"GroupId": "",
+			"Name": "눈 크기"
+		},
+		{
+			"Id": "Parameyeangry",
+			"GroupId": "",
+			"Name": "눈 화남"
+		},
+		{
+			"Id": "Parameyeballsize",
+			"GroupId": "",
+			"Name": "눈동자 크기"
+		},
+		{
+			"Id": "Parameyeheart",
+			"GroupId": "",
+			"Name": "하트눈"
+		},
+		{
+			"Id": "Parameyegag",
+			"GroupId": "",
+			"Name": "개그눈"
+		},
+		{
+			"Id": "Parameyeshake1",
+			"GroupId": "",
+			"Name": "눈동자 흔들림1"
+		},
+		{
+			"Id": "Parameyeshake2",
+			"GroupId": "",
+			"Name": "눈동자 흔들림2"
+		},
+		{
+			"Id": "Parameyeshake3",
+			"GroupId": "",
+			"Name": "눈동자 흔들림3"
+		},
+		{
+			"Id": "Parameyeshake4",
+			"GroupId": "",
+			"Name": "눈동자 흔들림4"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "왼쪽 눈썹 위아래로"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "오른쪽 눈썹 위아래로"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "",
+			"Name": "왼쪽 눈썹 변형"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "",
+			"Name": "오른쪽 눈썹 변형"
+		},
+		{
+			"Id": "ParamBrowLForm_change2",
+			"GroupId": "",
+			"Name": "왼쪽 눈썹 변경2"
+		},
+		{
+			"Id": "ParamBrowLForm_change3",
+			"GroupId": "",
+			"Name": "오른쪽 눈썹 변경2"
+		},
+		{
+			"Id": "Parammouthchange",
+			"GroupId": "",
+			"Name": "입교체"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "입 변형"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "입 여닫기"
+		},
+		{
+			"Id": "ParamCheek",
+			"GroupId": "",
+			"Name": "수줍음"
+		},
+		{
+			"Id": "ParamrootY",
+			"GroupId": "",
+			"Name": "몸_위아래"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "몸의 회전 X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "몸의 회전　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "몸의 회전 Z"
+		},
+		{
+			"Id": "Parambodyribbon_R",
+			"GroupId": "",
+			"Name": "바디_리본R"
+		},
+		{
+			"Id": "Parambodyribbon_R1",
+			"GroupId": "",
+			"Name": "바디_리본R_1"
+		},
+		{
+			"Id": "Parambodyribbon_L",
+			"GroupId": "",
+			"Name": "바디_리본L"
+		},
+		{
+			"Id": "Parambodyribbon_L1",
+			"GroupId": "",
+			"Name": "바디_리본L_1"
+		},
+		{
+			"Id": "Paramhip",
+			"GroupId": "",
+			"Name": "힙"
+		},
+		{
+			"Id": "Param_hiponly",
+			"GroupId": "",
+			"Name": "힙온리"
+		},
+		{
+			"Id": "Paramlegshooting1",
+			"GroupId": "",
+			"Name": "발_슈팅_1"
+		},
+		{
+			"Id": "Paramlegshooting2",
+			"GroupId": "",
+			"Name": "발_슈팅_2"
+		},
+		{
+			"Id": "Paramlegshoot3",
+			"GroupId": "",
+			"Name": "발_슈팅3"
+		},
+		{
+			"Id": "ParamSkirt_left",
+			"GroupId": "",
+			"Name": "스커트_왼"
+		},
+		{
+			"Id": "Paramskirt02",
+			"GroupId": "",
+			"Name": "스커트_왼_1"
+		},
+		{
+			"Id": "Paramskirt03",
+			"GroupId": "",
+			"Name": "스커트_중"
+		},
+		{
+			"Id": "Paramskirt04",
+			"GroupId": "",
+			"Name": "스커트_중_1"
+		},
+		{
+			"Id": "ParamSkirt_right",
+			"GroupId": "",
+			"Name": "스커트_오른"
+		},
+		{
+			"Id": "Paramskirtright_1",
+			"GroupId": "",
+			"Name": "스커트_오른_1"
+		},
+		{
+			"Id": "Paramgoldline_R",
+			"GroupId": "",
+			"Name": "스커트금벨트_R"
+		},
+		{
+			"Id": "Paramgoldline_R_1",
+			"GroupId": "",
+			"Name": "스커트금벨트_R_1"
+		},
+		{
+			"Id": "Paramgoldline_R2",
+			"GroupId": "",
+			"Name": "스커트금벨트_L"
+		},
+		{
+			"Id": "Paramgoldline_R3",
+			"GroupId": "",
+			"Name": "스커트금벨트_L_1"
+		},
+		{
+			"Id": "Parambackwing_R",
+			"GroupId": "",
+			"Name": "뒤날개R"
+		},
+		{
+			"Id": "Parambackwing_R1",
+			"GroupId": "",
+			"Name": "뒤날개R1"
+		},
+		{
+			"Id": "Parambackwing_R2",
+			"GroupId": "",
+			"Name": "뒤날개L"
+		},
+		{
+			"Id": "Parambackwing_L1",
+			"GroupId": "",
+			"Name": "뒤날개L1"
+		},
+		{
+			"Id": "ParamBodyAngleZ2",
+			"GroupId": "",
+			"Name": "어깨_위아래"
+		},
+		{
+			"Id": "ParamBodyAngleZ3",
+			"GroupId": "",
+			"Name": "어깨_좌우"
+		},
+		{
+			"Id": "ParamBreath2",
+			"GroupId": "",
+			"Name": "호흡"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "호흡(안씀)"
+		},
+		{
+			"Id": "Paramrightarm_depth",
+			"GroupId": "",
+			"Name": "오른팔 뎁스"
+		},
+		{
+			"Id": "ParamarmsRUD",
+			"GroupId": "",
+			"Name": "오른팔_업다운"
+		},
+		{
+			"Id": "ParamupperarmR",
+			"GroupId": "",
+			"Name": "오른팔_위"
+		},
+		{
+			"Id": "ParamforearmR",
+			"GroupId": "",
+			"Name": "오른팔_아래"
+		},
+		{
+			"Id": "ParamhandR",
+			"GroupId": "",
+			"Name": "오른팔_손"
+		},
+		{
+			"Id": "ParamhandRChange",
+			"GroupId": "",
+			"Name": "오른손 변형"
+		},
+		{
+			"Id": "ParamfingerR01",
+			"GroupId": "",
+			"Name": "오른손가락01"
+		},
+		{
+			"Id": "ParamfingerR01_01",
+			"GroupId": "",
+			"Name": "오른손가락01_01"
+		},
+		{
+			"Id": "ParamfingerR02",
+			"GroupId": "",
+			"Name": "오른손가락02"
+		},
+		{
+			"Id": "ParamfingerR02_01",
+			"GroupId": "",
+			"Name": "오른손가락02_01"
+		},
+		{
+			"Id": "ParamfingerR02_02",
+			"GroupId": "",
+			"Name": "오른손가락02_02"
+		},
+		{
+			"Id": "ParamfingerR03",
+			"GroupId": "",
+			"Name": "오른손가락03"
+		},
+		{
+			"Id": "ParamfingerR03_01",
+			"GroupId": "",
+			"Name": "오른손가락03_01"
+		},
+		{
+			"Id": "ParamfingerR04",
+			"GroupId": "",
+			"Name": "오른손가락04"
+		},
+		{
+			"Id": "ParamfingerR04_1",
+			"GroupId": "",
+			"Name": "오른손가락04_1"
+		},
+		{
+			"Id": "ParamfingerR05",
+			"GroupId": "",
+			"Name": "오른손가락05"
+		},
+		{
+			"Id": "ParamfingerR05_1",
+			"GroupId": "",
+			"Name": "오른손가락05_1"
+		},
+		{
+			"Id": "Paramrightarm_depth2",
+			"GroupId": "",
+			"Name": "왼팔 뎁스"
+		},
+		{
+			"Id": "Param_armsLUD",
+			"GroupId": "",
+			"Name": "왼팔_업다운"
+		},
+		{
+			"Id": "ParamupperarmL1",
+			"GroupId": "",
+			"Name": "왼팔_위"
+		},
+		{
+			"Id": "Paramforearm_L",
+			"GroupId": "",
+			"Name": "왼팔_아래"
+		},
+		{
+			"Id": "Paramhand_L",
+			"GroupId": "",
+			"Name": "왼팔_손"
+		},
+		{
+			"Id": "ParamhandLChange",
+			"GroupId": "",
+			"Name": "왼손_변형"
+		},
+		{
+			"Id": "Paramfinger_L",
+			"GroupId": "",
+			"Name": "왼손가락01"
+		},
+		{
+			"Id": "Paramfinger_L1_1",
+			"GroupId": "",
+			"Name": "왼손가락01_1"
+		},
+		{
+			"Id": "Paramfinger_L2",
+			"GroupId": "",
+			"Name": "왼손가락02"
+		},
+		{
+			"Id": "Paramfinger_L2_1",
+			"GroupId": "",
+			"Name": "왼손가락02_1"
+		},
+		{
+			"Id": "Paramfinger_L2_2",
+			"GroupId": "",
+			"Name": "왼손가락02_2"
+		},
+		{
+			"Id": "Paramfinger_L3",
+			"GroupId": "",
+			"Name": "왼손가락03"
+		},
+		{
+			"Id": "Paramfinger_L3_1",
+			"GroupId": "",
+			"Name": "왼손가락03_1"
+		},
+		{
+			"Id": "Paramfinger_L4",
+			"GroupId": "",
+			"Name": "왼손가락04"
+		},
+		{
+			"Id": "Paramfinger_L4_1",
+			"GroupId": "",
+			"Name": "왼손가락04_1"
+		},
+		{
+			"Id": "Paramfinger_L5",
+			"GroupId": "",
+			"Name": "왼손가락05"
+		},
+		{
+			"Id": "Paramfinger_L5_1",
+			"GroupId": "",
+			"Name": "왼손가락05_1"
+		},
+		{
+			"Id": "Paramhairfront01",
+			"GroupId": "",
+			"Name": "앞머리01"
+		},
+		{
+			"Id": "Paramhairfront01_1",
+			"GroupId": "",
+			"Name": "앞머리01_1"
+		},
+		{
+			"Id": "Paramhairfront02",
+			"GroupId": "",
+			"Name": "앞머리02"
+		},
+		{
+			"Id": "Paramhairfront02_1",
+			"GroupId": "",
+			"Name": "앞머리02_1"
+		},
+		{
+			"Id": "Paramhairfront03",
+			"GroupId": "",
+			"Name": "앞머리03"
+		},
+		{
+			"Id": "Paramhairfront03_1",
+			"GroupId": "",
+			"Name": "앞머리03_1"
+		},
+		{
+			"Id": "Paramhairfront04",
+			"GroupId": "",
+			"Name": "앞머리04"
+		},
+		{
+			"Id": "Paramhairfront04_1",
+			"GroupId": "",
+			"Name": "앞머리04_1"
+		},
+		{
+			"Id": "Paramhairfront05",
+			"GroupId": "",
+			"Name": "앞머리05"
+		},
+		{
+			"Id": "Paramhairfront05_1",
+			"GroupId": "",
+			"Name": "앞머리05_1"
+		},
+		{
+			"Id": "Paramhairfront06",
+			"GroupId": "",
+			"Name": "앞머리06"
+		},
+		{
+			"Id": "Paramhairfront06_1",
+			"GroupId": "",
+			"Name": "앞머리06}_1"
+		},
+		{
+			"Id": "Paramhairfront07",
+			"GroupId": "",
+			"Name": "앞머리07"
+		},
+		{
+			"Id": "Paramhairfront08",
+			"GroupId": "",
+			"Name": "앞머리07_1"
+		},
+		{
+			"Id": "Paramhairright01",
+			"GroupId": "",
+			"Name": "옆머리_R01"
+		},
+		{
+			"Id": "Paramhairright01_1",
+			"GroupId": "",
+			"Name": "옆머리_R01_1"
+		},
+		{
+			"Id": "Paramhairright01_2",
+			"GroupId": "",
+			"Name": "옆머리_R01_2"
+		},
+		{
+			"Id": "Paramhairright01_2_1",
+			"GroupId": "",
+			"Name": "옆머리_R01_2_1"
+		},
+		{
+			"Id": "ParamhairrightR02",
+			"GroupId": "",
+			"Name": "옆머리_R02"
+		},
+		{
+			"Id": "ParamhairrightR02_1",
+			"GroupId": "",
+			"Name": "옆머리_R02_1"
+		},
+		{
+			"Id": "ParamhairleftL01",
+			"GroupId": "",
+			"Name": "옆머리_L01"
+		},
+		{
+			"Id": "ParamhairleftL01_1",
+			"GroupId": "",
+			"Name": "옆머리_L01_1"
+		},
+		{
+			"Id": "ParamhairleftL01_2",
+			"GroupId": "",
+			"Name": "옆머리_L01_2"
+		},
+		{
+			"Id": "ParamhairleftL02",
+			"GroupId": "",
+			"Name": "옆머리_L02"
+		},
+		{
+			"Id": "ParamL02_1",
+			"GroupId": "",
+			"Name": "옆머리_L02_1"
+		},
+		{
+			"Id": "ParamtiwntailR01",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R01"
+		},
+		{
+			"Id": "ParamtiwntailR01_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R01_1"
+		},
+		{
+			"Id": "ParamtiwntailR01_2",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R01_2"
+		},
+		{
+			"Id": "ParamtiwntailR01_2_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R01_2_1"
+		},
+		{
+			"Id": "ParamtiwntailR01_3",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R01_3"
+		},
+		{
+			"Id": "ParamtiwntailR01_3_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R01_3_1"
+		},
+		{
+			"Id": "ParamtiwntailR02",
+			"GroupId": "",
+			"Name": "트윈테일헤어R02"
+		},
+		{
+			"Id": "ParamtiwntailR02_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R02_1"
+		},
+		{
+			"Id": "ParamtiwntailR03",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R03"
+		},
+		{
+			"Id": "ParamtiwntailR03_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R03_1"
+		},
+		{
+			"Id": "ParamtiwntailR04",
+			"GroupId": "",
+			"Name": "트윈테일헤어 R04"
+		},
+		{
+			"Id": "ParamtiwntailR04_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어R04_1"
+		},
+		{
+			"Id": "ParamtiwntailballR01",
+			"GroupId": "",
+			"Name": "트윈테일헤어_뭉탱이 R01"
+		},
+		{
+			"Id": "Paramtiwntailball01_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어_뭉탱이 R01_1"
+		},
+		{
+			"Id": "ParamwingRroot",
+			"GroupId": "",
+			"Name": "날개_R_root"
+		},
+		{
+			"Id": "ParamwingR01",
+			"GroupId": "",
+			"Name": "날개_R01"
+		},
+		{
+			"Id": "ParamwingR01_1",
+			"GroupId": "",
+			"Name": "날개_R01_1"
+		},
+		{
+			"Id": "ParamwingLroot2",
+			"GroupId": "",
+			"Name": "날개_L_root"
+		},
+		{
+			"Id": "ParamwingL01",
+			"GroupId": "",
+			"Name": "날개_L01"
+		},
+		{
+			"Id": "ParamwingL01_1",
+			"GroupId": "",
+			"Name": "날개_L01_1"
+		},
+		{
+			"Id": "ParamtiwntailL01",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L01"
+		},
+		{
+			"Id": "ParamtiwntailL01_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L01_1"
+		},
+		{
+			"Id": "ParamtiwntailL01_2",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L01_2"
+		},
+		{
+			"Id": "ParamtiwntailL01_2_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L01_2_1"
+		},
+		{
+			"Id": "ParamtiwntailL01_3",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L01_3"
+		},
+		{
+			"Id": "ParamtiwntailL01_3_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L01_3_1"
+		},
+		{
+			"Id": "ParamtiwntailL02",
+			"GroupId": "",
+			"Name": "트윈테일헤어L02"
+		},
+		{
+			"Id": "ParamtiwntailL02_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L02_1"
+		},
+		{
+			"Id": "ParamtiwntailL03",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L03"
+		},
+		{
+			"Id": "ParamtiwntailL03_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L03_1"
+		},
+		{
+			"Id": "ParamtiwntailL04",
+			"GroupId": "",
+			"Name": "트윈테일헤어 L04"
+		},
+		{
+			"Id": "ParamtiwntailL04_2",
+			"GroupId": "",
+			"Name": "트윈테일헤어L04_1"
+		},
+		{
+			"Id": "ParamtiwntailballL01",
+			"GroupId": "",
+			"Name": "트윈테일헤어_뭉탱이 L01"
+		},
+		{
+			"Id": "ParamtiwntailballL01_1",
+			"GroupId": "",
+			"Name": "트윈테일헤어_뭉탱이 L01_1"
+		},
+		{
+			"Id": "ParamhairbackR01",
+			"GroupId": "",
+			"Name": "hairback_R01"
+		},
+		{
+			"Id": "ParamhairbackR01_1",
+			"GroupId": "",
+			"Name": "hairback_R01_1"
+		},
+		{
+			"Id": "ParamhairbackR01_2",
+			"GroupId": "",
+			"Name": "hairback_R01_2"
+		},
+		{
+			"Id": "ParamhairbackR01_3",
+			"GroupId": "",
+			"Name": "hairback_R01_2"
+		},
+		{
+			"Id": "ParamhairbackR01_4",
+			"GroupId": "",
+			"Name": "hairback_R01_2"
+		},
+		{
+			"Id": "ParamhairbackR02",
+			"GroupId": "",
+			"Name": "hairback_R02"
+		},
+		{
+			"Id": "ParamhairbackR02_1",
+			"GroupId": "",
+			"Name": "hairback_R02_1"
+		},
+		{
+			"Id": "ParamhairbackR03",
+			"GroupId": "",
+			"Name": "hairback_R03"
+		},
+		{
+			"Id": "ParamhairbackR03_1",
+			"GroupId": "",
+			"Name": "hairback_R03_1"
+		},
+		{
+			"Id": "ParamhairbackR04",
+			"GroupId": "",
+			"Name": "hairback_R04"
+		},
+		{
+			"Id": "ParamhairbackR04_1",
+			"GroupId": "",
+			"Name": "hairback_R04_1"
+		},
+		{
+			"Id": "ParamhairbackR05",
+			"GroupId": "",
+			"Name": "hairback_R05"
+		},
+		{
+			"Id": "ParamhairbackR05_1",
+			"GroupId": "",
+			"Name": "hairback_R05_1"
+		},
+		{
+			"Id": "ParamhairbackR05_2",
+			"GroupId": "",
+			"Name": "hairback_R05_2"
+		},
+		{
+			"Id": "ParamhairbackR05_3",
+			"GroupId": "",
+			"Name": "hairback_R05_3"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part18",
+			"Name": "GUMI_Live2D.psd"
+		},
+		{
+			"Id": "PartRough",
+			"Name": "러프"
+		},
+		{
+			"Id": "PartFace",
+			"Name": "얼굴"
+		},
+		{
+			"Id": "PartEye",
+			"Name": "눈"
+		},
+		{
+			"Id": "PartEyeBall",
+			"Name": "눈알"
+		},
+		{
+			"Id": "PartBrow",
+			"Name": "눈썹"
+		},
+		{
+			"Id": "PartMouth",
+			"Name": "입"
+		},
+		{
+			"Id": "PartNose",
+			"Name": "코"
+		},
+		{
+			"Id": "PartEar",
+			"Name": "귀"
+		},
+		{
+			"Id": "PartHairFront",
+			"Name": "앞머리"
+		},
+		{
+			"Id": "PartHairSide",
+			"Name": "옆머리"
+		},
+		{
+			"Id": "PartHairBack",
+			"Name": "뒷머리"
+		},
+		{
+			"Id": "PartNeck",
+			"Name": "목"
+		},
+		{
+			"Id": "PartBody",
+			"Name": "몸"
+		},
+		{
+			"Id": "PartBackground",
+			"Name": "배경"
+		},
+		{
+			"Id": "PartSketch",
+			"Name": "[ 밑그림 ]"
+		},
+		{
+			"Id": "Part22",
+			"Name": "마주손_왼"
+		},
+		{
+			"Id": "Part",
+			"Name": "마주손"
+		},
+		{
+			"Id": "Part23",
+			"Name": "검지 마주대는손_왼"
+		},
+		{
+			"Id": "Part2",
+			"Name": "검지 마주대는손"
+		},
+		{
+			"Id": "Part3",
+			"Name": "장난스런 얼굴"
+		},
+		{
+			"Id": "Part21",
+			"Name": "일반입"
+		},
+		{
+			"Id": "Part4",
+			"Name": "고양이입"
+		},
+		{
+			"Id": "Part5",
+			"Name": "그룹 1"
+		},
+		{
+			"Id": "Part6",
+			"Name": "헤일로"
+		},
+		{
+			"Id": "Part7",
+			"Name": "헤드"
+		},
+		{
+			"Id": "Part12",
+			"Name": "목부터 카라까지"
+		},
+		{
+			"Id": "Partrightarmdepth",
+			"Name": "오른팔뎁스"
+		},
+		{
+			"Id": "Part14",
+			"Name": "오른손"
+		},
+		{
+			"Id": "Part15",
+			"Name": "뒷머리"
+		},
+		{
+			"Id": "Part19",
+			"Name": "묶은 헤어 좌"
+		},
+		{
+			"Id": "Part16",
+			"Name": "묶은 헤어 좌"
+		},
+		{
+			"Id": "Part17",
+			"Name": "묶은 헤어 우(임시)"
+		},
+		{
+			"Id": "ArtMesh_Skinning2",
+			"Name": "손가락5(스키닝)"
+		},
+		{
+			"Id": "ArtMesh2_Skinning2",
+			"Name": "손가락4(스키닝)"
+		},
+		{
+			"Id": "ArtMesh4_Skinning2",
+			"Name": "손가락3(스키닝)"
+		},
+		{
+			"Id": "ArtMesh5_Skinning2",
+			"Name": "손가락2(스키닝)"
+		},
+		{
+			"Id": "ArtMesh6_Skinning2",
+			"Name": "손가락1(스키닝)"
+		},
+		{
+			"Id": "ArtMesh_Skinning",
+			"Name": "손가락5(스키닝)"
+		},
+		{
+			"Id": "ArtMesh2_Skinning",
+			"Name": "손가락4(스키닝)"
+		},
+		{
+			"Id": "ArtMesh4_Skinning",
+			"Name": "손가락3(스키닝)"
+		},
+		{
+			"Id": "ArtMesh5_Skinning",
+			"Name": "손가락2(스키닝)"
+		},
+		{
+			"Id": "ArtMesh6_Skinning",
+			"Name": "손가락1(스키닝)"
+		},
+		{
+			"Id": "Part8",
+			"Name": "프론트헤어"
+		},
+		{
+			"Id": "Part20",
+			"Name": "눈 우"
+		},
+		{
+			"Id": "Part9",
+			"Name": "눈 우(원본)"
+		},
+		{
+			"Id": "Part10",
+			"Name": "눈 좌"
+		},
+		{
+			"Id": "Part11",
+			"Name": "홍조 세트"
+		},
+		{
+			"Id": "Part13",
+			"Name": "왼손"
+		},
+		{
+			"Id": "ArtMesh123_Skinning",
+			"Name": "손가락2(스키닝)"
+		},
+		{
+			"Id": "ArtMesh125_Skinning",
+			"Name": "손가락3(스키닝)"
+		},
+		{
+			"Id": "ArtMesh126_Skinning",
+			"Name": "손가락4(스키닝)"
+		},
+		{
+			"Id": "ArtMesh127_Skinning",
+			"Name": "손가락5(스키닝)"
+		},
+		{
+			"Id": "ArtMesh108_Skinning",
+			"Name": "손가락2(스키닝)"
+		},
+		{
+			"Id": "ArtMesh109_Skinning",
+			"Name": "손가락3(스키닝)"
+		},
+		{
+			"Id": "ArtMesh111_Skinning",
+			"Name": "손가락4(스키닝)"
+		},
+		{
+			"Id": "ArtMesh112_Skinning",
+			"Name": "손가락5(스키닝)"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamAngleX",
+			"ParamAngleY"
+		]
+	]
+}

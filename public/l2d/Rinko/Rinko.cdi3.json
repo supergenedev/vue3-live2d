@@ -267,6 +267,11 @@
 			"Name": "mouth_D2"
 		},
 		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "ParamGroup",
+			"Name": "automouth"
+		},
+		{
 			"Id": "mouth_D3",
 			"GroupId": "ParamGroup",
 			"Name": "비웃음"
@@ -737,10 +742,6 @@
 		[
 			"PARAM_EYE_L_OPEN",
 			"PARAM_EYE_L_SMILE"
-		],
-		[
-			"PARAM_MOUTH_FORM",
-			"PARAM_MOUTH_OPEN_Y"
 		],
 		[
 			"Param_f_hair_X",

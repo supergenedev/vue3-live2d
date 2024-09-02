@@ -76,3 +76,6 @@ export function setEmotion(emotion: Emotion) {
 export function setMotionGroupIdle(idleEmotion: IdleEmotion){
   LAppDefine.setMotionGroupIdle(idleEmotion)
 }
+export function toggleLipSync(state: boolean) {
+  LAppLive2DManager.getInstance().toggleLipSync(state);
+}

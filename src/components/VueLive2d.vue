@@ -16,6 +16,7 @@ import {
   setEmotion,
   releaseL2d,
   setMotionGroupIdle,
+  toggleLipSync,
 } from '../l2d/useL2d/main';
 import { IdleEmotion } from 'src/l2d/useL2d/lapplive2dmanager';
 
@@ -30,6 +31,7 @@ export interface VueLive2dProps {
   idle?: IdleEmotion;
   offDefaultMove?: boolean;
   draggable?: boolean;
+  lipSync?: boolean;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
@@ -40,7 +42,8 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   centerY: 0.5,
   idle: 'Calm',
   offDefaultMove: false,
-  draggable: true
+  draggable: true,
+  lipSync: false,
 });
 
 const backgroundImage = computed(()=>{
@@ -80,6 +83,10 @@ onBeforeUnmount(() => {
 defineExpose({
   setEmotion,
 });
+
+watch([()=>props.lipSync], ([lipSync]) => {
+  toggleLipSync(lipSync);
+})
 </script>
 
 <style>

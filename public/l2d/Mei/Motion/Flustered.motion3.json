@@ -1,13 +1,13 @@
 {
 	"Version": 3,
 	"Meta": {
-		"Duration": 5.333,
+		"Duration": 5.33,
 		"Fps": 30.0,
 		"Loop": true,
 		"AreBeziersRestricted": false,
-		"CurveCount": 163,
-		"TotalSegmentCount": 8274,
-		"TotalPointCount": 8447,
+		"CurveCount": 162,
+		"TotalSegmentCount": 8273,
+		"TotalPointCount": 8443,
 		"UserDataCount": 0,
 		"TotalUserDataSize": 0
 	},
@@ -45,21 +45,6 @@
 				4.44,
 				1,
 				5.33,
-				1
-			]
-		},
-		{
-			"Target": "Model",
-			"Id": "EyeBlink",
-			"Segments": [
-				0,
-				1,
-				1,
-				1.778,
-				1,
-				3.556,
-				1,
-				5.333,
 				1
 			]
 		},

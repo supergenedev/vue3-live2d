@@ -5,9 +5,9 @@
 		"Fps": 30.0,
 		"Loop": true,
 		"AreBeziersRestricted": false,
-		"CurveCount": 163,
-		"TotalSegmentCount": 4748,
-		"TotalPointCount": 4915,
+		"CurveCount": 162,
+		"TotalSegmentCount": 4747,
+		"TotalPointCount": 4911,
 		"UserDataCount": 0,
 		"TotalUserDataSize": 0
 	},
@@ -22,21 +22,6 @@
 				1.33,
 				1,
 				2.67,
-				1,
-				4,
-				1
-			]
-		},
-		{
-			"Target": "Model",
-			"Id": "EyeBlink",
-			"Segments": [
-				0,
-				1,
-				1,
-				1.333,
-				1,
-				2.667,
 				1,
 				4,
 				1

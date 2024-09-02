@@ -39,6 +39,12 @@
       <p>Change Background Image Index</p>
       <button @click="backgroundImageIndex = (backgroundImageIndex+1) % backgroundImages.length">Current Index : {{ backgroundImageIndex }}</button>
     </div>
+    <div>
+      <p>Toggle Lip Sync</p>
+      <button @click="toggleLipSync">
+        {{ lipSync ? 'Stop LipSync' : 'Start LipSync' }}
+      </button>
+    </div>
     <div style="height: 20px" />
     <VueLive2d
       v-if="isShow"
@@ -51,6 +57,7 @@
       :idle="idle"
       :off-default-move="true"
       :draggable="false"
+      :lip-sync="lipSync"
     />
   </div>
 </template>
@@ -67,7 +74,7 @@ function onToggleVue3L2d() {
 }
 
 const modelIndex = ref(0);
-const modelNames = ['Mei', 'Rinko', 'Ayase'];
+const modelNames = ['Mei', 'Rinko', 'Ayase', 'Gumi'];
 const modelName = computed(() => modelNames[modelIndex.value]);
 function onChangeL2dAsset() {
   modelIndex.value = (modelIndex.value + 1) % modelNames.length;
@@ -118,6 +125,11 @@ const VueLive2d = defineAsyncComponent({
   // 시간 초과 시, 에러 컴포넌트가 표시됩니다. 기본값: 무한대
   timeout: 3000,
 });
+
+const lipSync = ref(false);
+function toggleLipSync() {
+  lipSync.value = !lipSync.value;
+}
 </script>
 
 <style scoped>

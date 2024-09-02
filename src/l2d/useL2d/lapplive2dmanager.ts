@@ -89,6 +89,12 @@ export class LAppLive2DManager {
     this._models.clear();
   }
 
+  public toggleLipSync(state: boolean) {
+    for (let i = 0; i < this._models.getSize(); i++) {
+      const model: LAppModel = this.getModel(i);
+      model.toggleLipSync(state);
+    }
+  }
   /**
    * 画面をドラッグした時の処理
    *
