@@ -1,6 +1,5 @@
 <template>
   <div class="vue-live2d-container">
-
     <div>
       <p>Set Model</p>
       <button @click="onToggleVue3L2d">onToggleVue3L2d</button>
@@ -13,6 +12,14 @@
       <button @click="onChangeZoom(2)">zoom * 2.0</button>
       <button @click="onChangeZoom(2.5)">zoom * 2.5</button>
       <button @click="onChangeZoom(3.5)">zoom * 3.5</button>
+    </div>
+    <div>
+      <p>Change Position</p>
+      <button @click="onChangePosition(0, 0)">position * 0,0</button>
+      <button @click="onChangePosition(0.3, 0)">position * 0.3,0</button>
+      <button @click="onChangePosition(-0.3, 0)">position * -0.3,0</button>
+      <button @click="onChangePosition(0, 0.3)">position * 0,0.3</button>
+      <button @click="onChangePosition(0, -0.3)">position * 0,-0.3</button>
     </div>
     <div>
       <p>Change BG image Scale</p>
@@ -53,12 +60,15 @@
       :model-dir="modelName"
       :zoom="zoom"
       :background-scale="scale"
+      :position-x="position.x"
+      :position-y="position.y"
       :background-image="backgroundImages[backgroundImageIndex]"
       :idle="idle"
       :off-default-move="true"
       :draggable="false"
       :lip-sync="lipSync"
     />
+    <div style="height: 500px" />
   </div>
 </template>
 
@@ -84,6 +94,12 @@ const zoom = ref(1.0);
 function onChangeZoom(zoomSize: number) {
   zoom.value = zoomSize;
 }
+
+const position = ref({ x: 0, y: 0 });
+function onChangePosition(x: number, y: number) {
+  position.value = { x, y };
+}
+
 const scale = ref(1);
 function onBGScale(scaleSize: number) {
   scale.value = scaleSize;

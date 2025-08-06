@@ -1,6 +1,6 @@
 <template>
   <div ref="containerRef" class="l2d-container">
-    <div class="l2d-background"/>
+    <div class="l2d-background" />
   </div>
 </template>
 
@@ -26,8 +26,8 @@ export interface VueLive2dProps {
   zoom?: number;
   backgroundImage?: string;
   backgroundScale?: number;
-  centerX?: number;
-  centerY?: number;
+  positionX?: number;
+  positionY?: number;
   idle?: IdleEmotion;
   offDefaultMove?: boolean;
   draggable?: boolean;
@@ -38,21 +38,21 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   zoom: 1,
   backgroundImage: '',
   backgroundScale: 1,
-  centerX: 0.53,
-  centerY: 0.5,
+  positionX: 0,
+  positionY: 0,
   idle: 'Calm',
   offDefaultMove: false,
   draggable: true,
   lipSync: false,
 });
 
-const backgroundImage = computed(()=>{
-  return `url(${props.backgroundImage})` 
-})
+const backgroundImage = computed(() => {
+  return `url(${props.backgroundImage})`;
+});
 
-const backgroundScale = computed(()=>{
-  return `scale(${props.backgroundScale})`
-})
+const backgroundScale = computed(() => {
+  return `scale(${props.backgroundScale})`;
+});
 
 const containerRef = ref<HTMLDivElement>();
 
@@ -60,22 +60,35 @@ watch(containerRef, (ref) => {
   if (ref) {
     initL2d(ref, props.draggable);
 
-    loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY, zoom: props.zoom}, props.offDefaultMove);
+    loadL2dAsset(
+      props.resourcePath,
+      props.modelDir,
+      { x: props.positionX, y: props.positionY, zoom: props.zoom },
+      props.offDefaultMove,
+    );
   }
 });
 
 watch([() => props.resourcePath, () => props.modelDir], () => {
-  loadL2dAsset(props.resourcePath, props.modelDir, {x: props.centerX, y: props.centerY, zoom: props.zoom}, props.offDefaultMove);
+  loadL2dAsset(
+    props.resourcePath,
+    props.modelDir,
+    { x: props.positionX, y: props.positionY, zoom: props.zoom },
+    props.offDefaultMove,
+  );
 });
 
-watch([() => props.zoom, () => props.centerX, () => props.centerY], ([zoom, x, y]) => {
-  setZoom(zoom);
-  setCenter(x, y);
-});
+watch(
+  [() => props.zoom, () => props.positionX, () => props.positionY],
+  ([zoom, x, y]) => {
+    setZoom(zoom);
+    setCenter(x, y);
+  },
+);
 
-watch([()=>props.idle], ([idle]) => {
+watch([() => props.idle], ([idle]) => {
   setMotionGroupIdle(idle);
-})
+});
 onBeforeUnmount(() => {
   releaseL2d();
 });
@@ -84,9 +97,9 @@ defineExpose({
   setEmotion,
 });
 
-watch([()=>props.lipSync], ([lipSync]) => {
+watch([() => props.lipSync], ([lipSync]) => {
   toggleLipSync(lipSync);
-})
+});
 </script>
 
 <style>
@@ -95,10 +108,12 @@ watch([()=>props.lipSync], ([lipSync]) => {
   width: 100%;
   height: 100%;
 }
+
 .l2d-container {
   position: relative;
   overflow: hidden;
 }
+
 .l2d-background {
   position: absolute;
   z-index: -1;
