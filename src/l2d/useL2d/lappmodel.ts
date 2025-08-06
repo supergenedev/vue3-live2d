@@ -215,7 +215,7 @@ export class LAppModel extends CubismUserModel {
           this.loadModel(arrayBuffer, this._mocConsistency);
           if(this._center) {
             const {x, y} = this._center
-            this._modelMatrix.setCenterPosition(x, y);
+            this._modelMatrix.setPosition(x, y);
           }
 
           this._state = LoadStep.LoadExpression;

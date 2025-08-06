@@ -67,7 +67,7 @@ export function setZoom(zoomSize: number) {
 }
 
 export function setCenter(x: number, y: number) {
-  LAppLive2DManager.getInstance().makeModelCenter(x, y);
+  LAppLive2DManager.getInstance().setModelPosition(x, y);
 }
 
 export function setEmotion(emotion: Emotion) {
