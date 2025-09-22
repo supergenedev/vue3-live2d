@@ -11,6 +11,23 @@
  * ファイル読み込みや時刻取得等のプラットフォームに依存する関数をまとめる。
  */
 export class LAppPal {
+  private static s_animationSpeedMultiplier: number = 1.0; // 애니메이션 속도 배율
+
+  /**
+   * 애니메이션 속도 배율을 설정합니다.
+   * @param multiplier 속도 배율 (0.1 ~ 5.0)
+   */
+  public static setAnimationSpeedMultiplier(multiplier: number): void {
+    this.s_animationSpeedMultiplier = Math.max(0.1, Math.min(5.0, multiplier));
+  }
+
+  /**
+   * 현재 애니메이션 속도 배율을 반환합니다.
+   */
+  public static getAnimationSpeedMultiplier(): number {
+    return this.s_animationSpeedMultiplier;
+  }
+
   /**
    * ファイルをバイトデータとして読みこむ
    *
@@ -35,7 +52,7 @@ export class LAppPal {
    * @return デルタ時間[ms]
    */
   public static getDeltaTime(): number {
-    return this.s_deltaTime;
+    return this.s_deltaTime * this.s_animationSpeedMultiplier;
   }
 
   public static updateTime(): void {
