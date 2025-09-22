@@ -79,3 +79,11 @@ export function setMotionGroupIdle(idleEmotion: IdleEmotion){
 export function toggleLipSync(state: boolean) {
   LAppLive2DManager.getInstance().toggleLipSync(state);
 }
+
+export function setTargetFPS(fps: number) {
+  LAppDelegate.getInstance().setTargetFPS(fps);
+}
+
+export function getTargetFPS(): number {
+  return LAppDelegate.getInstance().getTargetFPS();
+}

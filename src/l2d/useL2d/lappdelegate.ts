@@ -22,6 +22,10 @@ export let frameBuffer: WebGLFramebuffer = null;
  * Cubism SDKの管理を行う。
  */
 export class LAppDelegate {
+  private _targetFPS: number = 60; // 목표 FPS
+  private _lastFrameTime: number = 0; // 마지막 프레임 시간
+  private _frameInterval: number = 1000 / 60; // 프레임 간격 (ms)
+
   /**
    * クラスのインスタンス（シングルトン）を返す。
    * インスタンスが生成されていない場合は内部でインスタンスを生成する。
@@ -45,6 +49,22 @@ export class LAppDelegate {
     }
 
     s_instance = null;
+  }
+
+  /**
+   * 目标FPS를 설정합니다.
+   * @param fps 목표 FPS (1-120 범위)
+   */
+  public setTargetFPS(fps: number): void {
+    this._targetFPS = Math.max(1, Math.min(120, fps));
+    this._frameInterval = 1000 / this._targetFPS;
+  }
+
+  /**
+   * 현재 설정된 목표 FPS를 반환합니다.
+   */
+  public getTargetFPS(): number {
+    return this._targetFPS;
   }
 
   /**
@@ -129,11 +149,20 @@ export class LAppDelegate {
    */
   public run(): void {
     // メインループ
-    const loop = (): void => {
+    const loop = (currentTime: number): void => {
       // インスタンスの有無の確認
       if (s_instance == null) {
         return;
       }
+
+      // FPS 제한 로직
+      const elapsed = currentTime - this._lastFrameTime;
+      if (elapsed < this._frameInterval) {
+        requestAnimationFrame(loop);
+        return;
+      }
+
+      this._lastFrameTime = currentTime - (elapsed % this._frameInterval);
 
       // 時間更新
       LAppPal.updateTime();
@@ -152,7 +181,7 @@ export class LAppDelegate {
 
       gl.clearDepth(1.0);
 
-      // 透過設定
+      // 透過設정
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
@@ -162,7 +191,7 @@ export class LAppDelegate {
       // ループのために再帰呼び出し
       requestAnimationFrame(loop);
     };
-    loop();
+    loop(performance.now());
   }
 
   /**

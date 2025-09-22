@@ -52,6 +52,14 @@
         {{ lipSync ? 'Stop LipSync' : 'Start LipSync' }}
       </button>
     </div>
+    <div>
+      <p>FPS Control</p>
+      <button @click="onChangeFPS(15)">15 FPS</button>
+      <button @click="onChangeFPS(30)">30 FPS</button>
+      <button @click="onChangeFPS(60)">60 FPS</button>
+      <button @click="onChangeFPS(120)">120 FPS</button>
+      <span>Current: {{ targetFPS }} FPS</span>
+    </div>
     <div style="height: 20px" />
     <VueLive2d
       v-if="isShow"
@@ -67,6 +75,7 @@
       :off-default-move="true"
       :draggable="false"
       :lip-sync="lipSync"
+      :target-f-p-s="targetFPS"
     />
     <div style="height: 500px" />
   </div>
@@ -146,6 +155,12 @@ const lipSync = ref(false);
 function toggleLipSync() {
   lipSync.value = !lipSync.value;
 }
+
+const targetFPS = ref(60);
+function onChangeFPS(fps: number) {
+  targetFPS.value = fps;
+}
+
 </script>
 
 <style scoped>
