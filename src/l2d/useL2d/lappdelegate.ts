@@ -162,7 +162,8 @@ export class LAppDelegate {
         return;
       }
 
-      this._lastFrameTime = currentTime - (elapsed % this._frameInterval);
+      // 정확한 프레임 시간 업데이트
+      this._lastFrameTime = currentTime;
 
       // 時間更新
       LAppPal.updateTime();
@@ -191,6 +192,8 @@ export class LAppDelegate {
       // ループのために再帰呼び出し
       requestAnimationFrame(loop);
     };
+    // 초기 시간 설정
+    this._lastFrameTime = performance.now();
     loop(performance.now());
   }
 
