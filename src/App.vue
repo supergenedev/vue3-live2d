@@ -156,7 +156,7 @@ function toggleLipSync() {
   lipSync.value = !lipSync.value;
 }
 
-const targetFPS = ref(60);
+const targetFPS = ref(15);
 function onChangeFPS(fps: number) {
   targetFPS.value = fps;
 }

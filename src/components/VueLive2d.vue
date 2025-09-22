@@ -95,6 +95,8 @@ watch([() => props.idle], ([idle]) => {
 
 watch([() => props.targetFPS], ([fps]) => {
   setTargetFPS(fps);
+}, {
+  immediate: true,
 });
 
 onBeforeUnmount(() => {
