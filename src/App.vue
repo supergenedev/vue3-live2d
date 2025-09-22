@@ -54,18 +54,11 @@
     </div>
     <div>
       <p>FPS Control</p>
+      <button @click="onChangeFPS(15)">15 FPS</button>
       <button @click="onChangeFPS(30)">30 FPS</button>
       <button @click="onChangeFPS(60)">60 FPS</button>
       <button @click="onChangeFPS(120)">120 FPS</button>
       <span>Current: {{ targetFPS }} FPS</span>
-    </div>
-    <div>
-      <p>Animation Speed</p>
-      <button @click="onChangeAnimationSpeed(0.5)">0.5x</button>
-      <button @click="onChangeAnimationSpeed(1.0)">1.0x</button>
-      <button @click="onChangeAnimationSpeed(1.5)">1.5x</button>
-      <button @click="onChangeAnimationSpeed(2.0)">2.0x</button>
-      <span>Current: {{ animationSpeed }}x</span>
     </div>
     <div style="height: 20px" />
     <VueLive2d
@@ -83,7 +76,6 @@
       :draggable="false"
       :lip-sync="lipSync"
       :target-f-p-s="targetFPS"
-      :animation-speed="animationSpeed"
     />
     <div style="height: 500px" />
   </div>
@@ -169,10 +161,6 @@ function onChangeFPS(fps: number) {
   targetFPS.value = fps;
 }
 
-const animationSpeed = ref(1.0);
-function onChangeAnimationSpeed(speed: number) {
-  animationSpeed.value = speed;
-}
 </script>
 
 <style scoped>

@@ -9,7 +9,6 @@ import { LAppDelegate } from './lappdelegate';
 import * as LAppDefine from './lappdefine';
 import { LAppGlManager } from './lappglmanager';
 import { Emotion, IdleEmotion, LAppLive2DManager } from './lapplive2dmanager';
-import { LAppPal } from './lapppal';
 
 let isLoad = document.readyState === 'complete';
 const initL2dResolver: (() => {})[] = [];
@@ -87,12 +86,4 @@ export function setTargetFPS(fps: number) {
 
 export function getTargetFPS(): number {
   return LAppDelegate.getInstance().getTargetFPS();
-}
-
-export function setAnimationSpeed(multiplier: number) {
-  LAppPal.setAnimationSpeedMultiplier(multiplier);
-}
-
-export function getAnimationSpeed(): number {
-  return LAppPal.getAnimationSpeedMultiplier();
 }

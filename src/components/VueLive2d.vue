@@ -18,7 +18,6 @@ import {
   setMotionGroupIdle,
   toggleLipSync,
   setTargetFPS,
-  setAnimationSpeed,
 } from '../l2d/useL2d/main';
 import { IdleEmotion } from 'src/l2d/useL2d/lapplive2dmanager';
 
@@ -35,7 +34,6 @@ export interface VueLive2dProps {
   draggable?: boolean;
   lipSync?: boolean;
   targetFPS?: number;
-  animationSpeed?: number;
 }
 const props = withDefaults(defineProps<VueLive2dProps>(), {
   modelDir: '',
@@ -48,8 +46,7 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   offDefaultMove: false,
   draggable: true,
   lipSync: false,
-  targetFPS: 60,
-  animationSpeed: 1.0,
+  targetFPS: 30,
 });
 
 const backgroundImage = computed(() => {
@@ -98,10 +95,6 @@ watch([() => props.idle], ([idle]) => {
 
 watch([() => props.targetFPS], ([fps]) => {
   setTargetFPS(fps);
-});
-
-watch([() => props.animationSpeed], ([speed]) => {
-  setAnimationSpeed(speed);
 });
 
 onBeforeUnmount(() => {
