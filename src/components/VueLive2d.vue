@@ -46,7 +46,7 @@ const props = withDefaults(defineProps<VueLive2dProps>(), {
   offDefaultMove: false,
   draggable: true,
   lipSync: false,
-  targetFPS: 30,
+  targetFPS: 15,
 });
 
 const backgroundImage = computed(() => {
