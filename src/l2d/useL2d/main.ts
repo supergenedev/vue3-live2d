@@ -73,6 +73,9 @@ export function setCenter(x: number, y: number) {
 export function setEmotion(emotion: Emotion) {
   LAppLive2DManager.getInstance().onEmotion(emotion);
 }
+export function setExpression(expression: string) {
+  LAppLive2DManager.getInstance().onExpression(expression);
+}
 export function setMotionGroupIdle(idleEmotion: IdleEmotion){
   LAppDefine.setMotionGroupIdle(idleEmotion)
 }

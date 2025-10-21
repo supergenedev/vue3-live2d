@@ -14,6 +14,7 @@ import {
   setZoom,
   setCenter,
   setEmotion,
+  setExpression,
   releaseL2d,
   setMotionGroupIdle,
   toggleLipSync,
@@ -105,6 +106,7 @@ onBeforeUnmount(() => {
 
 defineExpose({
   setEmotion,
+  setExpression,
 });
 
 watch([() => props.lipSync], ([lipSync]) => {

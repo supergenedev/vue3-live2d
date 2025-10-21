@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-live2d-container">
+  <div class="test-container">
     <div>
       <p>Set Model</p>
       <button @click="onToggleVue3L2d">onToggleVue3L2d</button>
@@ -38,6 +38,16 @@
       <button @click="onChangeEmotion('Discharge')">Discharge</button>
     </div>
     <div>
+      <p>Change Expression</p>
+      <button @click="onChangeExpression('Annoyed')">Annoyed</button>
+      <button @click="onChangeExpression('Calm')">Calm</button>
+      <button @click="onChangeExpression('Flustered')">Flustered</button>
+      <button @click="onChangeExpression('Frustrated')">Frustrated</button>
+      <button @click="onChangeExpression('Pleased')">Pleased</button>
+      <button @click="onChangeExpression('Sad')">Sad</button>
+      <button @click="onChangeExpression('Surprised')">Surprised</button>
+    </div>
+    <div>
       <p>Change Idle</p>
       <button @click="onChangeIdle('Discharge_idle')">Discharge_idle</button>
       <button @click="onChangeIdle('Calm')">Calm</button>
@@ -60,24 +70,25 @@
       <button @click="onChangeFPS(120)">120 FPS</button>
       <span>Current: {{ targetFPS }} FPS</span>
     </div>
-    <div style="height: 20px" />
-    <VueLive2d
-      v-if="isShow"
-      ref="l2d"
-      :resource-path="'./l2d/'"
-      :model-dir="modelName"
-      :zoom="zoom"
-      :background-scale="scale"
-      :position-x="position.x"
-      :position-y="position.y"
-      :background-image="backgroundImages[backgroundImageIndex]"
-      :idle="idle"
-      :off-default-move="true"
-      :draggable="false"
-      :lip-sync="lipSync"
-      :target-f-p-s="targetFPS"
-    />
-    <div style="height: 500px" />
+
+    <div class="vue-live2d-container">
+      <VueLive2d
+        v-if="isShow"
+        ref="l2d"
+        :resource-path="'./l2d/'"
+        :model-dir="modelName"
+        :zoom="zoom"
+        :background-scale="scale"
+        :position-x="position.x"
+        :position-y="position.y"
+        :background-image="backgroundImages[backgroundImageIndex]"
+        :idle="idle"
+        :off-default-move="true"
+        :draggable="false"
+        :lip-sync="lipSync"
+        :target-f-p-s="targetFPS"
+      />
+    </div>
   </div>
 </template>
 
@@ -93,7 +104,7 @@ function onToggleVue3L2d() {
 }
 
 const modelIndex = ref(0);
-const modelNames = ['Mei', 'Rinko', 'Ayase', 'Gumi'];
+const modelNames = ['Hibiki', 'Mei', 'Rinko', 'Ayase', 'Gumi'];
 const modelName = computed(() => modelNames[modelIndex.value]);
 function onChangeL2dAsset() {
   modelIndex.value = (modelIndex.value + 1) % modelNames.length;
@@ -120,6 +131,10 @@ function onChangeEmotion(_emotion: Emotion) {
 const idle = ref<IdleEmotion>('Calm');
 function onChangeIdle(_idle: IdleEmotion) {
   idle.value = _idle;
+}
+
+function onChangeExpression(expression: string) {
+  l2d.value?.setExpression(expression);
 }
 const backgroundImageIndex = ref(0);
 const backgroundImages = [
@@ -164,7 +179,14 @@ function onChangeFPS(fps: number) {
 </script>
 
 <style scoped>
+.test-container {
+  position: relative;
+}
+
 .vue-live2d-container {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 300px;
   height: 800px;
 }

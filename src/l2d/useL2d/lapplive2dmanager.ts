@@ -169,6 +169,12 @@ export class LAppLive2DManager {
     }
   }
 
+  public onExpression(expression: string) {
+    for (let i = 0; i < this._models.getSize(); i++) {
+      this._models.at(i).setExpression(`${expression}.exp3.json`);
+    }
+  }
+
   /**
    * 画面を更新するときの処理
    * モデルの更新処理及び描画処理を行う
