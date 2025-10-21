@@ -1,0 +1,61 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Hibiki.moc3",
+		"Textures": [
+			"Hibiki.2048/texture_00.png",
+			"Hibiki.2048/texture_01.png"
+		],
+		"DisplayInfo": "Hibiki.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "Calm.exp3.json",
+				"File": "Expression/Calm.exp3.json"
+			},
+			{
+				"Name": "Surprised.exp3.json",
+				"File": "Expression/Surprised.exp3.json"
+			},
+			{
+				"Name": "Sad.exp3.json",
+				"File": "Expression/Sad.exp3.json"
+			},
+			{
+				"Name": "Annoyed.exp3.json",
+				"File": "Expression/Annoyed.exp3.json"
+			},
+			{
+				"Name": "Frustrated.exp3.json",
+				"File": "Expression/Frustrated.exp3.json"
+			},
+			{
+				"Name": "Pleased.exp3.json",
+				"File": "Expression/Pleased.exp3.json"
+			},
+			{
+				"Name": "Flustered.exp3.json*",
+				"File": "Expression/Flustered.exp3.json"
+			}
+		],
+		"Motions": {
+			"Calm.motion3.json": [
+				{
+					"File": "Motion/Calm.motion3.json"
+				}
+			]
+		}
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	],
+	"HitAreas": []
+}
