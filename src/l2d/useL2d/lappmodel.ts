@@ -83,8 +83,16 @@ interface Draggable {
 export class LAppModel extends CubismUserModel {
   private _mouthTimeSeconds = 0;
   private _isMouthMovementEnable = false;
+  // 외부(TTS 오디오 진폭)에서 주입한 입벌림 값(0~1). null 이면 합성 파형 사용.
+  private _externalLipValue: number | null = null;
+  // LipSync 그룹이 빈 모델용 폴백 입벌림 파라미터(ParamMouthOpenY) 핸들
+  private _idParamMouthOpenY: CubismIdHandle | null = null;
   public toggleLipSync(state: boolean) {
     this._isMouthMovementEnable = state;
+  }
+  public setLipSyncValue(value: number) {
+    this._externalLipValue = value;
+    this._isMouthMovementEnable = true;
   }
   private getFetch() {
     if (this._zipFile) {
@@ -685,20 +693,36 @@ export class LAppModel extends CubismUserModel {
     //   }
     // }
     // AOi 캐릭터의 입모양과 실제 TTS 음성을 비교해 가며 맞춘 립싱크 속도 값 계산 로직
-    if (this._lipsync && this._isMouthMovementEnable) {      
-      const deltaTimeSeconds = LAppPal.getDeltaTime();
-      this._mouthTimeSeconds += deltaTimeSeconds;//_mouthTimeSecondsを更新
+    if (this._lipsync && this._isMouthMovementEnable) {
       let value: number;
-      const cycleTime = ((this._mouthTimeSeconds % 0.3) + 0.3) % 0.3;;
-      
-      if (cycleTime < 0.15) {
-        value = cycleTime / 0.15;
-      }else{
-        value = (0.3 - cycleTime) / 0.15;
+      if (this._externalLipValue != null) {
+        // TTS 오디오 진폭을 그대로 입벌림에 사용(실제 음성 립싱크)
+        value = Math.max(0, Math.min(1, this._externalLipValue));
+      } else {
+        const deltaTimeSeconds = LAppPal.getDeltaTime();
+        this._mouthTimeSeconds += deltaTimeSeconds;//_mouthTimeSecondsを更新
+        const cycleTime = ((this._mouthTimeSeconds % 0.3) + 0.3) % 0.3;;
+
+        if (cycleTime < 0.15) {
+          value = cycleTime / 0.15;
+        }else{
+          value = (0.3 - cycleTime) / 0.15;
+        }
+        value = Math.round(value * 10) / 10.0;
       }
-      value = Math.round(value * 10) / 10.0;
-      for (let i = 0; i < this._lipSyncIds.getSize(); ++i){
-        this._model.addParameterValueById(this._lipSyncIds.at(i), value, 0.8);
+      if (this._lipSyncIds.getSize() > 0) {
+        for (let i = 0; i < this._lipSyncIds.getSize(); ++i){
+          this._model.addParameterValueById(this._lipSyncIds.at(i), value, 0.8);
+        }
+      } else {
+        // model3.json 의 LipSync 그룹이 비어 있는 모델(Hibiki 등) → 표준 ParamMouthOpenY 로 폴백
+        if (this._idParamMouthOpenY == null) {
+          this._idParamMouthOpenY = CubismFramework.getIdManager().getId(
+            CubismDefaultParameterId.ParamMouthOpenY,
+          );
+        }
+        // 절대값으로 세팅(모션이 연 입에 더해 포화되는 것 방지) → 실제 여닫기
+        this._model.setParameterValueById(this._idParamMouthOpenY, value);
       }
     }
 

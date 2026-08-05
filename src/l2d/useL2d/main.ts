@@ -83,6 +83,10 @@ export function toggleLipSync(state: boolean) {
   LAppLive2DManager.getInstance().toggleLipSync(state);
 }
 
+export function setLipSyncValue(value: number) {
+  LAppLive2DManager.getInstance().setLipSyncValue(value);
+}
+
 export function setTargetFPS(fps: number) {
   LAppDelegate.getInstance().setTargetFPS(fps);
 }

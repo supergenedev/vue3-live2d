@@ -18,6 +18,7 @@ import {
   releaseL2d,
   setMotionGroupIdle,
   toggleLipSync,
+  setLipSyncValue,
   setTargetFPS,
 } from '../l2d/useL2d/main';
 import { IdleEmotion } from 'src/l2d/useL2d/lapplive2dmanager';
@@ -107,6 +108,7 @@ onBeforeUnmount(() => {
 defineExpose({
   setEmotion,
   setExpression,
+  setLipSyncValue,
 });
 
 watch([() => props.lipSync], ([lipSync]) => {
